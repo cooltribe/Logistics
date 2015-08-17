@@ -1,0 +1,69 @@
+package com.seeyuan.logistics.activity;
+
+import com.seeyuan.logistics.R;
+import com.seeyuan.logistics.application.NetWork;
+import com.seeyuan.logistics.datacenter.DataHandler;
+import com.seeyuan.logistics.datacenter.OnDataReceiveListener;
+import com.seeyuan.logistics.datahandler.LoginHandler;
+import com.seeyuan.logistics.entity.MemberDto;
+import com.seeyuan.logistics.entity.PdaRequest;
+import com.seeyuan.logistics.util.MD5Util;
+import com.seeyuan.logistics.util.ToastUtil;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+
+public class Test extends Activity implements OnDataReceiveListener ,OnClickListener{
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_test);
+		doLoginSubmit();
+	}
+	/**
+	 * 执行登录操作
+	 */
+	private void doLoginSubmit() {
+
+		MemberDto loginInfo = new MemberDto();
+		loginInfo.setUserName("oscar1103");
+		loginInfo.setPassword((MD5Util.getMD5String("12345678"))
+				.toLowerCase());
+		PdaRequest<MemberDto> request = new PdaRequest<MemberDto>();
+		request.setData(loginInfo);
+		LoginHandler loginHandler = new LoginHandler(this, request);
+		loginHandler.setOnDataReceiveListener(this);
+		loginHandler.startNetWork();
+
+	}
+	@Override
+	public void onDataReceive(DataHandler dataHandler, int resultCode, Object data, int type) {
+		// TODO Auto-generated method stub
+		switch (resultCode) {
+		case NetWork.LOGIN_OK:
+			ToastUtil.show(this,
+					"ok");
+//			doLoginSuccess(data);
+			break;
+		case NetWork.LOGIN_ERROR:
+//			myHandler.sendEmptyMessage(CLOSE_PROGRESS);
+			ToastUtil.show(this,
+					getResources().getString(R.string.network_error_hint));
+			break;
+
+		default:
+
+			break;
+		}
+	}
+	@Override
+	public void onClick(View v) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

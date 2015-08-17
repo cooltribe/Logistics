@@ -1,0 +1,1008 @@
+package com.seeyuan.logistics.activity;
+
+import java.io.File;
+import java.math.BigDecimal;
+
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.provider.MediaStore;
+import android.text.TextUtils;
+import android.util.Log;
+import android.view.Gravity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.Window;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.mesada.nj.pubcontrols.controls.RemoteImageView;
+import com.seeyuan.logistics.R;
+import com.seeyuan.logistics.application.ConstantPool;
+import com.seeyuan.logistics.application.NetWork;
+import com.seeyuan.logistics.customview.MuInputEditText;
+import com.seeyuan.logistics.customview.ProgressAlertDialog;
+import com.seeyuan.logistics.customview.SelectPicPopupWindow;
+import com.seeyuan.logistics.datacenter.DataHandler;
+import com.seeyuan.logistics.datacenter.OnDataReceiveListener;
+import com.seeyuan.logistics.datahandler.CompanyAuthenticationHandler;
+import com.seeyuan.logistics.datahandler.GetCompanyAuthenticationInfoHandler;
+import com.seeyuan.logistics.entity.CompanyAuthDto;
+import com.seeyuan.logistics.entity.ImageDto;
+import com.seeyuan.logistics.entity.PdaRequest;
+import com.seeyuan.logistics.entity.PdaResponse;
+import com.seeyuan.logistics.jsonparser.GetCompanyAuthenticationJsonParser;
+import com.seeyuan.logistics.jsonparser.ResultCodeJsonParser;
+import com.seeyuan.logistics.util.CommonUtils;
+import com.seeyuan.logistics.util.ToastUtil;
+
+/**
+ * 企业认证
+ * 
+ * @author zhazhaobao
+ * 
+ */
+/**
+ * @author Administrator
+ * 
+ */
+/**
+ * @author Administrator
+ * 
+ */
+public class CompanyAuthenticationActivity extends BaseActivity implements
+		OnClickListener, OnDataReceiveListener {
+	private Context context;
+
+	/**
+	 * 返回按钮
+	 */
+	private ImageView maintitle_back_iv;
+
+	/**
+	 * 标题title
+	 */
+	private TextView defaulttitle_title_tv;
+
+	/**
+	 * 公司名称
+	 */
+	private MuInputEditText authentication_company;
+
+	/**
+	 * 营业执照注册号
+	 */
+	private MuInputEditText authentication_business_license;
+
+	/**
+	 * 商标
+	 */
+	private RemoteImageView authentication_company_icon;
+
+	private ImageDto company_icon_dto = new ImageDto();
+
+	/**
+	 * 运输证许可证号
+	 */
+	private MuInputEditText authentication_translate_license;
+
+	private ImageDto translate_license_dto = new ImageDto();
+
+	/**
+	 * 运输许可证图片
+	 */
+	private RemoteImageView authentication_translate_license_icon;
+
+	/**
+	 * 公司地址
+	 */
+	private TextView authentication_company_address;
+
+	/**
+	 * 公司地址，详细地址
+	 */
+	private MuInputEditText authentication_company_address2;
+
+	/**
+	 * 注册资金
+	 */
+	private MuInputEditText authentication_company_money;
+
+	/**
+	 * 法人姓名
+	 */
+	private MuInputEditText authentication_company_legal;
+	/**
+	 * 法人，身份证号
+	 */
+	private MuInputEditText authentication_legal_idcard;
+
+	/**
+	 * 法人，手机号
+	 */
+	private MuInputEditText authentication_legal_phone;
+
+	/**
+	 * 法人，固定电话
+	 */
+	private MuInputEditText authentication_legal_tel;
+	/**
+	 * 开户银行
+	 */
+	private MuInputEditText authentication_bank;
+	/**
+	 * 开户银行所在地
+	 */
+	private TextView authentication_bank_address;
+	/**
+	 * 企业银行账号
+	 */
+	private MuInputEditText authentication_bank_id;
+
+	private CompanyAuthDto mCompanyAuthDto = new CompanyAuthDto();
+
+	/**
+	 * 显示进度条
+	 */
+	private final int SHOW_PROGRESS = 3000;
+	/**
+	 * 关闭进度条
+	 */
+	private final int CLOSE_PROGRESS = 3001;
+
+	private final int SHOW_TOAST = 3002;
+
+	private ProgressAlertDialog progressDialog;
+
+	/**
+	 * 公司商标
+	 */
+	private final int COMPANY_REQUEST_CODE_PHOTOALBUM = 500;
+	private final int COMPANY_REQUEST_CODE_PHOTO = 501;
+	private final int COMPANY_REQUEST_CODE_PHOTOOK = 502;
+	private final int COMPANY_REQUEST_CODE_PICK = 503;
+
+	/**
+	 * 运输许可证
+	 */
+	private final int TRANSLATE_REQUEST_CODE_PHOTOALBUM = 100;
+	private final int TRANSLATE_REQUEST_CODE_PHOTO = 101;
+	private final int TRANSLATE_REQUEST_CODE_PHOTOOK = 102;
+	private final int TRANSLATE_REQUEST_CODE_PICK = 103;
+
+	private final int COMPANY_ADDRESS_RETURN = 105;
+
+	private final int BANK_RETURN = 106;
+
+	private String city, privice;
+
+	/**
+	 * 认证提示
+	 */
+	private TextView certification_hint;
+
+	/**
+	 * 确认提交按钮
+	 */
+	private Button submit_company_authentification_btn;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+
+		requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
+		setContentView(R.layout.activity_company_authentication); // 软件activity的布局
+		getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE,
+				R.layout.deflaut_titlebar); // titlebar为自己标题栏的布局
+
+		context = getApplicationContext();
+		initView();
+		getCertificationInfo();
+	}
+
+	@Override
+	public void initView() {
+		maintitle_back_iv = (ImageView) findViewById(R.id.maintitle_back_iv);
+		maintitle_back_iv.setOnClickListener(this);
+
+		defaulttitle_title_tv = (TextView) findViewById(R.id.defaulttitle_title_tv);
+		defaulttitle_title_tv.setText(R.string.company_authentication_hint);
+
+		authentication_company = (MuInputEditText) findViewById(R.id.authentication_company);
+		authentication_business_license = (MuInputEditText) findViewById(R.id.authentication_business_license);
+		authentication_company_icon = (RemoteImageView) findViewById(R.id.authentication_company_icon);
+		authentication_company_icon.setOnClickListener(this);
+		authentication_translate_license = (MuInputEditText) findViewById(R.id.authentication_translate_license);
+		authentication_translate_license_icon = (RemoteImageView) findViewById(R.id.authentication_translate_license_icon);
+		authentication_translate_license_icon.setOnClickListener(this);
+		authentication_company_address = (TextView) findViewById(R.id.authentication_company_address);
+		authentication_company_address.setOnClickListener(this);
+		authentication_company_address2 = (MuInputEditText) findViewById(R.id.authentication_company_address2);
+		authentication_company_money = (MuInputEditText) findViewById(R.id.authentication_company_money);
+		authentication_company_legal = (MuInputEditText) findViewById(R.id.authentication_company_legal);
+		authentication_legal_idcard = (MuInputEditText) findViewById(R.id.authentication_legal_idcard);
+		authentication_legal_phone = (MuInputEditText) findViewById(R.id.authentication_legal_phone);
+		authentication_legal_tel = (MuInputEditText) findViewById(R.id.authentication_legal_tel);
+		authentication_bank = (MuInputEditText) findViewById(R.id.authentication_bank);
+		authentication_bank_address = (TextView) findViewById(R.id.authentication_bank_address);
+		authentication_bank_address.setOnClickListener(this);
+		authentication_bank_id = (MuInputEditText) findViewById(R.id.authentication_bank_id);
+
+		certification_hint = (TextView) findViewById(R.id.certification_hint);
+		submit_company_authentification_btn = (Button) findViewById(R.id.submit_company_authentification_btn);
+	}
+
+	private void showView(CompanyAuthDto companyAuthDto) {
+		if (companyAuthDto == null)
+			return;
+		authentication_company.setText(TextUtils.isEmpty(companyAuthDto
+				.getComName()) ? "" : companyAuthDto.getComName());
+		authentication_business_license.setText(TextUtils
+				.isEmpty(companyAuthDto.getBusiLicenseNum()) ? ""
+				: companyAuthDto.getBusiLicenseNum());
+		authentication_company_icon.draw(null == companyAuthDto
+				.getCompanyLogo() ? "" : companyAuthDto.getCompanyLogo()
+				.getHeaderImgURL(), ConstantPool.DEFAULT_ICON_PATH, false,
+				false);
+		authentication_translate_license.setText(TextUtils
+				.isEmpty(companyAuthDto.getRoadTransNum()) ? ""
+				: companyAuthDto.getRoadTransNum());
+		authentication_translate_license_icon.draw(null == companyAuthDto
+				.getRoadTransPermit() ? "" : companyAuthDto
+				.getRoadTransPermit().getHeaderImgURL(),
+				ConstantPool.DEFAULT_ICON_PATH, false, false);
+		authentication_company_address.setText(TextUtils.isEmpty(companyAuthDto
+				.getComAddress()) ? "" : companyAuthDto.getComAddress());
+		authentication_company_address2.setText(TextUtils
+				.isEmpty(companyAuthDto.getComAddrDetail()) ? ""
+				: companyAuthDto.getComAddrDetail());
+		authentication_company_money.setText(null == companyAuthDto
+				.getRegisCapital() ? "" : companyAuthDto.getRegisCapital()
+				.toString());
+		authentication_company_legal.setText(TextUtils.isEmpty(companyAuthDto
+				.getLegalPersom()) ? "" : companyAuthDto.getLegalPersom());
+		authentication_legal_idcard.setText(TextUtils.isEmpty(companyAuthDto
+				.getLegalIdNum()) ? "" : companyAuthDto.getLegalIdNum());
+		authentication_legal_phone.setText(TextUtils.isEmpty(companyAuthDto
+				.getLegalMobile()) ? "" : companyAuthDto.getLegalMobile());
+		authentication_legal_tel.setText(TextUtils.isEmpty(companyAuthDto
+				.getPhoneNum()) ? "" : companyAuthDto.getPhoneNum());
+		authentication_bank
+				.setText(TextUtils.isEmpty(companyAuthDto.getBank()) ? ""
+						: companyAuthDto.getBank());
+		city = TextUtils.isEmpty(companyAuthDto.getBankCity()) ? ""
+				: companyAuthDto.getBankCity();
+		privice = TextUtils.isEmpty(companyAuthDto.getBankProvince()) ? ""
+				: companyAuthDto.getBankProvince();
+		authentication_bank_address.setText(privice + city);
+		authentication_bank_id.setText(TextUtils.isEmpty(companyAuthDto
+				.getBankAccount()) ? "" : companyAuthDto.getBankAccount());
+
+	}
+
+	private Handler myHandler = new Handler() {
+		public void handleMessage(android.os.Message msg) {
+			switch (msg.what) {
+			case SHOW_PROGRESS:
+				showProgress();
+				break;
+			case CLOSE_PROGRESS:
+				dismissProgress();
+				break;
+			case SHOW_TOAST:
+				ToastUtil.show(context, msg.obj.toString());
+				break;
+			case 410:
+			case 412:
+				ToastUtil.show(context, msg.obj.toString());
+				doAllItemAble();
+				break;
+			case 411:
+			case 413:
+				ToastUtil.show(context, msg.obj.toString());
+				doAllItemEnable();
+				break;
+
+			default:
+				break;
+			}
+		};
+	};
+
+	private void showProgress() {
+		if (progressDialog == null) {
+			progressDialog = new ProgressAlertDialog(this);
+		} else {
+			progressDialog.show();
+		}
+	}
+
+	private void dismissProgress() {
+		if (progressDialog != null) {
+			progressDialog.dismiss();
+		}
+	}
+
+	@Override
+	public void onClickListener(View view) {
+		switch (view.getId()) {
+		case R.id.submit_company_authentification_btn:
+			String result = isCanSubmit();
+			if (result.equalsIgnoreCase("成功")) {
+				new Thread(new Runnable() {
+
+					@Override
+					public void run() {
+						doSubmit();
+					}
+				}).start();
+			} else {
+				ToastUtil.show(context, result);
+			}
+			break;
+
+		default:
+			break;
+		}
+	}
+
+	/**
+	 * 获取认证信息
+	 */
+	private void getCertificationInfo() {
+		myHandler.sendEmptyMessage(SHOW_PROGRESS);
+		PdaRequest<String> request = new PdaRequest<String>();
+		request.setData("");
+		GetCompanyAuthenticationInfoHandler dataHandler = new GetCompanyAuthenticationInfoHandler(
+				context, request);
+		dataHandler.setOnDataReceiveListener(this);
+		dataHandler.startNetWork();
+
+	}
+
+	/**
+	 * 提交认证
+	 */
+	private void doSubmit() {
+		myHandler.sendEmptyMessage(SHOW_PROGRESS);
+		mCompanyAuthDto.setComName(authentication_company.getText().toString());
+		mCompanyAuthDto.setBusiLicenseNum(authentication_business_license
+				.getText().toString());
+		mCompanyAuthDto.setCompanyLogo(company_icon_dto);
+		mCompanyAuthDto.setRoadTransNum(authentication_translate_license
+				.getText().toString());
+		mCompanyAuthDto.setRoadTransPermit(translate_license_dto);
+		mCompanyAuthDto.setComAddress(authentication_company_address.getText()
+				.toString());
+		mCompanyAuthDto.setComAddrDetail(authentication_company_address2
+				.getText().toString());
+//		mCompanyAuthDto
+//				.setRegisCapital(BigDecimal.valueOf(Double
+//						.parseDouble(authentication_company_money.getText()
+//								.toString())));
+		mCompanyAuthDto.setLegalPersom(authentication_company_legal.getText()
+				.toString());
+		mCompanyAuthDto.setLegalIdNum(authentication_legal_idcard.getText()
+				.toString());
+		mCompanyAuthDto.setLegalMobile(authentication_legal_phone.getText()
+				.toString());
+		mCompanyAuthDto.setPhoneNum(authentication_legal_tel.getText()
+				.toString());
+		mCompanyAuthDto.setBank(authentication_bank.getText().toString());
+		// 所在地
+		mCompanyAuthDto.setBankProvince(privice);
+		mCompanyAuthDto.setBankCity(city);
+		mCompanyAuthDto.setBankAccount(authentication_bank_id.getText()
+				.toString());
+
+		PdaRequest<CompanyAuthDto> request = new PdaRequest<CompanyAuthDto>();
+		request.setData(mCompanyAuthDto);
+		CompanyAuthenticationHandler dataHandler = new CompanyAuthenticationHandler(
+				context, request);
+		dataHandler.setOnDataReceiveListener(this);
+		dataHandler.startNetWork();
+	}
+
+	private String isCanSubmit() {
+		Filter companyName = new CompanyFilter();
+		Filter companyAddress = new CompanyAddressFilter();
+		Filter addressDetail = new AddressDetailFilter();
+		Filter legalName = new LegalNameFilter();
+		Filter legalIDcard = new LegalIDcardFilter();
+		Filter legalPhone = new LegalPhoneFilter();
+		Filter bank = new BankFilter();
+		Filter bankAddress = new BankAddressFilter();
+		Filter bankID = new BankIDFilter();
+
+		companyName.setNext(companyAddress);
+		companyAddress.setNext(addressDetail);
+		addressDetail.setNext(legalName);
+		legalName.setNext(legalIDcard);
+		legalIDcard.setNext(legalPhone);
+		legalPhone.setNext(bank);
+		bank.setNext(bankAddress);
+		bankAddress.setNext(bankID);
+
+		String result = companyName.doFilter(authentication_company.getText()
+				.toString(), authentication_company_address.getText()
+				.toString(), authentication_company_address2.getText()
+				.toString(), authentication_company_legal.getText().toString(),
+				authentication_legal_idcard.getText().toString(),
+				authentication_legal_phone.getText().toString(),
+				authentication_bank.getText().toString(),
+				authentication_bank_address.getText().toString(),
+				authentication_bank_id.getText().toString());
+
+		return result;
+	}
+
+	@Override
+	public void onClick(View view) {
+		switch (view.getId()) {
+		case R.id.maintitle_back_iv:
+			CommonUtils.finishActivity(CompanyAuthenticationActivity.this);
+			break;
+		case R.id.authentication_company_icon:
+			showOptionDialog(COMPANY_REQUEST_CODE_PHOTOALBUM,
+					COMPANY_REQUEST_CODE_PHOTO);
+			break;
+		case R.id.authentication_translate_license_icon:
+			showOptionDialog(TRANSLATE_REQUEST_CODE_PHOTOALBUM,
+					TRANSLATE_REQUEST_CODE_PHOTO);
+			break;
+		case R.id.authentication_company_address:
+
+			Intent addressIntent = new Intent(
+					CompanyAuthenticationActivity.this,
+					SearchCityActivity.class);
+			startActivityForResult(addressIntent, COMPANY_ADDRESS_RETURN);
+
+			break;
+		case R.id.authentication_bank_address:
+			Intent bankIntent = new Intent(CompanyAuthenticationActivity.this,
+					SearchCityActivity.class);
+			startActivityForResult(bankIntent, BANK_RETURN);
+			break;
+
+		default:
+			break;
+		}
+	}
+
+	abstract class Filter {
+
+		Filter next = null;
+
+		public Filter getNext() {
+
+			return next;
+
+		}
+
+		public void setNext(Filter next) {
+
+			this.next = next;
+
+		}
+
+		public String doFilter(String company, String companyAddress,
+				String addressDetail, String legalName, String legalIDcard,
+				String legalPhone, String bank, String bankAddress,
+				String bankID) {
+
+			if (next == null) {
+				return "成功";
+			} else
+				return next.doFilter(company, companyAddress, addressDetail,
+						legalName, legalIDcard, legalPhone, bank, bankAddress,
+						bankID);
+		}
+	}
+
+	public class CompanyFilter extends Filter {
+		public String doFilter(String company, String companyAddress,
+				String addressDetail, String legalName, String legalIDcard,
+				String legalPhone, String bank, String bankAddress,
+				String bankID) {
+
+			if (TextUtils.isEmpty(company)) {
+				return "请输入正确的公司名称";
+			} else
+				return super.doFilter(company, companyAddress, addressDetail,
+						legalName, legalIDcard, legalPhone, bank, bankAddress,
+						bankID);
+		}
+	}
+
+	public class CompanyAddressFilter extends Filter {
+		public String doFilter(String company, String companyAddress,
+				String addressDetail, String legalName, String legalIDcard,
+				String legalPhone, String bank, String bankAddress,
+				String bankID) {
+
+			if (TextUtils.isEmpty(companyAddress)) {
+				return "请输入正确的公司地址";
+			} else
+				return super.doFilter(company, companyAddress, addressDetail,
+						legalName, legalIDcard, legalPhone, bank, bankAddress,
+						bankID);
+		}
+	}
+
+	public class AddressDetailFilter extends Filter {
+		public String doFilter(String company, String companyAddress,
+				String addressDetail, String legalName, String legalIDcard,
+				String legalPhone, String bank, String bankAddress,
+				String bankID) {
+
+			if (TextUtils.isEmpty(addressDetail)) {
+				return "请输入正确的详细地址";
+			} else
+				return super.doFilter(company, companyAddress, addressDetail,
+						legalName, legalIDcard, legalPhone, bank, bankAddress,
+						bankID);
+		}
+	}
+
+	public class LegalNameFilter extends Filter {
+		public String doFilter(String company, String companyAddress,
+				String addressDetail, String legalName, String legalIDcard,
+				String legalPhone, String bank, String bankAddress,
+				String bankID) {
+
+			if (TextUtils.isEmpty(legalName)) {
+				return "请输入正确的法人姓名";
+			} else
+				return super.doFilter(company, companyAddress, addressDetail,
+						legalName, legalIDcard, legalPhone, bank, bankAddress,
+						bankID);
+		}
+	}
+
+	public class LegalIDcardFilter extends Filter {
+		public String doFilter(String company, String companyAddress,
+				String addressDetail, String legalName, String legalIDcard,
+				String legalPhone, String bank, String bankAddress,
+				String bankID) {
+
+			if (!CommonUtils.is18IDcard(legalIDcard)) {
+				return "请输入正确的法人身份证号";
+			} else
+				return super.doFilter(company, companyAddress, addressDetail,
+						legalName, legalIDcard, legalPhone, bank, bankAddress,
+						bankID);
+		}
+	}
+
+	public class LegalPhoneFilter extends Filter {
+		public String doFilter(String company, String companyAddress,
+				String addressDetail, String legalName, String legalIDcard,
+				String legalPhone, String bank, String bankAddress,
+				String bankID) {
+
+			if (!CommonUtils.isMobileNO(legalPhone)) {
+				return "请输入正确的法人手机号码";
+			} else
+				return super.doFilter(company, companyAddress, addressDetail,
+						legalName, legalIDcard, legalPhone, bank, bankAddress,
+						bankID);
+		}
+	}
+
+	public class BankFilter extends Filter {
+		public String doFilter(String company, String companyAddress,
+				String addressDetail, String legalName, String legalIDcard,
+				String legalPhone, String bank, String bankAddress,
+				String bankID) {
+
+			if (TextUtils.isEmpty(bank)) {
+				return "请输入正确的开户银行";
+			} else
+				return super.doFilter(company, companyAddress, addressDetail,
+						legalName, legalIDcard, legalPhone, bank, bankAddress,
+						bankID);
+		}
+	}
+
+	public class BankAddressFilter extends Filter {
+		public String doFilter(String company, String companyAddress,
+				String addressDetail, String legalName, String legalIDcard,
+				String legalPhone, String bank, String bankAddress,
+				String bankID) {
+
+			if (TextUtils.isEmpty(bankAddress)) {
+				return "请选择正确的开户银行所在地";
+			} else
+				return super.doFilter(company, companyAddress, addressDetail,
+						legalName, legalIDcard, legalPhone, bank, bankAddress,
+						bankID);
+		}
+	}
+
+	public class BankIDFilter extends Filter {
+		public String doFilter(String company, String companyAddress,
+				String addressDetail, String legalName, String legalIDcard,
+				String legalPhone, String bank, String bankAddress,
+				String bankID) {
+
+			if (TextUtils.isEmpty(bankID)) {
+				return "请选择正确的企业银行账号";
+			} else
+				return super.doFilter(company, companyAddress, addressDetail,
+						legalName, legalIDcard, legalPhone, bank, bankAddress,
+						bankID);
+		}
+	}
+
+	@Override
+	public void onDataReceive(DataHandler dataHandler, int resultCode,
+			Object data, int type) {
+		myHandler.sendEmptyMessage(CLOSE_PROGRESS);
+		switch (resultCode) {
+		case NetWork.GET_COMPANY_AUTHENTICATION_INFO_OK:
+			doGetCompanyAuthenticationSuccess(data);
+			break;
+		case NetWork.COMPANY_AUTHENTICATION_OK:
+			doCompanyAuthentication(data);
+			break;
+		case NetWork.COMPANY_AUTHENTICATION_ERROR:
+		case NetWork.GET_COMPANY_AUTHENTICATION_INFO_ERROR:
+			ToastUtil.show(context,
+					getResources().getString(R.string.network_error_hint));
+			break;
+
+		default:
+			break;
+		}
+	}
+
+	/**
+	 * 提交企业认证
+	 * 
+	 * @param data
+	 */
+	private void doCompanyAuthentication(Object data) {
+		String dataString = null;
+		try {
+			dataString = new String((byte[]) data, "UTF-8");
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		}
+		try {
+			PdaResponse<String> mData = ResultCodeJsonParser
+					.parserResultCodeJson(dataString);
+			String result = mData.getMessage();
+			String message = result.substring(result.indexOf("#") + 1,
+					result.length());
+			if (mData.isSuccess()) {
+				Message msg = myHandler.obtainMessage();
+				msg.what = SHOW_TOAST;
+				msg.obj = "认证已经提交,请等待审核";
+				myHandler.sendMessage(msg);
+				doAllItemEnable();
+				certification_hint.setText(message);
+			} else {
+				// 失败
+				Message msg = myHandler.obtainMessage();
+				msg.what = SHOW_TOAST;
+				msg.obj = message;
+				myHandler.sendMessage(msg);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * 获取企业认证信息成功
+	 * 
+	 * @param data
+	 */
+	private void doGetCompanyAuthenticationSuccess(Object data) {
+		String dataString = null;
+		try {
+			dataString = new String((byte[]) data, "UTF-8");
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		}
+		try {
+			PdaResponse<CompanyAuthDto> mData = GetCompanyAuthenticationJsonParser
+					.parserCompanyAuthenticationJson(dataString);
+			if (mData.isSuccess()) {
+				String result = mData.getMessage();
+				String message = result.substring(result.indexOf("#") + 1,
+						result.length());
+				int messageCode = Integer.parseInt(result.substring(0,
+						result.indexOf("#")));
+				if (null != mData.getData()) {
+					certification_hint.setText(message);
+					mCompanyAuthDto = mData.getData();
+					showView(mData.getData());
+				}
+				Message msg = myHandler.obtainMessage();
+				msg.what = messageCode;
+				msg.obj = message;
+				myHandler.sendMessage(msg);
+			} else {
+				// 失败
+				String result = mData.getMessage();
+				String message = result.substring(result.indexOf("#") + 1,
+						result.length());
+				Message msg = myHandler.obtainMessage();
+				msg.what = SHOW_TOAST;
+				msg.obj = message;
+				myHandler.sendMessage(msg);
+				doAllItemAble();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	private void doAllItemEnable() {
+		authentication_company.setEnabled(false);
+		authentication_company.setCanTouch(false);
+		authentication_business_license.setEnabled(false);
+		authentication_business_license.setCanTouch(false);
+		authentication_company_icon.setEnabled(false);
+		authentication_translate_license.setEnabled(false);
+		authentication_translate_license.setCanTouch(false);
+		authentication_translate_license_icon.setEnabled(false);
+		authentication_company_address.setEnabled(false);
+		authentication_company_address2.setEnabled(false);
+		authentication_company_address2.setCanTouch(false);
+		authentication_company_money.setEnabled(false);
+		authentication_company_money.setCanTouch(false);
+		authentication_company_legal.setEnabled(false);
+		authentication_company_legal.setCanTouch(false);
+		authentication_legal_idcard.setEnabled(false);
+		authentication_legal_idcard.setCanTouch(false);
+		authentication_legal_phone.setEnabled(false);
+		authentication_legal_phone.setCanTouch(false);
+		authentication_legal_tel.setEnabled(false);
+		authentication_legal_tel.setCanTouch(false);
+		authentication_bank.setEnabled(false);
+		authentication_bank.setCanTouch(false);
+		authentication_bank_address.setEnabled(false);
+		authentication_bank_id.setEnabled(false);
+		authentication_bank_id.setCanTouch(false);
+		submit_company_authentification_btn.setVisibility(View.GONE);
+
+	}
+
+	private void doAllItemAble() {
+		authentication_company.setEnabled(true);
+		authentication_company.setCanTouch(true);
+		authentication_business_license.setEnabled(true);
+		authentication_business_license.setCanTouch(true);
+		authentication_company_icon.setEnabled(true);
+		authentication_translate_license.setEnabled(true);
+		authentication_translate_license.setCanTouch(true);
+		authentication_translate_license_icon.setEnabled(true);
+		authentication_company_address.setEnabled(true);
+		authentication_company_address2.setEnabled(true);
+		authentication_company_address2.setCanTouch(true);
+		authentication_company_money.setEnabled(true);
+		authentication_company_money.setCanTouch(true);
+		authentication_company_legal.setEnabled(true);
+		authentication_company_legal.setCanTouch(true);
+		authentication_legal_idcard.setEnabled(true);
+		authentication_legal_idcard.setCanTouch(true);
+		authentication_legal_phone.setEnabled(true);
+		authentication_legal_phone.setCanTouch(true);
+		authentication_legal_tel.setEnabled(true);
+		authentication_legal_tel.setCanTouch(true);
+		authentication_bank.setEnabled(true);
+		authentication_bank.setCanTouch(true);
+		authentication_bank_address.setEnabled(true);
+		authentication_bank_id.setEnabled(true);
+		authentication_bank_id.setCanTouch(true);
+		submit_company_authentification_btn.setVisibility(View.VISIBLE);
+
+	}
+
+	private void showOptionDialog(final int photoCode, final int cameraCode) {
+		final SelectPicPopupWindow dialog = new SelectPicPopupWindow(
+				CompanyAuthenticationActivity.this);
+		dialog.setFirstButtonContent(getResources().getString(
+				R.string.take_photo_hint));
+		dialog.setFirstButtonOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// CommonUtils.selectCameraPhone(cameraCode, resultPath,
+				// AddNewDriverActivity.this);
+				takePhoto(cameraCode);
+				dialog.dismiss();
+			}
+		});
+		dialog.setSecendButtonContent(getResources().getString(
+				R.string.get_system_photo_hint));
+		dialog.setSecendButtonOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				CommonUtils.selectSystemPhone(photoCode,
+						CompanyAuthenticationActivity.this);
+				dialog.dismiss();
+			}
+		});
+		dialog.setThirdButtonContent(getResources().getString(R.string.cancel));
+		dialog.setThirdButtonOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				dialog.dismiss();
+			}
+		});
+		// 显示窗口
+		dialog.showAtLocation(
+				CompanyAuthenticationActivity.this.findViewById(R.id.main),
+				Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0); // 设置layout在PopupWindow中显示的位置
+	}
+
+	private String filePath;
+	private Bitmap resultBitmap;
+
+	/**
+	 * 
+	 * 裁剪图片方法实现
+	 * 
+	 * 
+	 * 
+	 * @param uri
+	 */
+	public void startPhotoZoom(Uri uri, int photoook) {
+		Intent intent = new Intent("com.android.camera.action.CROP");
+		intent.setDataAndType(uri, "image/*");
+		intent.putExtra("crop", "true");
+		intent.putExtra("aspectX", 5);
+		intent.putExtra("aspectY", 3);
+		intent.putExtra("outputX", 480);
+		intent.putExtra("outputY", 480);
+		intent.putExtra("scale", true);
+
+		File tempFile = new File(ConstantPool.DEFAULT_ICON_PATH
+				+ "image_diy_resultphoto_temp.jpg");
+		intent.putExtra("output", Uri.fromFile(tempFile));
+		intent.putExtra("outputFormat", "JPEG");// 返回格式
+		try {
+			startActivityForResult(intent, photoook);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	public void cropPhoto(String filePath, int pick) {
+		Intent intent = new Intent("com.android.camera.action.CROP");
+		intent.setDataAndType(Uri.parse(filePath), "image/*");
+		intent.putExtra("crop", "true");
+		intent.putExtra("aspectX", 5);
+		intent.putExtra("aspectY", 3);
+		intent.putExtra("outputX", 480);
+		intent.putExtra("outputY", 480);
+		intent.putExtra("scale", true);
+
+		File tempFile = new File(ConstantPool.DEFAULT_ICON_PATH
+				+ "image_diy_resultphoto.jpg");
+		intent.putExtra("output", Uri.fromFile(tempFile));
+		intent.putExtra("outputFormat", "JPEG");// 返回格式
+		try {
+			startActivityForResult(intent, pick);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	private void takePhoto(int photo) {
+		Intent intent = new Intent();
+		intent.setAction("android.media.action.IMAGE_CAPTURE");
+		Bundle bundle = new Bundle();
+
+		String path = ConstantPool.DEFAULT_ICON_PATH;
+		if (path != null) {
+			filePath = "file://" + path + "image_diy_takephoto.jpg";
+			Log.v("filePath", filePath);
+			Uri uri = Uri.parse(filePath);
+			bundle.putParcelable(MediaStore.EXTRA_OUTPUT, uri);
+			intent.putExtras(bundle);
+			try {
+				startActivityForResult(intent, photo);
+			} catch (Exception e) {
+				ToastUtil.show(
+						this,
+						getResources().getString(
+								R.string.msg_send_nophoto_prompt));
+			}
+		}
+	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		if (resultCode != RESULT_OK)
+			return;
+		switch (requestCode) {
+		case COMPANY_REQUEST_CODE_PHOTOALBUM:
+			if (data != null) {
+				startPhotoZoom(data.getData(), COMPANY_REQUEST_CODE_PHOTOOK);
+			}
+			break;
+		case COMPANY_REQUEST_CODE_PHOTO:
+			filePath = "file://" + ConstantPool.DEFAULT_ICON_PATH
+					+ "image_diy_takephoto.jpg";
+			if (filePath != null) {
+				cropPhoto(filePath, COMPANY_REQUEST_CODE_PICK);
+			}
+			break;
+		case COMPANY_REQUEST_CODE_PHOTOOK:
+			resultBitmap = BitmapFactory
+					.decodeFile(ConstantPool.DEFAULT_ICON_PATH
+							+ "image_diy_resultphoto_temp.jpg");
+			company_icon_dto.setImageSuffix("PNG");
+			company_icon_dto.setFile(CommonUtils.getBitmapByByte(resultBitmap));
+			authentication_company_icon.setImageBitmap(resultBitmap);
+			break;
+		case COMPANY_REQUEST_CODE_PICK:
+			resultBitmap = BitmapFactory
+					.decodeFile(ConstantPool.DEFAULT_ICON_PATH
+							+ "image_diy_resultphoto.jpg");
+			company_icon_dto.setImageSuffix("PNG");
+			company_icon_dto.setFile(CommonUtils.getBitmapByByte(resultBitmap));
+			authentication_company_icon.setImageBitmap(resultBitmap);
+			break;
+
+		case TRANSLATE_REQUEST_CODE_PHOTOALBUM:
+			if (data != null) {
+				startPhotoZoom(data.getData(), TRANSLATE_REQUEST_CODE_PHOTOOK);
+			}
+			break;
+		case TRANSLATE_REQUEST_CODE_PHOTO:
+			filePath = "file://" + ConstantPool.DEFAULT_ICON_PATH
+					+ "image_diy_takephoto.jpg";
+			if (filePath != null) {
+				cropPhoto(filePath, TRANSLATE_REQUEST_CODE_PICK);
+			}
+			break;
+		case TRANSLATE_REQUEST_CODE_PHOTOOK:
+			resultBitmap = BitmapFactory
+					.decodeFile(ConstantPool.DEFAULT_ICON_PATH
+							+ "image_diy_resultphoto_temp.jpg");
+			translate_license_dto.setImageSuffix("PNG");
+			translate_license_dto.setFile(CommonUtils
+					.getBitmapByByte(resultBitmap));
+			authentication_translate_license_icon.setImageBitmap(resultBitmap);
+			break;
+		case TRANSLATE_REQUEST_CODE_PICK:
+			resultBitmap = BitmapFactory
+					.decodeFile(ConstantPool.DEFAULT_ICON_PATH
+							+ "image_diy_resultphoto.jpg");
+			translate_license_dto.setImageSuffix("PNG");
+			translate_license_dto.setFile(CommonUtils
+					.getBitmapByByte(resultBitmap));
+			authentication_translate_license_icon.setImageBitmap(resultBitmap);
+			break;
+
+		case COMPANY_ADDRESS_RETURN:
+			authentication_company_address
+					.setText(data.getStringExtra("place"));
+			break;
+		case BANK_RETURN:
+			authentication_bank_address.setText(data.getStringExtra("place"));
+			privice = data.getStringExtra("privice");
+			city = data.getStringExtra("city");
+			break;
+
+		default:
+			break;
+		}
+	}
+
+}

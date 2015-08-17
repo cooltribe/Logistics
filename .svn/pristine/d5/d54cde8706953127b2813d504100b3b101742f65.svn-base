@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/Background"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10.0dip"
+        android:background="@drawable/angle_bg"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                style="@style/PublishInfo_Title_Style"
+                android:layout_centerVertical="true"
+                android:text="再次确认货物价值" />
+
+            <TextView
+                android:id="@+id/Insurance_ConfirmAmount_Unit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10.0dip"
+                android:text="元"
+                android:textColor="@android:color/black"
+                android:textSize="16.0sp" />
+
+            <TextView
+                android:id="@+id/Insurance_ConfirmAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="45.0dip"
+                android:layout_toLeftOf="@+id/Insurance_ConfirmAmount_Unit"
+                android:gravity="center_vertical"
+                android:textColor="#ffea8421"
+                android:textSize="16.0sp" />
+        </RelativeLayout>
+
+        <include layout="@layout/line" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                style="@style/PublishInfo_Title_Style"
+                android:layout_centerVertical="true"
+                android:text="本次保费" />
+
+            <TextView
+                android:id="@+id/Insurance_Balance_Unit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10.0dip"
+                android:text="元"
+                android:textColor="@android:color/black"
+                android:textSize="16.0sp" />
+
+            <TextView
+                android:id="@+id/Insurance_Balance_Premium"
+                android:layout_width="wrap_content"
+                android:layout_height="45.0dip"
+                android:layout_toLeftOf="@+id/Insurance_Balance_Unit"
+                android:gravity="center_vertical"
+                android:textColor="#ffea8421"
+                android:textSize="16.0sp" />
+        </RelativeLayout>
+
+        <include layout="@layout/line" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                style="@style/PublishInfo_Title_Style"
+                android:layout_centerVertical="true"
+                android:text="账户余额" />
+
+            <TextView
+                android:id="@+id/Insurance_Balance_Unit1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10.0dip"
+                android:text="元"
+                android:textColor="@android:color/black"
+                android:textSize="16.0sp" />
+
+            <TextView
+                android:id="@+id/Insurance_Balance"
+                android:layout_width="wrap_content"
+                android:layout_height="45.0dip"
+                android:layout_toLeftOf="@+id/Insurance_Balance_Unit1"
+                android:gravity="center_vertical"
+                android:textColor="#ffea8421"
+                android:textSize="16.0sp" />
+        </RelativeLayout>
+
+        <include layout="@layout/line" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="horizontal" >
+
+            <TextView
+                style="@style/PublishInfo_Title_Style"
+                android:text="账户密码" />
+
+            <EditText
+                android:id="@+id/Insurance_AccountPassword"
+                style="@style/PublishInfo_Edit_Style"
+                android:hint="请输入账户密码"
+                android:inputType="textPassword"
+                android:textSize="16.0sp" />
+        </LinearLayout>
+
+        <include layout="@layout/line" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                style="@style/PublishInfo_Title_Style"
+                android:text="短信通号码" />
+
+            <EditText
+                android:id="@+id/Insurance_SMSNumber"
+                style="@style/PublishInfo_Edit_Style"
+                android:hint="填写多个手机号用“，”分开"
+                android:textSize="16.0sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10.0dip"
+        android:layout_marginRight="10.0dip"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal" >
+
+        <CheckBox
+            android:id="@+id/BuyInsurance_Protocol"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="我已阅读并同意"
+            android:textColor="@android:color/black" />
+
+        <Button
+            android:id="@+id/BuyInsurance_Protocol_But"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:clickable="true"
+            android:onClick="onClickListener"
+            android:text="(国内货运保险条款)"
+            android:textColor="#ff208e4d"
+            android:textSize="15.0sp" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/BuyInsurance_Submit_But"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10.0dip"
+        android:background="@drawable/confirm_back_button_select"
+        android:onClick="onClickListener"
+        android:text="提交保单"
+        android:textColor="@android:color/white"
+        android:textSize="16.0sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10.0dip"
+        android:autoLink="phone"
+        android:gravity="center"
+        android:text="服务热线：020-952156"
+        android:textColor="@color/orange" />
+
+</LinearLayout>

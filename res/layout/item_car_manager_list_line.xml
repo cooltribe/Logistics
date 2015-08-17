@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="120dp"
+        android:orientation="horizontal" >
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1" >
+
+            <TextView
+                android:id="@+id/item_car_manager_line_to"
+                style="@style/item_car_manager_list_content_style"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:layout_marginBottom="10dp"
+                android:drawableLeft="@drawable/end_icon"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/item_car_manager_line_from"
+                style="@style/item_car_manager_list_content_style"
+                android:layout_above="@+id/item_car_manager_line_to"
+                android:layout_alignParentLeft="true"
+                android:layout_marginBottom="10dp"
+                android:drawableLeft="@drawable/start_icon" />
+
+            <TextView
+                android:id="@+id/item_car_manager_line_type"
+                style="@style/item_car_manager_list_content_style"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/item_car_manager_line_to"
+                android:text="" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="fill_parent"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="15dp"
+            android:background="#ffcdcdcd"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="2.5"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone" >
+
+            <Button
+                android:id="@+id/item_car_manager_line_edit"
+                style="@style/item_car_manager_button_style"
+                android:layout_marginBottom="5dp"
+                android:text="@string/edit" />
+
+            <Button
+                android:id="@+id/item_car_manager_line_delete"
+                style="@style/item_car_manager_button_style"
+                android:layout_marginTop="5dp"
+                android:text="@string/delete" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0.5dp"
+        android:background="#ffcdcdcd" />
+
+</LinearLayout>

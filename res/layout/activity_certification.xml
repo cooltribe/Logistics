@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/certification_hint"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:background="#fff7e0"
+        android:gravity="center|left"
+        android:paddingLeft="10dp"
+        android:text="@string/certification_warning_hint"
+        android:textColor="#ff6600"
+        android:textSize="13sp" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginBottom="5dp"
+        android:background="#ff6600" />
+
+    <include layout="@layout/line" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50dp" >
+
+        <TextView
+            android:id="@+id/certification_name_hint"
+            style="@style/certification_content_style"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
+            android:drawableLeft="@drawable/mi_icon"
+            android:text="@string/sure_name" />
+
+        <com.seeyuan.logistics.customview.MuInputEditText
+            android:id="@+id/certification_name"
+            style="@style/certification_edit_style"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20dp"
+            android:layout_toRightOf="@+id/certification_name_hint"
+            android:gravity="right|center"
+            android:hint="@string/please_input_hint" />
+    </RelativeLayout>
+
+    <include layout="@layout/line" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50dp" >
+
+        <TextView
+            android:id="@+id/certification_idcard_hint"
+            style="@style/certification_content_style"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
+            android:drawableLeft="@drawable/mi_icon"
+            android:text="@string/id_card_no" />
+
+        <com.seeyuan.logistics.customview.MuInputEditText
+            android:id="@+id/certification_idcard"
+            style="@style/certification_edit_style"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="20dp"
+            android:layout_toRightOf="@+id/certification_idcard_hint"
+            android:hint="@string/Id_card" />
+    </RelativeLayout>
+
+    <include layout="@layout/line" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50dp" >
+
+        <TextView
+            style="@style/certification_content_style"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
+            android:drawableLeft="@drawable/mi_icon"
+            android:text="身份证有效期" />
+    </RelativeLayout>
+
+    <include layout="@layout/line" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/certification_idcard_validtime_from"
+            style="@style/certification_edit_style"
+            android:layout_weight="1"
+			android:gravity="center"
+            android:hint="" />
+
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="fill_parent"
+            android:background="@color/grey" />
+
+        <TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:gravity="center"
+			android:textColor="@color/black"
+			android:textSize="16sp"
+            android:text="至" />
+
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="fill_parent"
+            android:background="@color/grey" />
+
+        <TextView
+            android:id="@+id/certification_idcard_validtime_to"
+            style="@style/certification_edit_style"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:hint="" />
+    </LinearLayout>
+
+    <include layout="@layout/line" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="90dp" >
+
+        <TextView
+            style="@style/certification_content_style"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
+            android:drawableLeft="@drawable/mi_icon"
+            android:text="@string/Id_card_phone_front" />
+
+        <com.mesada.nj.pubcontrols.controls.RemoteImageView
+            android:id="@+id/certification_idcard_photo_front"
+            android:layout_width="80.0dip"
+            android:layout_height="80.0dip"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/imageView1"
+            android:background="@drawable/status_bg"
+            android:scaleType="fitXY" />
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:paddingRight="5.0dip"
+            android:src="@drawable/uitableview_chevron_default" />
+    </RelativeLayout>
+
+    <include layout="@layout/line" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="90dp" >
+
+        <TextView
+            style="@style/certification_content_style"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
+            android:drawableLeft="@drawable/mi_icon"
+            android:text="@string/Id_card_phone_behind" />
+
+        <com.mesada.nj.pubcontrols.controls.RemoteImageView
+            android:id="@+id/certification_idcard_photo_behind"
+            android:layout_width="80.0dip"
+            android:layout_height="80.0dip"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/imageView1"
+            android:background="@drawable/status_bg"
+            android:scaleType="fitXY" />
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:paddingRight="5.0dip"
+            android:src="@drawable/uitableview_chevron_default" />
+    </RelativeLayout>
+
+    <include layout="@layout/line" />
+
+    <Button
+        android:id="@+id/certification_ensure"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/confirm_back_button_select"
+        android:gravity="center"
+        android:onClick="onClickListener"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        android:text="@string/submit_certification_hint"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
+
+</LinearLayout>

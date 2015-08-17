@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/search_city_pressed_style"
+    android:gravity="center_horizontal" >
+
+    <TextView
+        android:id="@+id/item_province_type"
+        style="@style/Item_City_Type_Text_Style"
+        android:layout_width="fill_parent"
+		android:paddingLeft="10dp"
+        android:layout_height="40dp" />
+
+</LinearLayout>

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/com.seeyuan.logistics"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:padding="10.0dip" >
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:fadingEdge="none"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5.0dip"
+                android:background="@drawable/angle_bg"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="45.0dip"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left|center"
+                        android:layout_weight="2"
+                        android:gravity="left|center"
+                        android:paddingLeft="10.0dip"
+                        android:text="@string/wj_user_oldpwd"
+                        android:textColor="#ff666666"
+                        android:textSize="16.0sp" />
+
+                    <com.seeyuan.logistics.customview.MuInputEditText
+                        android:id="@+id/ed_oldPsw"
+                        style="@style/PublishInfo_Edit_Style"
+                        android:layout_weight="1"
+                        android:hint="@string/login_pwd_message1"
+                        android:inputType="textPassword"
+                        android:maxLength="18"
+                        android:paddingRight="10.0dip"
+                        android:singleLine="true"
+                        android:textSize="16.0sp" />
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.5dip"
+                    android:background="@android:color/darker_gray"
+                    android:contentDescription="@null" />
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="45.0dip"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left|center"
+                        android:layout_weight="2"
+                        android:gravity="left|center"
+                        android:paddingLeft="10.0dip"
+                        android:text="@string/wj_user_newpwd"
+                        android:textColor="#ff666666"
+                        android:textSize="16.0sp" />
+
+                    <com.seeyuan.logistics.customview.MuInputEditText
+                        android:id="@+id/ed_newPsw"
+                        style="@style/PublishInfo_Edit_Style"
+                        android:layout_weight="1"
+                        android:hint="@string/update_pwd_message"
+                        android:inputType="textPassword"
+                        android:maxLength="18"
+                        android:paddingRight="10.0dip"
+                        android:textSize="16.0sp" />
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.5dip"
+                    android:background="@android:color/darker_gray"
+                    android:contentDescription="@null" />
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="45.0dip"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left|center"
+                        android:layout_weight="2"
+                        android:gravity="left|center"
+                        android:paddingLeft="10.0dip"
+                        android:text="@string/wj_user_againpwd"
+                        android:textColor="#ff666666"
+                        android:textSize="16.0sp" />
+
+                    <com.seeyuan.logistics.customview.MuInputEditText
+                        android:id="@+id/ed_user_againpwd"
+                        style="@style/PublishInfo_Edit_Style"
+                        android:layout_weight="1"
+                        android:hint="@string/update_pwd_message"
+                        android:inputType="textPassword"
+                        android:maxLength="18"
+                        android:paddingRight="10.0dip"
+                        android:singleLine="true"
+                        android:textSize="16.0sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/bt_submit"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10.0dip"
+                android:background="@drawable/confirm_back_button_select"
+                android:onClick="onClickListener"
+                android:text="@string/Submit_Title"
+                android:textColor="@android:color/white"
+                android:textSize="16.0sp" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

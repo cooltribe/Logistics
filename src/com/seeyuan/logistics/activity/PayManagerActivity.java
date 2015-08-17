@@ -1,0 +1,121 @@
+package com.seeyuan.logistics.activity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.Window;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.seeyuan.logistics.R;
+import com.seeyuan.logistics.util.CommonUtils;
+
+/**
+ * 支付管理中心
+ * 
+ * @author zhazhaobao
+ * 
+ */
+public class PayManagerActivity extends BaseActivity implements OnClickListener {
+
+	/**
+	 * 返回按钮
+	 */
+	private ImageView maintitle_back_iv;
+
+	/**
+	 * 标题title
+	 */
+	private TextView defaulttitle_title_tv;
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
+		setContentView(R.layout.activity_pay_manager);
+		getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE,
+				R.layout.deflaut_titlebar); // titlebar为自己标题栏的布局
+
+		initView();
+	}
+
+	@Override
+	public void initView() {
+		maintitle_back_iv = (ImageView) findViewById(R.id.maintitle_back_iv);
+		maintitle_back_iv.setOnClickListener(this);
+
+		defaulttitle_title_tv = (TextView) findViewById(R.id.defaulttitle_title_tv);
+		defaulttitle_title_tv.setText(R.string.pay_manage_hint);
+	}
+
+	@Override
+	public void onClickListener(View view) {
+		switch (view.getId()) {
+		case R.id.pay_center_btn:
+			doPayCenter();
+			break;
+		case R.id.account_setting_btn:
+			doAccountSetting();
+			break;
+		case R.id.settlement_btn:
+			doSettlement();
+			break;
+		case R.id.deal_manager_btn:
+			doDealManager();
+			break;
+
+		default:
+			break;
+		}
+
+	}
+
+	/**
+	 * 交易管理
+	 */
+	private void doDealManager() {
+		Intent intent = new Intent(PayManagerActivity.this,
+				DealManagerActivity.class);
+		startActivity(intent);
+	}
+
+	/**
+	 * 结算管理
+	 */
+	private void doSettlement() {
+		Intent intent = new Intent(PayManagerActivity.this,
+				SettlementActivity.class);
+		startActivity(intent);
+	}
+
+	/**
+	 * 账户设置
+	 */
+	private void doAccountSetting() {
+		Intent intent = new Intent(PayManagerActivity.this,
+				AccountSettingActivity.class);
+		startActivity(intent);
+	}
+	
+	/**
+	 * 充值中心
+	 */
+	private void doPayCenter() {
+		Intent intent = new Intent(PayManagerActivity.this,
+				PayCenterActivity.class);
+		startActivity(intent);
+	}
+	
+	@Override
+	public void onClick(View view) {
+		switch (view.getId()) {
+		case R.id.maintitle_back_iv:
+			CommonUtils.finishActivity(this);
+			break;
+		default:
+			break;
+		}
+	}
+
+}

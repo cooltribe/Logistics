@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/repeat_background"
+    android:fadingEdge="none"
+    android:scrollbars="none" >
+
+    <LinearLayout
+        android:id="@+id/main"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:layout_marginBottom="5.0dip"
+                android:layout_marginLeft="10.0dip"
+                android:layout_marginTop="10.0dip"
+                android:text="结算明细"
+                android:textColor="@android:color/black"
+                android:textSize="18.0sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <include layout="@layout/line" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/settlement_detail_money_hint"
+                    style="@style/PublishInfo_Title_Style"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:text="折算后金额" />
+
+                <TextView
+                    android:id="@+id/settlement_detail_money"
+                    style="@style/PublishInfo_Edit_Style"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/money_hint"
+                    android:layout_toRightOf="@+id/settlement_detail_money_hint"
+                    android:textSize="@dimen/publish_text_size" />
+
+                <TextView
+                    android:id="@+id/money_hint"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10.0dip"
+                    android:text="元"
+                    android:textColor="@android:color/black"
+                    android:textSize="16.0sp" />
+            </RelativeLayout>
+
+            <include layout="@layout/line" />
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/settlement_detail_service_charge_hint"
+                    style="@style/PublishInfo_Title_Style"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:text="服务费" />
+
+                <TextView
+                    android:id="@+id/settlement_detail_service_charge"
+                    style="@style/PublishInfo_Edit_Style"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/money_hint"
+                    android:layout_toRightOf="@+id/settlement_detail_service_charge_hint"
+                    android:textSize="@dimen/publish_text_size" />
+
+                <TextView
+                    android:id="@+id/money_hint"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10.0dip"
+                    android:text="元"
+                    android:textColor="@android:color/black"
+                    android:textSize="16.0sp" />
+            </RelativeLayout>
+
+            <include layout="@layout/line" />
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/settlement_detail_net_amount_hint"
+                    style="@style/PublishInfo_Title_Style"
+                    android:layout_centerVertical="true"
+                    android:text="实际折算金额" />
+
+                <TextView
+                    android:id="@+id/money_hint"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10.0dip"
+                    android:text="元"
+                    android:textColor="@android:color/black"
+                    android:textSize="16.0sp" />
+
+                <TextView
+                    android:id="@+id/settlement_detail_net_amount"
+                    style="@style/PublishInfo_Edit_Style"
+                    android:layout_width="fill_parent"
+                    android:layout_height="50.0dip"
+                    android:layout_marginLeft="10.0dip"
+                    android:layout_toLeftOf="@+id/money_hint"
+                    android:layout_toRightOf="@+id/settlement_detail_net_amount_hint"
+                    android:background="@null"
+                    android:gravity="right|center"
+                    android:singleLine="true"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/publish_text_size" />
+            </RelativeLayout>
+
+            <include layout="@layout/line" />
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="90dp"
+                android:background="@color/white" >
+
+                <TextView
+                    style="@style/add_new_driver_content_style"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:text="结算凭证" />
+
+                <com.mesada.nj.pubcontrols.controls.RemoteImageView
+                    android:id="@+id/settlement_detail_phone"
+                    android:layout_width="80.0dip"
+                    android:layout_height="80.0dip"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/imageView1"
+                    android:background="@drawable/status_bg"
+                    android:scaleType="fitXY" />
+
+                <ImageView
+                    android:id="@+id/imageView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:paddingRight="5.0dip"
+                    android:src="@drawable/uitableview_chevron_default" />
+            </RelativeLayout>
+
+            <include layout="@layout/line" />
+
+            <include layout="@layout/line" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:layout_marginBottom="5.0dip"
+                android:layout_marginLeft="10.0dip"
+                android:layout_marginTop="10.0dip"
+                android:text="结算账户信息"
+                android:textColor="@android:color/black"
+                android:textSize="18.0sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <include layout="@layout/line" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white" >
+
+            <TextView
+                android:id="@+id/settlement_detail_account_type"
+                style="@style/PublishInfo_Edit_Style"
+                android:layout_width="fill_parent"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:layout_toRightOf="@+id/settlement_detail_account_type"
+                android:textSize="@dimen/publish_text_size" />
+
+            <TextView
+                android:id="@+id/settlement_detail_account_type"
+                style="@style/PublishInfo_Title_Style"
+                android:layout_centerVertical="true"
+                android:text="账户类型" />
+        </RelativeLayout>
+
+        <include layout="@layout/line" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white" >
+
+            <TextView
+                android:id="@+id/settlement_detail_account_name"
+                style="@style/PublishInfo_Edit_Style"
+                android:layout_width="fill_parent"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:layout_toRightOf="@+id/settlement_detail_account_name"
+                android:textSize="@dimen/publish_text_size" />
+
+            <TextView
+                android:id="@+id/settlement_detail_account_name"
+                style="@style/PublishInfo_Title_Style"
+                android:layout_centerVertical="true"
+                android:text="账户姓名" />
+        </RelativeLayout>
+
+        <include layout="@layout/line" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/PublishGoods_Contact_hint"
+                style="@style/PublishInfo_Title_Style"
+                android:text="账户号码" />
+
+            <TextView
+                android:id="@+id/settlement_detail_account_number"
+                style="@style/PublishInfo_Edit_Style"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:layout_toRightOf="@+id/PublishGoods_Contact_hint"
+                android:textSize="@dimen/publish_text_size" />
+        </RelativeLayout>
+
+        <include layout="@layout/line" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:layout_marginBottom="5.0dip"
+                android:layout_marginLeft="10.0dip"
+                android:layout_marginTop="10.0dip"
+                android:text="本期结算订单"
+                android:textColor="@android:color/black"
+                android:textSize="18.0sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/settlement_detail_more_data"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:layout_marginBottom="5.0dip"
+                android:layout_marginRight="15.0dip"
+                android:layout_marginTop="10.0dip"
+                android:background="@drawable/angle_bg_select_blue"
+                android:gravity="right"
+                android:onClick="onClickListener"
+                android:paddingBottom="5dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="5dp"
+                android:text="更多"
+                android:textColor="@android:color/black"
+                android:textSize="16.0sp"
+                android:textStyle="bold"
+                android:visibility="visible" />
+        </RelativeLayout>
+
+        <include layout="@layout/line" />
+
+        <ListView
+            android:id="@+id/settlement_detail_list"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:cacheColorHint="@android:color/transparent"
+            android:divider="@android:color/darker_gray"
+            android:dividerHeight="0.5dip"
+            android:fadingEdge="none"
+            android:scrollbars="none" />
+    </LinearLayout>
+
+</ScrollView>

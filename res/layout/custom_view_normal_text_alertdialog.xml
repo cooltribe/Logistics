@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/com.seeyuan.logistics"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_centerInParent="true"
+        android:layout_marginRight="20dp"
+        android:layout_height="200dp" >
+
+        <TextView
+            android:id="@+id/single_select_title"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentTop="true"
+            android:background="#0062d2"
+            android:gravity="left|center"
+            android:paddingLeft="10dp"
+            android:text="提示"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_above="@+id/update_button_layout"
+            android:layout_below="@+id/single_select_title"
+            android:background="@drawable/repeat_background"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/order_price"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center_vertical"
+                android:ems="10"
+                android:maxLength="20"
+                android:paddingLeft="10.0dip"
+                android:paddingRight="10.0dip"
+                android:inputType="number"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:textCursorDrawable="@drawable/cursor_red"
+                android:textSize="16.0sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/update_button_layout"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/maintitle_background"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:visibility="visible" >
+
+            <Button
+                android:id="@+id/order_price_ensure"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/confirm_back_button_select"
+                android:text="确认"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/order_price_cancel"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/confirm_back_button2_select"
+                android:text="取消"
+                android:textColor="@color/white" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

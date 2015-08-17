@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/com.seeyuan.logistics"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/Background"
+    android:fadingEdge="none"
+    android:padding="10.0dip"
+    android:scrollbars="none" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="120.0dip"
+            android:background="@null"
+            android:gravity="center" >
+
+            <com.mesada.nj.pubcontrols.controls.RemoteImageView
+                android:id="@+id/userHeadImg"
+                android:layout_width="90.0dip"
+                android:layout_height="90.0dip"
+                android:contentDescription="@null"
+                android:scaleType="fitXY"
+                android:src="@drawable/default_header_img" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10.0dip"
+            android:background="@drawable/angle_bg"
+            android:orientation="vertical" >
+
+            <com.seeyuan.logistics.customview.MuInputEditText
+                android:id="@+id/login_userID"
+                android:layout_width="fill_parent"
+                android:layout_height="45dp"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/mu_intputview_top_focuse_shape"
+                android:ems="10"
+                android:gravity="center_vertical"
+                android:hint="@string/login_mobile_usernaue"
+                android:maxLength="20"
+                android:paddingLeft="10.0dip"
+                android:paddingRight="10.0dip"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:textCursorDrawable="@drawable/cursor_red"
+                android:textSize="16.0sp" />
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="0.5dip"
+                android:background="@android:color/darker_gray"
+                android:contentDescription="@null" />
+
+            <com.seeyuan.logistics.customview.MuInputEditText
+                android:id="@+id/login_password"
+                android:layout_width="fill_parent"
+                android:layout_height="45dp"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/mu_intputview_bottom_focuse_shape"
+                android:ems="10"
+                android:gravity="center_vertical"
+                android:hint="@string/login_pwd_message"
+                android:inputType="textPassword"
+                android:maxLength="18"
+                android:paddingLeft="10.0dip"
+                android:paddingRight="10.0dip"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:textCursorDrawable="@drawable/cursor_red"
+                android:textSize="16.0sp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/login_submit"
+            android:layout_width="fill_parent"
+            android:layout_height="48.0dip"
+            android:layout_marginTop="10.0dip"
+            android:background="@drawable/confirm_back_button_select"
+            android:onClick="onClickListener"
+            android:text="@string/login_title"
+            android:textColor="@android:color/white"
+            android:textSize="16.0sp" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10.0dip"
+            android:orientation="vertical" >
+
+            <Button
+                android:id="@+id/getPassWordBtn"
+                android:layout_width="fill_parent"
+                android:layout_height="30.0dip"
+                android:background="@null"
+                android:gravity="center"
+                android:onClick="onClickListener"
+                android:text="@string/login_get_password"
+                android:textColor="@color/grey51"
+                android:textSize="16.0sp" />
+
+            <Button
+                android:id="@+id/registBtn"
+                android:layout_width="fill_parent"
+                android:layout_height="40.0dip"
+                android:background="@null"
+                android:gravity="center"
+                android:onClick="onClickListener"
+                android:text="@string/login_register"
+                android:textColor="@color/SpringGreen4"
+                android:textSize="16.0sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

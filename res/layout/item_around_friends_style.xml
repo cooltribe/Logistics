@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="horizontal" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="60dp" >
+
+        <com.mesada.nj.pubcontrols.controls.RemoteImageView
+            android:id="@+id/item_around_friends_headerimg"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+			android:layout_margin="10dp"
+            android:background="@drawable/lib_default_img" />
+
+        <TextView
+            android:id="@+id/item_around_friends_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/item_around_friends_headerimg"
+            android:layout_toRightOf="@+id/item_around_friends_headerimg"
+            android:text="张小姐"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/item_around_friends_authentication"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_alignTop="@+id/item_around_friends_headerimg"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/item_around_friends_username"
+            android:background="#009900"
+            android:gravity="center"
+            android:text="认"
+            android:textColor="@color/white"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/item_around_friends_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/item_around_friends_authentication"
+            android:layout_toRightOf="@+id/item_around_friends_headerimg"
+            android:maxLines="2"
+            android:paddingTop="5dp"
+            android:text="每一天，每一天，每一天，每一天，每一天，每一天，每一天，每一天，每一天，每一天"
+            android:textColor="@color/grey"
+            android:textSize="10sp" />
+    </RelativeLayout>
+
+</LinearLayout>

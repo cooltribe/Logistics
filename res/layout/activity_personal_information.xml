@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/com.seeyuan.logistics"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/repeat_background"
+    android:orientation="vertical" >
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/Background"
+        android:fadingEdge="none"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/repeat_background"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:id="@+id/PersonalCenter_InfoManage"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/user_bg" >
+
+                <RelativeLayout
+                    android:id="@+id/relativeLayout1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/user_photo" >
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:orientation="vertical" >
+
+                        <ImageView
+                            android:id="@+id/iv_uitableview_chevron_default"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right"
+                            android:layout_marginRight="10.0dip"
+                            android:src="@drawable/right_hover" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical" >
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:orientation="horizontal" >
+
+                            <TextView
+                                android:id="@+id/PersonalCenter_UserName_Text"
+                                style="@style/Black_TextviewRight_Style"
+                                android:gravity="left|center"
+                                android:singleLine="true"
+                                android:text="Minrely"
+                                android:textColor="@color/white"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <ImageView
+                                android:id="@+id/PersonalCenter_Authentication"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="10dp"
+                                android:background="@drawable/icon_authentication" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal" >
+
+                            <TextView
+                                android:id="@+id/PersonalCenter_UserType"
+                                style="@style/Black_TextviewRight_Style"
+                                android:gravity="left|center"
+                                android:text="个人车主"
+                                android:textColor="@color/white"
+                                android:textSize="13.0sp"
+                                android:textStyle="bold" />
+
+                            <RatingBar
+                                android:id="@+id/rating"
+                                style="@style/Credit_Rating_Style"
+                                android:layout_width="wrap_content"
+                                android:layout_height="20.0dip"
+                                android:layout_marginLeft="10.0dip"
+                                android:isIndicator="true"
+                                android:numStars="5"
+                                android:rating="0.0" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <com.mesada.nj.pubcontrols.controls.RemoteImageView
+                    android:id="@+id/user_photo"
+                    android:layout_width="64.0dip"
+                    android:layout_height="64.0dip"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="20dp"
+                    android:clickable="true"
+                    android:contentDescription="@null"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/default_header_img" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/ll_isLogin"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/user_bg"
+                android:orientation="horizontal"
+                android:visibility="gone" >
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20.0dip"
+                    android:gravity="center_horizontal"
+                    android:text="@string/no_login_hint"
+                    android:textColor="@color/white"
+                    android:textSize="16.0sp" />
+
+                <Button
+                    android:id="@+id/user_login"
+                    android:layout_width="121.0dip"
+                    android:layout_height="38.0dip"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="50.0dip"
+                    android:background="@drawable/login_btn"
+                    android:text="登陆/注册"
+                    android:textColor="#ff339966"
+                    android:textSize="16.0sp" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="10dp"
+                android:background="#ffcdcdcd" />
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:background="@color/white" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerInParent="true"
+                    android:layout_marginRight="30dp"
+                    android:text="@string/check_all_order_hint"
+                    android:textColor="#cccccc"
+                    android:textSize="14sp" />
+
+                <Button
+                    android:id="@+id/PersonalCenter_Check_All_Order"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:background="@drawable/centre_angle_bg_select"
+                    android:drawablePadding="5.0dip"
+                    android:drawableRight="@drawable/uitableview_chevron_default"
+                    android:gravity="left|center"
+                    android:onClick="onClickListener"
+                    android:paddingLeft="20.0dip"
+                    android:paddingRight="20dp"
+                    android:text="@string/my_order_hint"
+                    android:textColor="#333333"
+                    android:textSize="18sp" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="0.5dp"
+                android:background="#ffcdcdcd" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="horizontal" >
+
+                <com.seeyuan.logistics.customview.NumberImageView
+                    android:id="@+id/contingent_car_owner"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1.0" />
+
+                <View
+                    android:layout_width="0.5dip"
+                    android:layout_height="fill_parent"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:background="#ffcdcdcd" />
+
+                <com.seeyuan.logistics.customview.NumberImageView
+                    android:id="@+id/contingent_goods_owner"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1.0" />
+
+                <View
+                    android:layout_width="0.5dip"
+                    android:layout_height="fill_parent"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:background="#ffcdcdcd" />
+
+                <com.seeyuan.logistics.customview.NumberImageView
+                    android:id="@+id/contingent_evaluate_owner"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1.0"
+                    android:visibility="gone" />
+
+                <com.seeyuan.logistics.customview.NumberImageView
+                    android:id="@+id/contingent_complete_owner"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1.0" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="0.5dp"
+                android:background="#ffcdcdcd" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="10dp"
+                android:background="#ffcdcdcd" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <Button
+                    android:id="@+id/PersonalCenter_pay_manage_But"
+                    style="@style/PersonalCenter_Button_Style"
+                    android:layout_height="50.0dip"
+                    android:background="@drawable/centre_angle_bg_select"
+                    android:drawableLeft="@drawable/user_10"
+                    android:drawablePadding="10.0dip"
+                    android:drawableRight="@drawable/uitableview_chevron_default"
+                    android:onClick="onClickListener"
+                    android:paddingLeft="20dip"
+                    android:paddingRight="20dp"
+                    android:text="@string/pay_manage_hint" />
+
+                <include layout="@layout/line" />
+
+                <Button
+                    android:id="@+id/PersonalCenter_car_manage_But"
+                    style="@style/PersonalCenter_Button_Style"
+                    android:layout_height="50.0dip"
+                    android:background="@drawable/centre_angle_bg_select"
+                    android:drawableLeft="@drawable/transport_mode"
+                    android:drawablePadding="10.0dip"
+                    android:drawableRight="@drawable/uitableview_chevron_default"
+                    android:onClick="onClickListener"
+                    android:paddingLeft="20dip"
+                    android:paddingRight="20dp"
+                    android:text="@string/car_manage_hint2" />
+
+                <include layout="@layout/line" />
+
+                <Button
+                    android:id="@+id/PersonalCenter_driver_manage_But"
+                    style="@style/PersonalCenter_Button_Style"
+                    android:layout_height="50.0dip"
+                    android:background="@drawable/centre_angle_bg_select"
+                    android:drawableLeft="@drawable/driver_icon"
+                    android:drawablePadding="10.0dip"
+                    android:drawableRight="@drawable/uitableview_chevron_default"
+                    android:onClick="onClickListener"
+                    android:paddingLeft="20dip"
+                    android:paddingRight="20dp"
+                    android:text="@string/driver_manage_hint" />
+
+                <include layout="@layout/line" />
+
+                <Button
+                    android:id="@+id/PersonalCenter_MyLine"
+                    style="@style/PersonalCenter_Button_Style"
+                    android:layout_height="50.0dip"
+                    android:background="@drawable/centre_angle_bg_select"
+                    android:drawableLeft="@drawable/line_icon"
+                    android:drawablePadding="10.0dip"
+                    android:drawableRight="@drawable/uitableview_chevron_default"
+                    android:onClick="onClickListener"
+                    android:paddingLeft="20dip"
+                    android:paddingRight="20dp"
+                    android:text="@string/line_manage_hint"
+                    android:visibility="gone" />
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#ffcdcdcd"
+                    android:visibility="gone" />
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginTop="10dp"
+                    android:background="#ffcdcdcd" />
+
+                <Button
+                    android:id="@+id/PersonalCenter_Certification_Manager"
+                    style="@style/PersonalCenter_Button_Style"
+                    android:layout_height="50.0dip"
+                    android:background="@drawable/centre_angle_bg_select"
+                    android:drawableLeft="@drawable/certification_icon"
+                    android:drawablePadding="10.0dip"
+                    android:drawableRight="@drawable/uitableview_chevron_default"
+                    android:onClick="onClickListener"
+                    android:paddingLeft="20dip"
+                    android:paddingRight="20dp"
+                    android:text="@string/certification_manager_hint" />
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#ffcdcdcd" />
+
+
+                <Button
+                    android:id="@+id/PersonalCenter_pay_account"
+                    style="@style/PersonalCenter_Button_Style"
+                    android:layout_height="50.0dip"
+                    android:background="@drawable/centre_angle_bg_select"
+                    android:drawableLeft="@drawable/pay_account_icon"
+                    android:drawablePadding="10.0dip"
+                    android:drawableRight="@drawable/uitableview_chevron_default"
+                    android:onClick="onClickListener"
+                    android:paddingLeft="20dip"
+                    android:paddingRight="20dp"
+                    android:text="@string/pay_accound_hint"
+                    android:visibility="gone" />
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.5dp"
+                    android:layout_marginTop="10dp"
+                    android:background="#ffcdcdcd" />
+
+                <Button
+                    android:id="@+id/PersonalCenter_utils"
+                    style="@style/PersonalCenter_Button_Style"
+                    android:layout_height="50.0dip"
+                    android:background="@drawable/centre_angle_bg_select"
+                    android:drawableLeft="@drawable/utiltiy_icon"
+                    android:drawablePadding="5.0dip"
+                    android:drawableRight="@drawable/uitableview_chevron_default"
+                    android:onClick="onClickListener"
+                    android:paddingLeft="20dip"
+                    android:paddingRight="20dp"
+                    android:text="@string/utiltiy_hint" />
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#ffcdcdcd" />
+
+                <Button
+                    android:id="@+id/PersonalCenter_About"
+                    style="@style/PersonalCenter_Button_Style"
+                    android:layout_height="50.0dip"
+                    android:background="@drawable/centre_angle_bg_select"
+                    android:drawableLeft="@drawable/about_icon"
+                    android:drawablePadding="5.0dip"
+                    android:drawableRight="@drawable/uitableview_chevron_default"
+                    android:onClick="onClickListener"
+                    android:paddingLeft="20dip"
+                    android:paddingRight="20dp"
+                    android:text="@string/About_Title" />
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.5dp"
+                    android:background="#ffcdcdcd" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/logout_submit"
+                android:layout_width="fill_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10.0dip"
+                android:layout_marginLeft="10.0dip"
+                android:layout_marginRight="10.0dip"
+                android:layout_marginTop="10.0dip"
+                android:background="@drawable/confirm_back_button_select"
+                android:onClick="onClickListener"
+                android:text="@string/login_logout"
+                android:textColor="@color/white"
+                android:textSize="16.0sp"
+                android:visibility="visible" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

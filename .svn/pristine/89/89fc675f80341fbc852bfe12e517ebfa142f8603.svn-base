@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/list_select"
+    android:orientation="vertical" >
+
+    <include
+        android:id="@+id/MyCarSourceItem_CarInfo"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/item_my_car_list" />
+
+    <LinearLayout
+        android:id="@+id/MyCarSourceItem_Button_Layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/popup_list_bg"
+        android:orientation="horizontal"
+        android:visibility="gone" >
+
+        <Button
+            android:id="@+id/MyCarSourceItem_Edit_But"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:background="@drawable/my_car_source_but_select"
+            android:drawablePadding="2.0dip"
+            android:drawableTop="@drawable/edit_icon"
+            android:focusable="false"
+            android:paddingBottom="5.0dip"
+            android:paddingTop="5.0dip"
+            android:text="修改"
+            android:textColor="#ff2da961"
+            android:textSize="@dimen/publish_text_size" />
+
+        <Button
+            android:id="@+id/MyCarSourceItem_Delete_But"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:background="@drawable/my_car_source_but_select"
+            android:drawablePadding="2.0dip"
+            android:drawableTop="@drawable/delete_icon"
+            android:focusable="false"
+            android:paddingBottom="5.0dip"
+            android:paddingTop="5.0dip"
+            android:text="删除"
+            android:textColor="#ff2da961"
+            android:textSize="@dimen/publish_text_size" />
+
+        <Button
+            android:id="@+id/MyCarSourceItem_Details_But"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:background="@drawable/my_car_source_but_select"
+            android:drawablePadding="2.0dip"
+            android:drawableTop="@drawable/details_icon"
+            android:focusable="false"
+            android:paddingBottom="5.0dip"
+            android:paddingTop="5.0dip"
+            android:text="详情"
+            android:textColor="#ff2da961"
+            android:textSize="@dimen/publish_text_size" />
+    </LinearLayout>
+
+</LinearLayout>

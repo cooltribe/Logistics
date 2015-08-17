@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/repeat_background"
+        android:descendantFocusability="blocksDescendants"
+        android:orientation="vertical" >
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginTop="10dp"
+            android:background="@android:color/darker_gray" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:background="@color/white" >
+
+            <TextView
+                android:id="@+id/order_id"
+                style="@style/order_content_style"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="15dp"
+                android:text="@string/order_id_hint" />
+
+            <TextView
+                android:id="@+id/order_current_type"
+                style="@style/order_content_style"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:layout_marginRight="15dp"
+                android:text="对方已报价"
+                android:textColor="@color/orange" />
+        </RelativeLayout>
+
+        <include layout="@layout/line" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white" >
+
+            <TextView
+                android:id="@+id/order_goods_type"
+                style="@style/order_content_style"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:text="设备"
+                android:textColor="@color/main_blue" />
+
+            <TextView
+                android:id="@+id/order_weight"
+                style="@style/order_content_style"
+                android:layout_alignBaseline="@+id/order_goods_type"
+                android:layout_marginLeft="14dp"
+                android:layout_toRightOf="@+id/order_goods_type"
+                android:text="20吨" />
+
+            <TextView
+                android:id="@+id/order_from"
+                style="@style/order_content_style"
+                android:layout_alignLeft="@+id/order_goods_type"
+                android:layout_below="@+id/order_goods_type"
+                android:layout_marginTop="10dp"
+                android:drawableLeft="@drawable/start_icon"
+                android:drawablePadding="10dp"
+                android:text="江苏省南京市江宁区" />
+
+            <TextView
+                android:id="@+id/order_to"
+                style="@style/order_content_style"
+                android:layout_alignLeft="@+id/order_goods_type"
+                android:layout_below="@+id/order_from"
+                android:layout_marginTop="10dp"
+                android:drawableLeft="@drawable/end_icon"
+                android:drawablePadding="10dp"
+                android:paddingBottom="10dp"
+                android:text="江苏省南京市江宁区" />
+
+            <TextView
+                android:id="@+id/order_price"
+                style="@style/order_content_style"
+                android:layout_alignBaseline="@+id/order_goods_type"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/price_hint" />
+        </RelativeLayout>
+
+        <include layout="@layout/line" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:background="@color/white"
+            android:gravity="right|center"
+            android:orientation="horizontal" >
+
+            <com.mesada.nj.pubcontrols.controls.RemoteImageView
+                android:id="@+id/order_peceipt"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="10dp"
+                android:contentDescription="@null"
+                android:scaleType="fitXY"
+                android:src="@drawable/status_bg"
+                android:visibility="gone" />
+
+            <com.mesada.nj.pubcontrols.controls.RemoteImageView
+                android:id="@+id/order_goodslist"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="10dp"
+                android:contentDescription="@null"
+                android:scaleType="fitXY"
+                android:src="@drawable/status_bg"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/order_btn_left"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/angle_bg_select"
+                android:padding="5dp"
+                android:text="确认报价"
+                android:textColor="#333333"
+                android:textSize="15sp" />
+
+            <Button
+                android:id="@+id/order_btn_mid"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/angle_bg_select"
+                android:padding="5dp"
+                android:text="订单跟踪"
+                android:textColor="#333333"
+                android:textSize="15sp" />
+
+            <Button
+                android:id="@+id/order_btn_right"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/angle_bg_select"
+                android:padding="5dp"
+                android:text="确认报价"
+                android:textColor="#333333"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <include layout="@layout/line" />
+    </LinearLayout>
+
+</LinearLayout>

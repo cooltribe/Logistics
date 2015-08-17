@@ -1,0 +1,1234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/repeat_background"
+    android:fadingEdge="none"
+    android:scrollbars="none" >
+
+    <LinearLayout
+        android:id="@+id/main"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:layout_marginBottom="5.0dip"
+                android:layout_marginLeft="10.0dip"
+                android:layout_marginTop="10.0dip"
+                android:text="@string/PublishInfo_Goods"
+                android:textColor="@android:color/black"
+                android:textSize="18.0sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:layout_marginBottom="5.0dip"
+                android:layout_marginRight="15.0dip"
+                android:layout_marginTop="10.0dip"
+                android:drawableLeft="@drawable/mi_icon"
+                android:gravity="right"
+                android:text="为必填项"
+                android:textColor="@android:color/black"
+                android:textSize="16.0sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <include layout="@layout/line" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/PublishGoods_GoodsName_hint"
+                    style="@style/PublishInfo_Title_Style"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:drawableLeft="@drawable/mi_icon"
+                    android:text="货物名称" />
+
+                <com.seeyuan.logistics.customview.MuInputEditText
+                    android:id="@+id/PublishGoods_GoodsName"
+                    style="@style/PublishInfo_Edit_Style"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="20dp"
+                    android:layout_toRightOf="@+id/PublishGoods_GoodsName_hint"
+                    android:hint="@string/PublishInfo_GoodsName_Hint"
+                    android:maxLength="12"
+                    android:textSize="@dimen/publish_text_size" />
+            </RelativeLayout>
+
+            <include layout="@layout/line" />
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <Button
+                    android:id="@+id/PublishGoods_GoodsType"
+                    style="@style/PublishInfo_Button_Style"
+                    android:background="@drawable/centre_angle_bg_select"
+                    android:hint="@string/please_check_hint"
+                    android:onClick="onClickListener"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/publish_text_size" />
+
+                <TextView
+                    style="@style/PublishInfo_Title_Style"
+                    android:layout_centerVertical="true"
+                    android:drawableLeft="@drawable/mi_icon"
+                    android:text="货物类型" />
+            </RelativeLayout>
+
+            <include layout="@layout/line" />
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/PublishGoods_GoodsWeight_Title"
+                    style="@style/PublishInfo_Title_Style"
+                    android:layout_centerVertical="true"
+                    android:drawableLeft="@drawable/mi_icon"
+                    android:text="@string/PublishInfo_GoodsWeight" />
+
+                <TextView
+                    android:id="@+id/PublishGoods_GoodsWeight_Unit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10.0dip"
+                    android:text="吨"
+                    android:textColor="@android:color/black"
+                    android:textSize="16.0sp" />
+
+                <com.seeyuan.logistics.customview.MuInputEditText
+                    android:id="@+id/PublishGoods_GoodsWeight"
+                    style="@style/PublishInfo_Edit_Style"
+                    android:layout_width="fill_parent"
+                    android:layout_height="50.0dip"
+                    android:layout_marginLeft="10.0dip"
+                    android:layout_toLeftOf="@+id/PublishGoods_GoodsWeight_Unit"
+                    android:layout_toRightOf="@+id/PublishGoods_GoodsWeight_Title"
+                    android:background="@null"
+                    android:gravity="right|center"
+                    android:hint="如：5"
+                    android:inputType="numberDecimal"
+                    android:maxLength="6"
+                    android:singleLine="true"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/publish_text_size" />
+            </RelativeLayout>
+
+            <include layout="@layout/line" />
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/PublishInfo_GoodsBulk_Title"
+                    style="@style/PublishInfo_Title_Style"
+                    android:layout_centerVertical="true"
+                    android:drawableLeft="@drawable/mi_icon"
+                    android:text="@string/PublishInfo_GoodsBulk" />
+
+                <TextView
+                    android:id="@+id/PublishInfo_GoodsBulk_Unit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10.0dip"
+                    android:text="方"
+                    android:textColor="@android:color/black"
+                    android:textSize="16.0sp" />
+
+                <com.seeyuan.logistics.customview.MuInputEditText
+                    android:id="@+id/PublishGoods_GoodsBulk"
+                    style="@style/PublishInfo_Edit_Style"
+                    android:layout_width="fill_parent"
+                    android:layout_height="50.0dip"
+                    android:layout_marginLeft="10.0dip"
+                    android:layout_toLeftOf="@+id/PublishInfo_GoodsBulk_Unit"
+                    android:layout_toRightOf="@+id/PublishInfo_GoodsBulk_Title"
+                    android:background="@null"
+                    android:gravity="right|center"
+                    android:hint="如：10"
+                    android:inputType="numberDecimal"
+                    android:maxLength="6"
+                    android:singleLine="true"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/publish_text_size" />
+            </RelativeLayout>
+
+            <include layout="@layout/line" />
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/PublishGoods_CasType"
+                    style="@style/PublishInfo_Button_Style"
+                    android:background="@drawable/centre_angle_bg_select"
+                    android:hint="@string/please_check_hint"
+                    android:onClick="onClickListener"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/publish_text_size" />
+
+                <TextView
+                    style="@style/PublishInfo_Title_Style"
+                    android:layout_centerVertical="true"
+                    android:drawableLeft="@drawable/mi_icon"
+                    android:text="车辆类型" />
+            </RelativeLayout>
+
+            <include layout="@layout/line" />
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/PublishGoods_CasLength"
+                    style="@style/PublishInfo_Button_Style"
+                    android:background="@drawable/down_angle_bg_select"
+                    android:hint="@string/please_check_hint"
+                    android:onClick="onClickListener"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/publish_text_size" />
+
+                <TextView
+                    style="@style/PublishInfo_Title_Style"
+                    android:layout_centerVertical="true"
+                    android:drawableLeft="@drawable/mi_icon"
+                    android:text="车辆长度" />
+            </RelativeLayout>
+
+            <include layout="@layout/line" />
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/PublishGoods_packaging"
+                    style="@style/PublishInfo_Button_Style"
+                    android:background="@drawable/down_angle_bg_select"
+                    android:hint="@string/please_check_hint"
+                    android:onClick="onClickListener"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/publish_text_size" />
+
+                <TextView
+                    style="@style/PublishInfo_Title_Style"
+                    android:layout_centerVertical="true"
+                    android:text="包装" />
+            </RelativeLayout>
+
+            <include layout="@layout/line" />
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <com.seeyuan.logistics.customview.MuInputEditText
+                    android:id="@+id/PublishGoods_TransportPrices"
+                    style="@style/PublishInfo_Edit_Style"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="20dp"
+                    android:layout_toRightOf="@+id/PublishGoods_GoodsName_hint"
+                    android:hint="面议"
+                    android:inputType="number"
+                    android:maxLength="12"
+                    android:textSize="@dimen/publish_text_size" />
+
+                <TextView
+                    style="@style/PublishInfo_Title_Style"
+                    android:layout_centerVertical="true"
+                    android:drawableLeft="@drawable/mi_icon"
+                    android:text="@string/HomeRectTitle_TransportPrices" />
+            </RelativeLayout>
+
+            <include layout="@layout/line" />
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="90dp"
+                android:background="@color/white" >
+
+                <TextView
+                    style="@style/add_new_driver_content_style"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:text="货源照片" />
+
+                <com.mesada.nj.pubcontrols.controls.RemoteImageView
+                    android:id="@+id/PublishGoods_goods_photo"
+                    android:layout_width="80.0dip"
+                    android:layout_height="80.0dip"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/imageView1"
+                    android:background="@drawable/status_bg"
+                    android:scaleType="fitXY" />
+
+                <ImageView
+                    android:id="@+id/imageView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:paddingRight="5.0dip"
+                    android:src="@drawable/uitableview_chevron_default" />
+            </RelativeLayout>
+
+            <include layout="@layout/line" />
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:background="@color/white"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/PublishGoods_pay_hint"
+                    style="@style/PublishInfo_Title_Style"
+                    android:text="注意事项" />
+
+                <LinearLayout
+                    android:id="@+id/PublishGoods_invoice"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/PublishGoods_pay_hint"
+                    android:orientation="horizontal" >
+
+                    <RadioGroup
+                        android:id="@+id/invoice_tab"
+                        android:layout_width="fill_parent"
+                        android:layout_height="50dp"
+                        android:layout_gravity="bottom"
+                        android:layout_marginRight="10dp"
+                        android:gravity="right|center"
+                        android:orientation="horizontal" >
+
+                        <RadioButton
+                            android:id="@+id/radio_attention1"
+                            style="@style/public_radiobutton_style"
+                            android:layout_marginRight="5dp"
+                            android:drawableLeft="@drawable/checkbox_pressed_style"
+                            android:text="向上" />
+
+                        <RadioButton
+                            android:id="@+id/radio_attention2"
+                            style="@style/public_radiobutton_style"
+                            android:layout_marginRight="5dp"
+                            android:drawableLeft="@drawable/checkbox_pressed_style"
+                            android:text="易碎" />
+
+                        <RadioButton
+                            android:id="@+id/radio_attention3"
+                            style="@style/public_radiobutton_style"
+                            android:layout_marginRight="5dp"
+                            android:drawableLeft="@drawable/checkbox_pressed_style"
+                            android:text="防潮" />
+
+                        <RadioButton
+                            android:id="@+id/radio_attention4"
+                            style="@style/public_radiobutton_style"
+                            android:layout_marginRight="5dp"
+                            android:drawableLeft="@drawable/checkbox_pressed_style"
+                            android:text="不可混装" />
+                    </RadioGroup>
+                </LinearLayout>
+            </RelativeLayout>
+
+            <include layout="@layout/line" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:layout_marginBottom="5.0dip"
+                android:layout_marginLeft="10.0dip"
+                android:layout_marginTop="10.0dip"
+                android:text="@string/PublishInfo_TransportInfo"
+                android:textColor="@android:color/black"
+                android:textSize="18.0sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:layout_marginBottom="5.0dip"
+                android:layout_marginRight="15.0dip"
+                android:layout_marginTop="10.0dip"
+                android:drawableLeft="@drawable/mi_icon"
+                android:gravity="right"
+                android:text="为必填项"
+                android:textColor="@android:color/black"
+                android:textSize="16.0sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <include layout="@layout/line" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:background="@color/white"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/PublishGoods_pay_hint"
+                style="@style/PublishInfo_Title_Style"
+                android:drawableLeft="@drawable/mi_icon"
+                android:text="配送方式" />
+
+            <LinearLayout
+                android:id="@+id/PublishGoods_invoice"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/PublishGoods_pay_hint"
+                android:orientation="horizontal" >
+
+                <RadioGroup
+                    android:id="@+id/invoice_tab"
+                    android:layout_width="fill_parent"
+                    android:layout_height="50dp"
+                    android:layout_gravity="bottom"
+                    android:layout_marginRight="10dp"
+                    android:checkedButton="@+id/radio_transport1"
+                    android:gravity="right|center"
+                    android:orientation="horizontal" >
+
+                    <RadioButton
+                        android:id="@+id/radio_transport1"
+                        style="@style/public_radiobutton_style"
+                        android:layout_marginRight="10dp"
+                        android:drawableLeft="@drawable/checkbox_pressed_style"
+                        android:text="干线运输" />
+
+                    <RadioButton
+                        android:id="@+id/radio_transport2"
+                        style="@style/public_radiobutton_style"
+                        android:layout_marginLeft="10dp"
+                        android:drawableLeft="@drawable/checkbox_pressed_style"
+                        android:text="门到门配送" />
+                </RadioGroup>
+            </LinearLayout>
+        </RelativeLayout>
+
+        <include layout="@layout/line" />
+
+        <TextView
+            android:id="@+id/transport_type_hint"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="right|center"
+            android:text="若选门到门配送,需要填写始发地,目的地详址"
+            android:layout_marginRight="10dp"
+            android:textColor="#333333"
+            android:textSize="16sp" />
+
+        <include layout="@layout/line" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+
+            <Button
+                android:id="@+id/PublishGoods_Origin"
+                style="@style/PublishInfo_Button_Style"
+                android:background="@drawable/up_angle_bg_select"
+                android:hint="@string/please_check_hint"
+                android:onClick="onClickListener"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/publish_text_size" />
+
+            <TextView
+                style="@style/PublishInfo_Title_Style"
+                android:layout_centerVertical="true"
+                android:drawableLeft="@drawable/mi_icon"
+                android:text="始发地" />
+        </RelativeLayout>
+
+        <include layout="@layout/line" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+
+            <Button
+                android:id="@+id/PublishGoods_Destination"
+                style="@style/PublishInfo_Button_Style"
+                android:background="@drawable/centre_angle_bg_select"
+                android:hint="@string/please_check_hint"
+                android:onClick="onClickListener"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/publish_text_size" />
+
+            <TextView
+                style="@style/PublishInfo_Title_Style"
+                android:layout_centerVertical="true"
+                android:drawableLeft="@drawable/mi_icon"
+                android:text="目的地" />
+        </RelativeLayout>
+
+        <include layout="@layout/line" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/PublishGoods_Contact_hint"
+                style="@style/PublishInfo_Title_Style"
+                android:text="始发地详址" />
+
+            <com.seeyuan.logistics.customview.MuInputEditText
+                android:id="@+id/PublishGoods_Origin_detail"
+                style="@style/PublishInfo_Edit_Style"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:layout_toRightOf="@+id/PublishGoods_Contact_hint"
+                android:hint="@string/please_input_hint"
+                android:maxLength="12"
+                android:textSize="@dimen/publish_text_size" />
+        </RelativeLayout>
+
+        <include layout="@layout/line" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/PublishGoods_Contact_hint"
+                style="@style/PublishInfo_Title_Style"
+                android:text="目的地详址" />
+
+            <com.seeyuan.logistics.customview.MuInputEditText
+                android:id="@+id/PublishGoods_Destination_detail"
+                style="@style/PublishInfo_Edit_Style"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:layout_toRightOf="@+id/PublishGoods_Contact_hint"
+                android:hint="@string/please_input_hint"
+                android:maxLength="12"
+                android:textSize="@dimen/publish_text_size" />
+        </RelativeLayout>
+
+        <include layout="@layout/line" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                style="@style/PublishInfo_Title_Style"
+                android:layout_centerVertical="true"
+                android:drawableLeft="@drawable/mi_icon"
+                android:text="@string/shipment_time_hint" />
+
+            <TextView
+                android:id="@+id/PublishGoods_shipment_time_hint"
+                style="@style/PublishInfo_Title_Style"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:text="@string/any_time_hint" />
+
+            <CheckBox
+                android:id="@+id/PublishGoods_shipment_time"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignBaseline="@+id/PublishGoods_shipment_time_hint"
+                android:layout_alignBottom="@+id/PublishGoods_shipment_time_hint"
+                android:layout_toLeftOf="@+id/PublishGoods_shipment_time_hint"
+                android:background="@drawable/checkbox_selector"
+                android:button="@null"
+                android:checked="true" />
+        </RelativeLayout>
+
+        <include layout="@layout/line" />
+
+        <LinearLayout
+            android:id="@+id/PublishGoods_shipment_time_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:visibility="gone" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="49dp"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/PublishGoods_shipment_time_start"
+                    style="@style/PublishInfo_Button_Style"
+                    android:layout_weight="1"
+                    android:background="@drawable/centre_angle_bg_select"
+                    android:hint="@string/please_check_hint"
+                    android:onClick="onClickListener"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/publish_text_size" />
+
+                <View
+                    android:layout_width="0.5dp"
+                    android:layout_height="fill_parent"
+                    android:background="@android:color/darker_gray" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@drawable/next_icon" />
+
+                <View
+                    android:layout_width="0.5dp"
+                    android:layout_height="fill_parent"
+                    android:background="@android:color/darker_gray" />
+
+                <Button
+                    android:id="@+id/PublishGoods_shipment_time_end"
+                    style="@style/PublishInfo_Button_Style"
+                    android:layout_weight="1"
+                    android:background="@drawable/centre_angle_bg_select"
+                    android:hint="@string/please_check_hint"
+                    android:onClick="onClickListener"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/publish_text_size" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="0.5dp"
+                android:background="@android:color/darker_gray" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/PublishGoods_receipt_time_hint"
+                style="@style/PublishInfo_Title_Style"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:text="@string/any_time_hint" />
+
+            <CheckBox
+                android:id="@+id/PublishGoods_receipt_time"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignBaseline="@+id/PublishGoods_receipt_time_hint"
+                android:layout_alignBottom="@+id/PublishGoods_receipt_time_hint"
+                android:layout_toLeftOf="@+id/PublishGoods_receipt_time_hint"
+                android:background="@drawable/checkbox_selector"
+                android:button="@null"
+                android:checked="true" />
+
+            <TextView
+                style="@style/PublishInfo_Title_Style"
+                android:layout_centerVertical="true"
+                android:drawableLeft="@drawable/mi_icon"
+                android:text="@string/receipt_time_hint" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/PublishGoods_receipt_time_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:visibility="gone" >
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="0.5dp"
+                android:background="@android:color/darker_gray" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="49dp"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/PublishGoods_receipt_time_start"
+                    style="@style/PublishInfo_Button_Style"
+                    android:layout_weight="1"
+                    android:background="@drawable/centre_angle_bg_select"
+                    android:hint="@string/please_check_hint"
+                    android:onClick="onClickListener"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/publish_text_size" />
+
+                <View
+                    android:layout_width="0.5dp"
+                    android:layout_height="fill_parent"
+                    android:background="@android:color/darker_gray" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@drawable/next_icon" />
+
+                <View
+                    android:layout_width="0.5dp"
+                    android:layout_height="fill_parent"
+                    android:background="@android:color/darker_gray" />
+
+                <Button
+                    android:id="@+id/PublishGoods_receipt_time_end"
+                    style="@style/PublishInfo_Button_Style"
+                    android:layout_weight="1"
+                    android:background="@drawable/centre_angle_bg_select"
+                    android:hint="@string/please_check_hint"
+                    android:onClick="onClickListener"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/publish_text_size" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="0.5dp"
+                android:background="@android:color/darker_gray" />
+        </LinearLayout>
+
+        <include layout="@layout/line" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/PublishGoods_valid_time_hint"
+                style="@style/PublishInfo_Title_Style"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:text="长期" />
+
+            <CheckBox
+                android:id="@+id/PublishGoods_valid_time_checkbox"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignBaseline="@+id/PublishGoods_valid_time_hint"
+                android:layout_alignBottom="@+id/PublishGoods_valid_time_hint"
+                android:layout_toLeftOf="@+id/PublishGoods_valid_time_hint"
+                android:background="@drawable/checkbox_selector"
+                android:button="@null"
+                android:checked="true" />
+
+            <TextView
+                style="@style/PublishInfo_Title_Style"
+                android:layout_centerVertical="true"
+                android:drawableLeft="@drawable/mi_icon"
+                android:text="@string/valid_time_hint" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/PublishGoods_valid_time_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:visibility="gone" >
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="0.5dp"
+                android:background="@android:color/darker_gray" />
+
+            <Button
+                android:id="@+id/PublishGoods_valid_time"
+                style="@style/PublishInfo_Button_Style"
+                android:background="@drawable/up_angle_bg_select"
+                android:hint="@string/please_check_hint"
+                android:onClick="onClickListener"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/publish_text_size" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="0.5dp"
+                android:background="@android:color/darker_gray" />
+        </LinearLayout>
+
+        <include layout="@layout/line" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white" >
+
+            <TextView
+                android:id="@+id/PublishGoods_back_hint"
+                style="@style/PublishInfo_Title_Style"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:text="回程优先:" />
+
+            <TextView
+                style="@style/PublishInfo_Title_Style"
+                android:layout_toLeftOf="@+id/PublishGoods_back_cb"
+                android:layout_toRightOf="@+id/PublishGoods_back_hint"
+                android:gravity="right|center"
+                android:text="(若勾选回程优先,平台将会优先匹配回程车源)" />
+
+            <CheckBox
+                android:id="@+id/PublishGoods_back_cb"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/checkbox_selector"
+                android:button="@null"
+                android:checked="false" />
+        </RelativeLayout>
+
+        <include layout="@layout/line" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:layout_marginBottom="5.0dip"
+                android:layout_marginLeft="10.0dip"
+                android:layout_marginTop="10.0dip"
+                android:text="@string/PublishInfo_ContactInfo"
+                android:textColor="@android:color/black"
+                android:textSize="18.0sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:layout_marginBottom="5.0dip"
+                android:layout_marginRight="15.0dip"
+                android:layout_marginTop="10.0dip"
+                android:drawableLeft="@drawable/mi_icon"
+                android:gravity="right"
+                android:text="为必填项"
+                android:textColor="@android:color/black"
+                android:textSize="16.0sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical" >
+
+            <include layout="@layout/line" />
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/PublishGoods_Contact_hint"
+                    style="@style/PublishInfo_Title_Style"
+                    android:text="联系人" />
+
+                <com.seeyuan.logistics.customview.MuInputEditText
+                    android:id="@+id/PublishGoods_Contact"
+                    style="@style/PublishInfo_Edit_Style"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:layout_toRightOf="@+id/PublishGoods_Contact_hint"
+                    android:hint="@string/please_input_hint"
+                    android:maxLength="12"
+                    android:textSize="@dimen/publish_text_size" />
+            </RelativeLayout>
+
+            <include layout="@layout/line" />
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/PublishGoods_phone_hint"
+                    style="@style/PublishInfo_Title_Style"
+                    android:drawableLeft="@drawable/mi_icon"
+                    android:text="@string/PhoneNumber_Title" />
+
+                <com.seeyuan.logistics.customview.MuInputEditText
+                    android:id="@+id/PublishGoods_phone"
+                    style="@style/PublishInfo_Edit_Style"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:layout_toRightOf="@+id/PublishGoods_phone_hint"
+                    android:hint="@string/please_input_hint"
+                    android:inputType="phone"
+                    android:maxLength="12"
+                    android:textSize="@dimen/publish_text_size" />
+            </RelativeLayout>
+
+            <include layout="@layout/line" />
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/PublishGoods_telephone_hint"
+                    style="@style/PublishInfo_Title_Style"
+                    android:text="@string/Telephone_Title" />
+
+                <com.seeyuan.logistics.customview.MuInputEditText
+                    android:id="@+id/PublishGoods_telephone"
+                    style="@style/PublishInfo_Edit_Style"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:layout_toRightOf="@+id/PublishGoods_telephone_hint"
+                    android:hint="@string/please_input_hint"
+                    android:inputType="phone"
+                    android:maxLength="12"
+                    android:textSize="@dimen/publish_text_size" />
+            </RelativeLayout>
+
+            <include layout="@layout/line" />
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/PublishGoods_company_hint"
+                    style="@style/PublishInfo_Title_Style"
+                    android:text="@string/company_name" />
+
+                <com.seeyuan.logistics.customview.MuInputEditText
+                    android:id="@+id/PublishGoods_company"
+                    style="@style/PublishInfo_Edit_Style"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:layout_toRightOf="@+id/PublishGoods_company_hint"
+                    android:hint="@string/please_input_hint"
+                    android:maxLength="12"
+                    android:textSize="@dimen/publish_text_size" />
+            </RelativeLayout>
+
+            <include layout="@layout/line" />
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/PublishGoods_remark_hint"
+                    style="@style/PublishInfo_Title_Style"
+                    android:text="补充说明" />
+
+                <com.seeyuan.logistics.customview.MuInputEditText
+                    android:id="@+id/PublishGoods_remark"
+                    style="@style/PublishInfo_Edit_Style"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:layout_toRightOf="@+id/PublishGoods_remark_hint"
+                    android:hint="@string/please_input_hint"
+                    android:maxLength="12"
+                    android:textSize="@dimen/publish_text_size" />
+            </RelativeLayout>
+
+            <include layout="@layout/line" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:layout_marginBottom="5.0dip"
+                android:layout_marginLeft="10.0dip"
+                android:layout_marginTop="10.0dip"
+                android:text="@string/pay_type_hint"
+                android:textColor="@android:color/black"
+                android:textSize="18.0sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:layout_marginBottom="5.0dip"
+                android:layout_marginRight="15.0dip"
+                android:layout_marginTop="10.0dip"
+                android:drawableLeft="@drawable/mi_icon"
+                android:gravity="right"
+                android:text="为必填项"
+                android:textColor="@android:color/black"
+                android:textSize="16.0sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <include layout="@layout/line" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:background="@color/white"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/PublishGoods_pay_hint"
+                style="@style/PublishInfo_Title_Style"
+                android:drawableLeft="@drawable/mi_icon"
+                android:text="@string/pay_type_hint" />
+
+            <LinearLayout
+                android:id="@+id/PublishGoods_pay"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/PublishGoods_pay_hint"
+                android:orientation="horizontal" >
+
+                <RadioGroup
+                    android:id="@+id/main_tab"
+                    android:layout_width="fill_parent"
+                    android:layout_height="50dp"
+                    android:layout_gravity="bottom"
+                    android:layout_marginRight="10dp"
+                    android:checkedButton="@+id/radio_pay1"
+                    android:gravity="right|center"
+                    android:orientation="horizontal" >
+
+                    <RadioButton
+                        android:id="@+id/radio_pay1"
+                        style="@style/public_radiobutton_style"
+                        android:layout_marginRight="10dp"
+                        android:drawableLeft="@drawable/checkbox_pressed_style"
+                        android:text="收货方" />
+
+                    <RadioButton
+                        android:id="@+id/radio_pay2"
+                        style="@style/public_radiobutton_style"
+                        android:layout_marginLeft="10dp"
+                        android:drawableLeft="@drawable/checkbox_pressed_style"
+                        android:text="发货方" />
+
+                    <RadioButton
+                        android:id="@+id/radio_pay3"
+                        style="@style/public_radiobutton_style"
+                        android:layout_marginLeft="10dp"
+                        android:drawableLeft="@drawable/checkbox_pressed_style"
+                        android:text="平台担保" />
+                </RadioGroup>
+            </LinearLayout>
+        </RelativeLayout>
+
+        <include layout="@layout/line" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:background="@color/white"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/PublishGoods_pay_hint"
+                style="@style/PublishInfo_Title_Style"
+                android:drawableLeft="@drawable/mi_icon"
+                android:text="@string/invoice_hint" />
+
+            <LinearLayout
+                android:id="@+id/PublishGoods_invoice"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/PublishGoods_pay_hint"
+                android:orientation="horizontal" >
+
+                <RadioGroup
+                    android:id="@+id/invoice_tab"
+                    android:layout_width="fill_parent"
+                    android:layout_height="50dp"
+                    android:layout_gravity="bottom"
+                    android:layout_marginRight="10dp"
+                    android:checkedButton="@+id/radio_invoice2"
+                    android:gravity="right|center"
+                    android:orientation="horizontal" >
+
+                    <RadioButton
+                        android:id="@+id/radio_invoice1"
+                        style="@style/public_radiobutton_style"
+                        android:layout_marginRight="10dp"
+                        android:drawableLeft="@drawable/checkbox_pressed_style"
+                        android:text="是" />
+
+                    <RadioButton
+                        android:id="@+id/radio_invoice2"
+                        style="@style/public_radiobutton_style"
+                        android:layout_marginLeft="10dp"
+                        android:drawableLeft="@drawable/checkbox_pressed_style"
+                        android:text="否" />
+                </RadioGroup>
+            </LinearLayout>
+        </RelativeLayout>
+
+        <include layout="@layout/line" />
+
+        <RelativeLayout
+            android:id="@+id/PublishGoods_invoice_header_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:visibility="gone" >
+
+            <TextView
+                android:id="@+id/PublishGoods_invoice_hint"
+                style="@style/PublishInfo_Title_Style"
+                android:drawableLeft="@drawable/mi_icon"
+                android:text="@string/invoice_title_hint" />
+
+            <com.seeyuan.logistics.customview.MuInputEditText
+                android:id="@+id/PublishGoods_invoice_header"
+                style="@style/PublishInfo_Edit_Style"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:layout_toRightOf="@+id/PublishGoods_invoice_hint"
+                android:hint="@string/please_input_hint"
+                android:maxLength="12"
+                android:textSize="@dimen/publish_text_size" />
+        </RelativeLayout>
+
+        <include layout="@layout/line" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            android:visibility="visible" >
+
+            <Button
+                android:id="@+id/PublishGoods_ensure"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/confirm_back_button_select"
+                android:gravity="center"
+                android:onClick="onClickListener"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:text="@string/ensure"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/PublishGoods_cancel"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/confirm_back_button2_select"
+                android:gravity="center"
+                android:onClick="onClickListener"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:text="@string/cancel"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

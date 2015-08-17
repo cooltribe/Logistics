@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/tab"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:orientation="horizontal"
+        android:visibility="gone" >
+
+        <EditText
+            android:id="@+id/keySearch"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/searchbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="搜索" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/tab" >
+
+        <com.baidu.mapapi.map.MapView
+            android:id="@+id/searchMap"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:clickable="true" >
+        </com.baidu.mapapi.map.MapView>
+
+        <ListView
+            android:id="@+id/addresslist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            android:visibility="gone" >
+        </ListView>
+    </FrameLayout>
+
+
+</RelativeLayout>

@@ -1,0 +1,536 @@
+package com.seeyuan.logistics.activity;
+
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.List;
+
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.res.TypedArray;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.text.TextUtils;
+import android.util.Log;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.Window;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.CheckBox;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.mesada.nj.pubcontrols.utils.ToastUtil;
+import com.seeyuan.logistics.R;
+import com.seeyuan.logistics.application.NetWork;
+import com.seeyuan.logistics.customview.MuInputEditText;
+import com.seeyuan.logistics.customview.ProgressAlertDialog;
+import com.seeyuan.logistics.customview.SingleSelectAlertDlialog;
+import com.seeyuan.logistics.datacenter.DataHandler;
+import com.seeyuan.logistics.datacenter.OnDataReceiveListener;
+import com.seeyuan.logistics.datahandler.AddAccountHandler;
+import com.seeyuan.logistics.datahandler.DeleteAccountHandler;
+import com.seeyuan.logistics.datahandler.UpdateAccountHandler;
+import com.seeyuan.logistics.entity.AccountDto;
+import com.seeyuan.logistics.entity.CarLengthInfo;
+import com.seeyuan.logistics.entity.PdaRequest;
+import com.seeyuan.logistics.entity.PdaResponse;
+import com.seeyuan.logistics.jsonparser.ResultCodeJsonParser;
+import com.seeyuan.logistics.util.CommonUtils;
+
+/**
+ * 新增支付账号
+ * 
+ * @author zhazhaobao
+ * 
+ */
+public class AddNewAccountActivity extends BaseActivity implements
+		OnClickListener, OnDataReceiveListener {
+	/**
+	 * 返回按钮
+	 */
+	private ImageView maintitle_back_iv;
+
+	/**
+	 * 标题title
+	 */
+	private TextView defaulttitle_title_tv;
+
+	/**
+	 * 删除文字
+	 */
+	private TextView maintitle_comfirm_tv;
+
+	/**
+	 * 账户类型
+	 */
+	private TextView account_type;
+
+	/**
+	 * 账号姓名
+	 */
+	private MuInputEditText account_name;
+
+	/**
+	 * 账户号码
+	 */
+	private MuInputEditText account_number;
+
+	private final int REFRESH_ACCOUNT_TYPE = 1000;
+
+	private final int SHOW_TOAST = 1001;
+	private final int SHOW_PROGRESS = 1002;
+	private final int CLOSE_PROGRESS = 1003;
+
+	private AccountDto accountInfo;
+
+	private Context context;
+
+	private ProgressAlertDialog progressDialog;
+
+	/**
+	 * 判断是否显示删除按钮
+	 */
+	private boolean isDelete = false;
+
+	/**
+	 * 默认账号
+	 */
+	private CheckBox account_default;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
+		setContentView(R.layout.activity_add_new_account); // 软件activity的布局
+		getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE,
+				R.layout.deflaut_titlebar); // titlebar为自己标题栏的布局
+		context = getApplicationContext();
+		accountInfo = (AccountDto) getIntent().getSerializableExtra(
+				"accountInfo");
+		if (null == accountInfo)
+			accountInfo = new AccountDto();
+		isDelete = getIntent().getBooleanExtra("isDelete", false);
+		initView();
+	}
+
+	@Override
+	public void initView() {
+		maintitle_back_iv = (ImageView) findViewById(R.id.maintitle_back_iv);
+		maintitle_back_iv.setOnClickListener(this);
+
+		defaulttitle_title_tv = (TextView) findViewById(R.id.defaulttitle_title_tv);
+		if (isDelete) {
+			defaulttitle_title_tv.setText("账户详情");
+		} else {
+			defaulttitle_title_tv.setText("新增账户");
+		}
+
+		maintitle_comfirm_tv = (TextView) findViewById(R.id.maintitle_comfirm_tv);
+		maintitle_comfirm_tv
+				.setVisibility(!isDelete ? View.GONE : View.VISIBLE);
+		maintitle_comfirm_tv.setText("删除");
+		maintitle_comfirm_tv.setOnClickListener(this);
+
+		account_type = (TextView) findViewById(R.id.account_type);
+		account_type.setText(TextUtils.isEmpty(accountInfo.getAccType()) ? ""
+				: CommonUtils.getBankName(accountInfo.getAccType()));
+		account_type.setOnClickListener(this);
+
+		account_name = (MuInputEditText) findViewById(R.id.account_name);
+		account_name.setText(TextUtils.isEmpty(accountInfo.getName()) ? ""
+				: accountInfo.getName());
+
+		account_number = (MuInputEditText) findViewById(R.id.account_number);
+		account_number
+				.setText(TextUtils.isEmpty(accountInfo.getAccountNum()) ? ""
+						: accountInfo.getAccountNum());
+
+		account_default = (CheckBox) findViewById(R.id.account_default);
+		account_default
+				.setChecked(TextUtils.isEmpty(accountInfo.getIsDefault()) ? false
+						: CommonUtils.getCheckBoxType(accountInfo
+								.getIsDefault()));
+		account_default.setClickable(TextUtils.isEmpty(accountInfo
+				.getIsDefault()) ? true : CommonUtils
+				.getCheckBoxTypeOpposite(accountInfo.getIsDefault()));
+	}
+
+	private Handler myHandler = new Handler() {
+		public void handleMessage(Message msg) {
+			switch (msg.what) {
+			case REFRESH_ACCOUNT_TYPE:
+				account_type.setText(msg.obj.toString());
+				break;
+			case SHOW_TOAST:
+				ToastUtil.show(context, msg.obj.toString());
+				break;
+			case SHOW_PROGRESS:
+				showProgress();
+				break;
+			case CLOSE_PROGRESS:
+				dismissProgress();
+				break;
+
+			default:
+				break;
+			}
+		};
+	};
+
+	private void showProgress() {
+		if (progressDialog == null) {
+			progressDialog = new ProgressAlertDialog(this);
+		} else {
+			progressDialog.show();
+		}
+	}
+
+	private void dismissProgress() {
+		if (progressDialog != null) {
+			progressDialog.dismiss();
+		}
+	}
+
+	@Override
+	public void onClick(View view) {
+		switch (view.getId()) {
+		case R.id.account_type:
+			doSelectAccountType();
+			break;
+		case R.id.maintitle_back_iv:
+			CommonUtils.finishActivity(this);
+			break;
+		case R.id.maintitle_comfirm_tv:
+			new AlertDialog.Builder(AddNewAccountActivity.this).setTitle("是否删除").setNegativeButton("取消", new DialogInterface.OnClickListener() {
+				
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					// TODO Auto-generated method stub
+					dialog.cancel();
+				}
+			}).setNeutralButton("确定", new DialogInterface.OnClickListener() {
+				
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					// TODO Auto-generated method stub
+					new Thread(new Runnable() {
+
+						@Override
+						public void run() {
+							doDeleteAccount();
+						}
+					}).start();
+					dialog.cancel();
+				}
+			}).create().show();
+			
+			break;
+
+		default:
+			break;
+		}
+	}
+
+	/**
+	 * 删除账号
+	 */
+	private void doDeleteAccount() {
+		myHandler.sendEmptyMessage(SHOW_PROGRESS);
+		PdaRequest<AccountDto> accountDto = new PdaRequest<AccountDto>();
+		accountDto.setData(accountInfo);
+		DeleteAccountHandler dataHandler = new DeleteAccountHandler(context,
+				accountDto);
+		dataHandler.setOnDataReceiveListener(this);
+		dataHandler.startNetWork();
+	}
+
+	/**
+	 * 选择账户类型
+	 */
+	private void doSelectAccountType() {
+
+		List<CarLengthInfo> mDataList = new ArrayList<CarLengthInfo>();
+		TypedArray typedArray = getResources().obtainTypedArray(
+				R.array.account_type);
+		int size = typedArray.length();
+		for (int i = 0; i < size; i++) {
+			CarLengthInfo indexInfo = new CarLengthInfo();
+			indexInfo.setCar_Length(typedArray.getString(i));
+			mDataList.add(indexInfo);
+		}
+
+		final SingleSelectAlertDlialog ad = new SingleSelectAlertDlialog(this);
+		ad.setTitle(getResources().getString(
+				R.string.PublishInfo_account_Hint));
+		ad.setListContentForCarLength(mDataList);
+		ad.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View view, int arg2,
+					long arg3) {
+				if (null == view)
+					return;
+				ad.dismiss();
+				Message message = myHandler.obtainMessage();
+				message.what = REFRESH_ACCOUNT_TYPE;
+				message.obj = ((TextView) view
+						.findViewById(R.id.item_car_length)).getText();
+				myHandler.sendMessage(message);
+
+			}
+		});
+		typedArray.recycle();
+	}
+
+	@Override
+	public void onClickListener(View view) {
+		switch (view.getId()) {
+		case R.id.bt_save:
+			String resultStr = isTrue();
+			if (!TextUtils.isEmpty(resultStr)) {
+				showToast(resultStr);
+			} else {
+				new Thread(new Runnable() {
+
+					@Override
+					public void run() {
+						if (!isDelete) {
+							doAddNewAccount();
+						} else {
+							doUpdateAccount();
+						}
+					}
+				}).start();
+			}
+			break;
+
+		default:
+			break;
+		}
+	}
+
+	/**
+	 * 执行添加新账号
+	 */
+	private void doAddNewAccount() {
+		myHandler.sendEmptyMessage(SHOW_PROGRESS);
+		accountInfo.setAccType(CommonUtils.getBankID(account_type.getText()
+				.toString()));
+		accountInfo.setName(account_name.getText().toString());
+		accountInfo.setAccountNum(account_number.getText().toString());
+		accountInfo.setIsDefault(CommonUtils.getCheckBoxType(account_default
+				.isChecked()));
+		PdaRequest<AccountDto> request = new PdaRequest<AccountDto>();
+		request.setData(accountInfo);
+		AddAccountHandler dataHandler = new AddAccountHandler(context, request);
+		dataHandler.setOnDataReceiveListener(this);
+		dataHandler.startNetWork();
+	}
+
+	/**
+	 * 执行更新账号
+	 */
+	private void doUpdateAccount() {
+		myHandler.sendEmptyMessage(SHOW_PROGRESS);
+		accountInfo.setAccType(CommonUtils.getBankID(account_type.getText()
+				.toString()));
+		accountInfo.setName(account_name.getText().toString());
+		accountInfo.setAccountNum(account_number.getText().toString());
+		accountInfo.setIsDefault(CommonUtils.getCheckBoxType(account_default
+				.isChecked()));
+		PdaRequest<AccountDto> request = new PdaRequest<AccountDto>();
+		request.setData(accountInfo);
+		UpdateAccountHandler dataHandler = new UpdateAccountHandler(context,
+				request);
+		dataHandler.setOnDataReceiveListener(this);
+		dataHandler.startNetWork();
+	}
+
+	/**
+	 * 判断条件是否满足
+	 * 
+	 * @return
+	 */
+	private String isTrue() {
+		String resultStr = null;
+		if (TextUtils.isEmpty(account_type.getText())) {
+			resultStr = "账户类型不能为空";
+		} else if (TextUtils.isEmpty(account_name.getText())) {
+			resultStr = "账号姓名不能为空";
+		} else if (TextUtils.isEmpty(account_number.getText())) {
+			resultStr = "账户号码不能为空";
+		}
+		return resultStr;
+	}
+
+	private void showToast(String resultStr) {
+		Message msg = myHandler.obtainMessage();
+		msg.what = SHOW_TOAST;
+		msg.obj = resultStr;
+		myHandler.sendMessage(msg);
+	}
+
+	/**
+	 * 保存成功，添加账号
+	 */
+	private void doSave() {
+		Intent intent = new Intent();
+		intent.putExtra("isDeleteAccount", false);
+		intent.putExtra("accountInfo", accountInfo);
+		setResult(RESULT_OK, intent);
+		finish();
+	}
+
+	@Override
+	public void onDataReceive(DataHandler dataHandler, int resultCode,
+			Object data, int type) {
+		myHandler.sendEmptyMessage(CLOSE_PROGRESS);
+		 try {
+			String dataString = new String((byte[]) data, "UTF-8");
+			Log.i("xinzeng", dataString.toString() + "," + resultCode);
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		switch (resultCode) {
+		case NetWork.ADD_ACCOUNT_OK:
+			doAddAccountSuccess(data);
+			break;
+		case NetWork.DELETE_ACCOUNT_OK:
+			doDeleteAccountSuccess(data);
+			break;
+		case NetWork.UPDATE_ACCOUNT_OK:
+			doUpdateAccountSuccess(data);
+			break;
+		case NetWork.UPDATE_ACCOUNT_ERROR:
+		case NetWork.ADD_ACCOUNT_ERROR:
+		case NetWork.DELETE_ACCOUNT_ERROR:
+			Message msg = myHandler.obtainMessage();
+			msg.what = SHOW_TOAST;
+			msg.obj = getResources().getString(R.string.network_error_hint);
+			myHandler.sendMessage(msg);
+			break;
+		default:
+			break;
+		}
+	}
+
+	/**
+	 * 更新充值账号信息成功
+	 * 
+	 * @param data
+	 */
+	private void doUpdateAccountSuccess(Object data) {
+		String dataString = null;
+		try {
+			dataString = new String((byte[]) data, "UTF-8");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		String message = "";
+		try {
+			PdaResponse<String> response = ResultCodeJsonParser
+					.parserResultCodeJson(dataString);
+			if (!response.isSuccess()) {
+				String result = response.getMessage();
+				int messageCode = Integer.parseInt(result.substring(0,
+						result.indexOf("#")));
+				message = result.substring(result.indexOf("#") + 1,
+						result.length());
+			} else {
+				Intent intent = new Intent();
+				intent.putExtra("accountInfo", accountInfo);
+				intent.putExtra("isDeleteAccount", false);
+				setResult(RESULT_OK, intent);
+				finish();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			message = "更新账号失败,请重新操作";
+		}
+		Message msg = myHandler.obtainMessage();
+		msg.what = SHOW_TOAST;
+		msg.obj = message;
+		myHandler.sendMessage(msg);
+	}
+
+	/**
+	 * 删除充值账号信息成功
+	 * 
+	 * @param data
+	 */
+	private void doDeleteAccountSuccess(Object data) {
+		String dataString = null;
+		try {
+			dataString = new String((byte[]) data, "UTF-8");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		String message = "";
+		try {
+			PdaResponse<String> response = ResultCodeJsonParser
+					.parserResultCodeJson(dataString);
+			if (!response.isSuccess()) {
+				String result = response.getMessage();
+				int messageCode = Integer.parseInt(result.substring(0,
+						result.indexOf("#")));
+				message = result.substring(result.indexOf("#") + 1,
+						result.length());
+			} else {
+				Intent intent = new Intent();
+				intent.putExtra("accountInfo", accountInfo);
+				intent.putExtra("isDeleteAccount", true);
+				setResult(RESULT_OK, intent);
+				finish();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			message = "删除账号失败,请重新操作";
+		}
+		Message msg = myHandler.obtainMessage();
+		msg.what = SHOW_TOAST;
+		msg.obj = message;
+		myHandler.sendMessage(msg);
+	}
+
+	/**
+	 * 添加充值账号成功
+	 * 
+	 * @param data
+	 */
+	private void doAddAccountSuccess(Object data) {
+		String dataString = null;
+		try {
+			dataString = new String((byte[]) data, "UTF-8");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		String message = "";
+		try {
+			PdaResponse<String> response = ResultCodeJsonParser
+					.parserResultCodeJson(dataString);
+			if (!response.isSuccess()) {
+				String result = response.getMessage();
+				int messageCode = Integer.parseInt(result.substring(0,
+						result.indexOf("#")));
+				message = result.substring(result.indexOf("#") + 1,
+						result.length());
+			} else {
+				doSave();
+				return;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			message = "新增账号失败,请重新操作";
+		}
+		Message msg = myHandler.obtainMessage();
+		msg.what = SHOW_TOAST;
+		msg.obj = message;
+		myHandler.sendMessage(msg);
+	}
+}

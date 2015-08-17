@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <com.seeyuan.logistics.pullrefreshview.PullToRefreshListView
+            android:id="@+id/tab_around_friends_refreshview"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:cacheColorHint="@android:color/transparent"
+            android:divider="@android:color/darker_gray"
+            android:dividerHeight="0.5dip"
+            android:fadingEdge="none"
+            android:scrollbars="none" />
+
+        <Button
+            android:id="@+id/tab_around_friends_location_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right"
+            android:layout_margin="10dp"
+            android:background="@drawable/friend_location_button_style"
+            android:onClick="onClickListener"
+            android:visibility="gone" />
+    </FrameLayout>
+
+</LinearLayout>

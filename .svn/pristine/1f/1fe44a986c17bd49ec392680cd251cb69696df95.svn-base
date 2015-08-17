@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/com.seeyuan.logistics"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/Background"
+    android:orientation="vertical"
+    android:padding="10.0dip" >
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:fadingEdge="none"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5.0dip"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/tv_command_question"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20.0dip"
+                android:layout_marginRight="10.0dip"
+                android:layout_marginTop="10.0dip"
+                android:text="@string/psw_request"
+                android:textColor="@color/black"
+                android:textSize="16.0sp" />
+
+            <RelativeLayout
+                android:id="@+id/rl_older_command"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <EditText
+                    android:id="@+id/ed_setting_command"
+                    style="@style/PublishInfo_Edit_Style"
+                    android:layout_height="45.0dip"
+                    android:layout_marginTop="5.0dip"
+                    android:background="@drawable/bg_edittext"
+                    android:focusable="false"
+                    android:gravity="left|center"
+                    android:hint="@string/select_psw_request"
+                    android:inputType="textFilter"
+                    android:onClick="onClickListener"
+                    android:paddingLeft="10.0dip"
+                    android:singleLine="true"
+                    android:textColorHint="#ff666666"
+                    android:textSize="16.0sp" />
+
+                <ImageButton
+                    android:id="@+id/ib_command"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/ed_setting_command"
+                    android:layout_alignRight="@+id/ed_setting_command"
+                    android:layout_alignTop="@+id/ed_setting_command"
+                    android:background="@drawable/button"
+                    android:onClick="onClickListener" />
+            </RelativeLayout>
+
+            <EditText
+                android:id="@+id/ed_setting_command_question"
+                style="@style/PublishInfo_Edit_Style"
+                android:layout_height="45.0dip"
+                android:layout_marginTop="5.0dip"
+                android:background="@drawable/bg_edittext"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="left|center"
+                android:hint="@string/input_command_question"
+                android:inputType="text"
+                android:maxLength="15"
+                android:onClick="onClickListener"
+                android:paddingLeft="10.0dip"
+                android:singleLine="true"
+                android:textColorHint="#ff666666"
+                android:textSize="16.0sp"
+                android:visibility="gone" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20.0dip"
+                android:layout_marginRight="10.0dip"
+                android:layout_marginTop="10.0dip"
+                android:text="@string/psw_solution"
+                android:textColor="@color/black"
+                android:textSize="16.0sp" />
+
+            <EditText
+                android:id="@+id/ed_ensure_new_command"
+                style="@style/PublishInfo_Edit_Style"
+                android:layout_height="45.0dip"
+                android:layout_marginTop="5.0dip"
+                android:background="@drawable/bg_edittext"
+                android:gravity="left|center"
+                android:hint="@string/input_solution"
+                android:inputType="text"
+                android:maxLength="30"
+                android:singleLine="true"
+                android:textColorHint="#ff666666"
+                android:textSize="16.0sp"
+                android:visibility="gone" />
+
+            <com.seeyuan.logistics.customview.MuInputEditText
+                android:id="@+id/ed_ensure_setting_command"
+                style="@style/PublishInfo_Edit_Style"
+                android:background="@drawable/bg_edittext"
+                android:hint="@string/input_solution"
+                android:inputType="text"
+                android:maxLength="30"
+                android:paddingLeft="10.0dip"
+                android:singleLine="true"
+                android:textColorHint="#ff666666"
+                android:textSize="16.0sp"
+                app:normal_bg="@drawable/angle_bg" />
+
+            <Button
+                android:id="@id/bt_submit"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10.0dip"
+                android:background="@drawable/confirm_back_button_select"
+                android:onClick="onClickListener"
+                android:text="@string/Submit_Title"
+                android:textColor="@android:color/white"
+                android:textSize="16.0sp" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="30.0dip"
+                android:hint="@string/commant_hint"
+                android:textColor="#ff666666"
+                android:textSize="@dimen/home_text_size" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10.0dip"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:autoLink="phone"
+                    android:text="@string/Insurance_InsureHotline_1"
+                    android:textColor="#ff666666"
+                    android:textSize="@dimen/home_text_size" />
+
+                <Button
+                    android:id="@+id/btn_Call_But"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10.0dip"
+                    android:background="@drawable/confirm_back_button_select"
+                    android:drawableLeft="@drawable/call_icon"
+                    android:onClick="onClickListener"
+                    android:padding="1dp"
+                    android:text="@string/Credit_CallPhone_Title"
+                    android:textColor="@android:color/white" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

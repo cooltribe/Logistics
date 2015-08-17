@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/com.seeyuan.logistics"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/Background"
+    android:orientation="vertical" >
+
+    <ImageView
+        android:id="@+id/navigationImg"
+        style="@style/StepImgViewStyle"
+        android:src="@drawable/resetpw_step1" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10.0dip" >
+
+        <com.seeyuan.logistics.customview.MuInputEditText
+            android:id="@+id/retrieve_username_edt"
+            style="@style/EdtSingle"
+            android:background="@drawable/mu_intputview_single_focuse_shape"
+            android:hint="输入手机号码"
+            app:normal_bg="@drawable/angle_bg" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+
+            <com.seeyuan.logistics.customview.MuInputEditText
+                android:id="@+id/retrieve_authcode_edt"
+                style="@style/EdtSingle"
+                android:layout_alignParentLeft="true"
+                android:layout_marginTop="10.0dip"
+                android:layout_toLeftOf="@+id/retrieve_get_authcode_button"
+                android:background="@drawable/mu_intputview_single_focuse_shape"
+                android:hint="@string/submit_authcode_hint"
+                android:inputType="number"
+                android:maxLength="6"
+                app:normal_bg="@drawable/angle_bg" />
+
+            <Button
+                android:id="@+id/retrieve_get_authcode_button"
+                android:layout_width="80.0dip"
+                android:layout_height="42.0dip"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10.0dip"
+                android:background="@drawable/mu_intputview_single_focuse_shape"
+                android:onClick="onClickListener"
+                android:padding="5.0dip"
+                android:text="@string/register_get_authcode_btntext"
+                android:textAppearance="@style/AppBaseTheme"
+                android:textColor="@color/grey51"
+                android:textSize="12.0sp" />
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/retrieve_next_button"
+            android:layout_width="fill_parent"
+            android:layout_height="48.0dip"
+            android:layout_marginTop="20.0dip"
+            android:background="@drawable/confirm_back_button_select"
+            android:onClick="onClickListener"
+            android:text="下一步"
+            android:textColor="@android:color/white"
+            android:textSize="16.0sp" />
+
+        <TextView
+            style="@style/RetrieveHintStyle"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/retrieve_password_hint" />
+
+        <RelativeLayout
+            android:id="@+id/hintCallRL"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5.0dip"
+            android:gravity="center"
+            android:visibility="visible" >
+
+            <TextView
+                android:id="@+id/textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/callBtn"
+                android:autoLink="phone"
+                android:text="4008887771"
+                android:textColor="@color/orange"
+                android:textSize="@dimen/home_text_size" />
+
+            <Button
+                android:id="@+id/callBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10.0dip"
+                android:layout_toRightOf="@+id/textview"
+                android:background="@drawable/confirm_back_button_select"
+                android:drawableLeft="@drawable/call_icon"
+                android:onClick="onClickListener"
+                android:padding="1dp"
+                android:text="@string/Credit_CallPhone_Title"
+                android:textColor="@android:color/white" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>

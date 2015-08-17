@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/repeat_background"
+    android:scrollbars="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginTop="10dp"
+            android:background="@color/white"
+            android:orientation="vertical" >
+
+            <include
+                android:id="@+id/havecar_title"
+                layout="@layout/item_defaulttitle"
+                android:visibility="gone" />
+
+            <include layout="@layout/line" />
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center" >
+
+                <TextView
+                    android:id="@+id/SearchCar_Location"
+                    style="@style/PublishInfo_Button_Style"
+                    android:layout_toLeftOf="@+id/searchcar_from_empty"
+                    android:background="@drawable/search_left_right_but_select"
+                    android:gravity="right|center"
+                    android:hint="@string/SearchCar_Location_Hint"
+                    android:onClick="onClickListener"
+                    android:textColor="#333333"
+                    android:textSize="16.0sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:drawableLeft="@drawable/location_icon"
+                    android:drawablePadding="5.0dip"
+                    android:hint="@string/SearchCar_Location_Title"
+                    android:textColor="#333333"
+                    android:textColorHint="#333333"
+                    android:textSize="16.0sp" />
+
+                <Button
+                    android:id="@+id/searchcar_from_empty"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dip"
+                    android:background="@drawable/delete"
+                    android:gravity="center"
+                    android:onClick="onClickListener"
+                    android:textColor="@color/Call_Text_Color"
+                    android:textSize="12.0sp"
+                    android:visibility="gone" />
+            </RelativeLayout>
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="0.5dip"
+                android:background="@android:color/darker_gray"
+                android:contentDescription="@null" />
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/SearchCar_Destination"
+                    style="@style/PublishInfo_Button_Style"
+                    android:layout_toLeftOf="@+id/searchcar_to_empty"
+                    android:background="@drawable/search_but_select"
+                    android:gravity="right|center"
+                    android:hint="@string/SearchCar_Destination_Hint"
+                    android:onClick="onClickListener"
+                    android:textColor="#333333"
+                    android:textSize="16.0sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10.0dip"
+                    android:drawableLeft="@drawable/destination_icon"
+                    android:drawablePadding="5.0dip"
+                    android:hint="@string/SearchCar_Destination_Tile"
+                    android:textColor="#333333"
+                    android:textColorHint="#333333"
+                    android:textSize="16.0sp" />
+
+                <Button
+                    android:id="@+id/searchcar_to_empty"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dip"
+                    android:background="@drawable/delete"
+                    android:gravity="center"
+                    android:onClick="onClickListener"
+                    android:textColor="@color/Call_Text_Color"
+                    android:textSize="12.0sp"
+                    android:visibility="gone" />
+            </RelativeLayout>
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="0.5dip"
+                android:background="@android:color/darker_gray"
+                android:contentDescription="@null"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/search_but_select"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:visibility="gone" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10.0dip"
+                    android:drawableLeft="@drawable/search_carno_icon"
+                    android:drawablePadding="5.0dip"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:gravity="center"
+                    android:hint="@string/SearchCar_License_Number" />
+
+                <EditText
+                    android:id="@+id/SearchCar_License_numbers"
+                    android:layout_width="fill_parent"
+                    android:layout_height="45.0dip"
+                    android:layout_marginRight="10.0dip"
+                    android:background="@null"
+                    android:gravity="right|center"
+                    android:hint="@string/SearchCar_License_Number_Hint"
+                    android:maxLength="7"
+                    android:singleLine="true"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="#ffc5c5c5"
+                    android:textCursorDrawable="@drawable/cursor_red"
+                    android:textSize="@dimen/publish_text_size" />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="0.5dip"
+                android:background="@android:color/darker_gray"
+                android:contentDescription="@null" />
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10.0dip"
+                    android:drawableLeft="@drawable/cartype_icon"
+                    android:drawablePadding="5.0dip"
+                    android:hint="@string/PublishInfo_CarSourceType" />
+
+                <Button
+                    android:id="@+id/SearchCar_CarSourceType"
+                    style="@style/PublishInfo_Button_Style"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:background="@drawable/search_but_select"
+                    android:gravity="right|center"
+                    android:hint="请选择车源类型"
+                    android:onClick="onClickListener"
+                    android:textColor="@android:color/black" />
+            </RelativeLayout>
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="0.5dip"
+                android:background="@android:color/darker_gray"
+                android:contentDescription="@null"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/SearchCar_CarType"
+                    style="@style/PublishInfo_Button_Style"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1.0"
+                    android:background="@drawable/search_down_but_select"
+                    android:drawableLeft="@drawable/car_type_icon"
+                    android:drawablePadding="5.0dip"
+                    android:gravity="left|center"
+                    android:hint="@string/SearchCar_CarType_Hint"
+                    android:onClick="onClickListener"
+                    android:textColor="#333333"
+                    android:textColorHint="#333333"
+                    android:textSize="16.0sp" />
+
+                <ImageView
+                    android:id="@+id/SearchVehicle_Price_Line3"
+                    android:layout_width="0.5dp"
+                    android:layout_height="fill_parent"
+                    android:background="@android:color/darker_gray"
+                    android:contentDescription="@null" />
+
+                <Button
+                    android:id="@+id/SearchCar_CarLength"
+                    style="@style/PublishInfo_Button_Style"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1.0"
+                    android:background="@drawable/search_down_but_select"
+                    android:drawableLeft="@drawable/car_len_icon"
+                    android:drawablePadding="5.0dip"
+                    android:gravity="left|center"
+                    android:hint="@string/SearchCar_CarLength_Hint"
+                    android:onClick="onClickListener"
+                    android:textColor="#333333"
+                    android:textColorHint="#333333"
+                    android:textSize="16.0sp" />
+            </LinearLayout>
+
+            <include layout="@layout/line" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/SearchCar_Confirm"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:layout_margin="10.0dip"
+            android:background="@drawable/confirm_back_button_select"
+            android:onClick="onClickListener"
+            android:text="@string/Contact_Search_Hint"
+            android:textColor="@android:color/white"
+            android:textSize="16.0sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="10.0dip"
+            android:drawableLeft="@drawable/protect"
+            android:drawablePadding="10.0dip"
+            android:text="@string/Search_Hint_1"
+            android:textColor="#ff666666"
+            android:textSize="16.0sp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="10.0dip"
+            android:layout_marginRight="10.0dip"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:autoLink="phone"
+                android:text="@string/Search_Hint_2"
+                android:textColor="#ff666666"
+                android:textSize="@dimen/home_text_size" />
+
+            <Button
+                android:id="@+id/Search_Call_But"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10.0dip"
+                android:background="@drawable/confirm_back_button_select"
+                android:drawableLeft="@drawable/call_icon"
+                android:onClick="onClickListener"
+                android:padding="1dp"
+                android:text="@string/Credit_CallPhone_Title"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

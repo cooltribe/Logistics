@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/list_select"
+    android:descendantFocusability="blocksDescendants"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10.0dip"
+        android:layout_marginRight="10.0dip"
+        android:layout_marginTop="10.0dip" >
+
+        <TextView
+            android:id="@+id/deal_manager_number_Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="交易单号:"
+            android:textColor="@color/CarSourceList_Text_Color"
+            android:textSize="16.0sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/deal_manager_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5.0dip"
+            android:layout_toRightOf="@+id/deal_manager_number_Title"
+            android:singleLine="true"
+            android:textColor="#ff8c8c8c"
+            android:textSize="16.0sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10.0dip"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="转出方:"
+            android:textColor="@color/CarSourceList_Text_Color"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/deal_manager_from"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:gravity="left"
+            android:textColor="#ff8c8c8c"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="转入方:"
+            android:textColor="@color/CarSourceList_Text_Color"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/deal_manager_to"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:gravity="left"
+            android:textColor="#ff8c8c8c"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10.0dip"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="交易金额"
+            android:textColor="@color/CarSourceList_Text_Color"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/deal_manager_money"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:gravity="left"
+            android:textColor="#ff8c8c8c"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="操作时间:"
+            android:textColor="@color/CarSourceList_Text_Color"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/deal_manager_time"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:gravity="left"
+            android:textColor="#ff8c8c8c"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+</LinearLayout>

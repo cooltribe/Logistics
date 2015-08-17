@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@drawable/repeat_background"
+        android:orientation="vertical" >
+
+        <include layout="@layout/line" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/Order_GoodsName"
+                    style="@style/PublishInfo_Button_Style"
+                    android:background="@drawable/centre_angle_bg_select"
+                    android:hint="@string/please_check_hint"
+                    android:onClick="onClickListener"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/publish_text_size" />
+
+                <TextView
+                    android:id="@+id/Order_GoodsName_hint"
+                    style="@style/PublishInfo_Title_Style"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:text="货物名称" />
+            </RelativeLayout>
+
+            <include layout="@layout/line" />
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/Order_Driver"
+                    style="@style/PublishInfo_Edit_Style"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="20dp"
+                    android:layout_toRightOf="@+id/Order_GoodsName_hint"
+                    android:hint=""
+                    android:maxLength="12"
+                    android:textSize="@dimen/publish_text_size" />
+
+                <TextView
+                    style="@style/PublishInfo_Title_Style"
+                    android:layout_centerVertical="true"
+                    android:text="司机" />
+            </RelativeLayout>
+
+            <include layout="@layout/line" />
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/Order_Car"
+                    style="@style/PublishInfo_Edit_Style"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="20dp"
+                    android:layout_toRightOf="@+id/Order_GoodsName_hint"
+                    android:hint=""
+                    android:maxLength="12"
+                    android:textSize="@dimen/publish_text_size" />
+
+                <TextView
+                    style="@style/PublishInfo_Title_Style"
+                    android:layout_centerVertical="true"
+                    android:text="车辆" />
+            </RelativeLayout>
+
+            <include layout="@layout/line" />
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/GoodsManager_GoodsWeight_Title"
+                    style="@style/PublishInfo_Title_Style"
+                    android:layout_centerVertical="true"
+                    android:text="运费" />
+
+                <TextView
+                    android:id="@+id/GoodsManager_GoodsWeight_Unit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10.0dip"
+                    android:text="元"
+                    android:textColor="@android:color/black"
+                    android:textSize="16.0sp" />
+
+                <com.seeyuan.logistics.customview.MuInputEditText
+                    android:id="@+id/GoodsManager_GoodsWeight"
+                    style="@style/PublishInfo_Edit_Style"
+                    android:layout_width="fill_parent"
+                    android:layout_height="50.0dip"
+                    android:layout_marginLeft="10.0dip"
+                    android:layout_toLeftOf="@+id/GoodsManager_GoodsWeight_Unit"
+                    android:layout_toRightOf="@+id/GoodsManager_GoodsWeight_Title"
+                    android:background="@null"
+                    android:gravity="right|center"
+                    android:hint="如：5"
+                    android:inputType="numberDecimal"
+                    android:maxLength="6"
+                    android:singleLine="true"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/publish_text_size" />
+            </RelativeLayout>
+
+            <include layout="@layout/line" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            android:visibility="visible" >
+
+            <Button
+                android:id="@+id/Order_ensure"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/confirm_back_button_select"
+                android:gravity="center"
+                android:onClick="onClickListener"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:text="@string/ensure"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/Order_cancel"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/confirm_back_button2_select"
+                android:gravity="center"
+                android:onClick="onClickListener"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:text="@string/cancel"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

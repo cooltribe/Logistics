@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="CarType_Str">
+        <item>全部</item>
+        <item>集装车</item>
+        <item>平板车</item>
+        <item>高栏车</item>
+        <item>厢式车</item>
+        <item>冷藏车</item>
+        <item>保温车</item>
+        <item>沙石车</item>
+        <item>危险品运输车</item>
+        <item>半封闭</item>
+    </string-array>
+    <string-array name="Search_car_length">
+        <item>全部(单位.米)</item>
+        <item>4.3</item>
+        <item>5.3</item>
+        <item>6.5</item>
+        <item>6.8</item>
+        <item>7.2</item>
+        <item>7.6</item>
+        <item>8</item>
+        <item>8.6</item>
+        <item>9.6</item>
+        <item>12.5</item>
+        <item>13</item>
+        <item>13.5</item>
+        <item>14.5</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>17.5</item>
+        <item>17.8</item>
+        <item>18</item>
+    </string-array>
+    <string-array name="Search_car_weight">
+        <item>不限制</item>
+        <item>0&#8211;3吨</item>
+        <item>3&#8211;5吨</item>
+        <item>5&#8211;10吨</item>
+        <item>10&#8211;15吨</item>
+        <item>15&#8211;20吨</item>
+        <item>20&#8211;25吨</item>
+        <item>25&#8211;30吨</item>
+        <item>30&#8211;35吨</item>
+        <item>35&#8211;40吨</item>
+        <item>40吨以上</item>
+    </string-array>
+    <string-array name="CarSourceType">
+        <item>倒短</item>
+        <item>长途</item>
+        <item>专线</item>
+        <item>回程</item>
+        <item>配送</item>
+    </string-array>
+    <string-array name="CarSource_Type">
+        <item>求货</item>
+        <item>已订货</item>
+        <item>拼货</item>
+    </string-array>
+    <string-array name="Goods_Type_Name">
+        <item>冷冻品</item>
+        <item>机械设备</item>
+        <item>农副产品</item>
+        <item>医药</item>
+        <item>零担</item>
+        <item>整车</item>
+        <item>重货</item>
+        <item>日常用品</item>
+        <item>配货</item>
+        <item>其他</item>
+    </string-array>
+    <string-array name="Transport_Mode">
+        <item>公路</item>
+        <item>水运</item>
+        <item>航空</item>
+        <item>铁路</item>
+        <item>邮包</item>
+        <item>联运</item>
+        <item>管道</item>
+        <item>其他</item>
+    </string-array>
+    <string-array name="Valid_time">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+    <string-array name="user_type">
+        <item>货主</item>
+        <item>个人车主</item>
+        <item>物流企业</item>
+    </string-array>
+    <string-array name="user_type_car">
+        <item>个人车主</item>
+        <item>车队</item>
+    </string-array>
+    <string-array name="user_type_goods">
+        <item>个人货主</item>
+        <item>发货单位</item>
+    </string-array>
+    <string-array name="user_type_company">
+        <item>信息中介</item>
+        <item>物流专线</item>
+        <item>冷运、海运、空运</item>
+    </string-array>
+    <string-array name="setting_command">
+        <item>自己设置一个问题?</item>
+        <item>爸爸的名字是什么?</item>
+        <item>妈妈的名字是什么?</item>
+        <item>最喜欢的车是什么?</item>
+        <item>最喜欢去哪里?</item>
+        <item>最喜欢的人是谁?</item>
+        <item>我的生日是哪天?</item>
+    </string-array>
+    <string-array name="select_photo_type">
+        <item>照片</item>
+        <item>拍照</item>
+    </string-array>
+    <string-array name="line_type">
+        <item>常跑线路</item>
+        <item>即时空车</item>
+    </string-array>
+    <string-array name="att_device_type">
+        <item>雨布</item>
+        <item>防坠落装置</item>
+        <item>网兜</item>
+        <item>绳索</item>
+        <item>夹板</item>
+    </string-array>
+    <string-array name="package_type">
+        <item>包类</item>
+        <item>袋类</item>
+        <item>夹板类</item>
+        <item>筐（篓，笼）类</item>
+        <item>捆绑类</item>
+        <item>其他</item>
+        <item>散件</item>
+        <item>坛（罐，缸）类</item>
+        <item>特种包装类</item>
+    </string-array>
+    
+    <string-array name="account_type">
+        <item>中国工商银行</item>
+        <item>中国银行</item>
+        <item>中国建设银行</item>
+        <item>支付宝</item>
+        <item>财付通</item>
+    </string-array>
+	<string-array name="pay_type">
+        <item>支付宝</item>
+        <item>线下支付</item>
+        </string-array>
+</resources>

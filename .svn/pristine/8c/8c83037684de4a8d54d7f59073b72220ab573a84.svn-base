@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/Background"
+    android:orientation="vertical" >
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:contentDescription="@null"
+        android:src="#ffcfcfcf" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:baselineAligned="false"
+        android:orientation="horizontal" >
+
+        <CheckBox
+            android:id="@+id/GoodsSourceList_CarType"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:background="@drawable/car_source_type_select"
+            android:button="@null"
+            android:gravity="center"
+            android:paddingBottom="10.0dip"
+            android:paddingTop="10.0dip"
+            android:textColor="@android:color/black" />
+
+        <ImageView
+            android:layout_width="1.0dip"
+            android:layout_height="fill_parent"
+            android:contentDescription="@null"
+            android:src="#ffcfcfcf" />
+
+        <CheckBox
+            android:id="@+id/GoodsSourceList_CarLength"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:background="@drawable/car_source_type_select"
+            android:button="@null"
+            android:gravity="center"
+            android:paddingBottom="10.0dip"
+            android:paddingTop="10.0dip"
+            android:textColor="@android:color/black" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <com.seeyuan.logistics.pullrefreshview.PullToRefreshListView
+            android:id="@+id/goodsSourceList_List"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:cacheColorHint="@android:color/transparent"
+            android:divider="@android:color/darker_gray"
+            android:dividerHeight="0.5dip"
+            android:fadingEdge="none"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:scrollbars="none" />
+
+        <ListView
+            android:id="@+id/GoodsSourceList_FreeGoodsList"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:cacheColorHint="@android:color/transparent"
+            android:fadingEdge="none"
+            android:scrollbars="none"
+            android:visibility="gone" />
+    </FrameLayout>
+
+</LinearLayout>

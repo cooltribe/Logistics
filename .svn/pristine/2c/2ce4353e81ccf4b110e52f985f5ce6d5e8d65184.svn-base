@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <Button
+        android:id="@+id/car_manager_new"
+        style="@style/car_manager_add_text_style"
+        android:background="@null"
+        android:drawableLeft="@drawable/add_icon2"
+        android:drawablePadding="10dp"
+        android:onClick="onClickListener"
+        android:paddingLeft="20dp"
+        android:text="@string/add_new_car_hint" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0.5dp"
+        android:background="#ffcdcdcd" />
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@drawable/default_bg_type1" >
+
+        <com.seeyuan.logistics.pullrefreshview.PullToRefreshListView
+            android:id="@+id/car_manager_refresh_view"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:divider="@null" />
+
+        <LinearLayout
+            android:id="@+id/car_manager_operation_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:orientation="horizontal"
+            android:visibility="gone" >
+
+            <Button
+                android:id="@+id/car_manager_delete"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/confirm_back_button_select"
+                android:gravity="center"
+                android:onClick="onClickListener"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:text="@string/delete"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/car_manager_cancel"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/confirm_back_button2_select"
+                android:gravity="center"
+                android:onClick="onClickListener"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:text="@string/cancel"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </FrameLayout>
+
+</LinearLayout>

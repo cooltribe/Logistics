@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/list_select"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/GoodsSourceItem_Address_Layout"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/maintitle_background" >
+
+        <include layout="@layout/line" />
+
+        <TextView
+            android:id="@+id/GoodsSourceItem_GoodsName"
+            style="@style/item_car_manager_carname_style"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
+            android:text="设备" />
+
+        <TextView
+            android:id="@+id/GoodsSourceItem_GoodsWeight"
+            style="@style/item_goods_manager_carname_style"
+            android:layout_toRightOf="@+id/GoodsSourceItem_GoodsName"
+            android:text="@string/goods_weight_hint" />
+
+        <RatingBar
+            android:id="@+id/ratingBar"
+            style="@style/Credit_Rating_Style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="10dp"
+            android:isIndicator="true"
+            android:numStars="5"
+            android:rating="0.0" />
+
+        <TextView
+            android:id="@+id/GoodsSourceItem_Contacts"
+            style="@style/item_goods_manager_carname_style"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="5dp"
+            android:layout_toLeftOf="@+id/ratingBar"
+            android:text="123" />
+    </RelativeLayout>
+
+    <include layout="@layout/line" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/GoodsSourceItem_Start"
+                style="@style/item_goods_manager_list_content_style"
+                android:layout_marginTop="10dp"
+                android:drawableLeft="@drawable/start_icon"
+                android:text="123" />
+
+            <TextView
+                android:id="@+id/GoodsSourceItem_End"
+                style="@style/item_goods_manager_list_content_style"
+                android:layout_marginTop="10dp"
+                android:drawableLeft="@drawable/end_icon"
+                android:gravity="left"
+                android:text="123" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal" >
+
+                <TextView
+                    style="@style/item_goods_manager_list_content_style"
+                    android:layout_weight="1"
+                    android:gravity="left"
+                    android:text="车辆要求:" />
+
+                <TextView
+                    android:id="@+id/GoodsSourceItem_GoodsType"
+                    style="@style/item_goods_manager_list_content_style"
+                    android:layout_marginBottom="2dp"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginRight="3dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/half_round_angle_bg"
+                    android:paddingBottom="3dp"
+                    android:paddingTop="3dp"
+                    android:text="平板车" />
+
+                <TextView
+                    android:id="@+id/GoodsSourceItem_GoodsLen"
+                    style="@style/item_goods_manager_list_content_style"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginRight="3dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/half_round_angle_bg"
+                    android:paddingBottom="3dp"
+                    android:paddingTop="3dp"
+                    android:text="9.6米" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/GoodsSourceItem_PublishDate"
+                style="@style/item_goods_manager_list_content_style"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="3.0dip"
+                android:paddingBottom="10.0dip"
+                android:text="@string/limit_time_hint" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="3" >
+
+            <Button
+                android:id="@+id/GoodsSourceItem_CallPhone_But"
+                android:layout_width="65dp"
+                android:layout_height="30dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/confirm_back_button_select"
+                android:drawableLeft="@drawable/call_icon"
+                android:focusable="false"
+                android:paddingLeft="5dp"
+                android:text="@string/Credit_CallPhone_Title"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/GoodsSourceItem_Contacts_Phone"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.0"
+        android:gravity="left"
+        android:textColor="@color/CarSourceList_Text_Color"
+        android:textSize="16.0sp"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/GoodsSourceItem_protect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10.0dip"
+        android:layout_marginRight="5.0dip"
+        android:layout_toRightOf="@+id/GoodsSourceItem_PublishDate"
+        android:contentDescription="@null"
+        android:src="@drawable/insurance_little"
+        android:visibility="gone" />
+
+</LinearLayout>

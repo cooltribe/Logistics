@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="SpannableEditText">
+        <attr name="text" format="string" />
+        <attr name="title" format="string" />
+    </declare-styleable>
+    <declare-styleable name="RoundProgressBar">
+        <attr name="max" format="integer" />
+        <attr name="fill" format="boolean" /> <!-- 是否填充圆形区域 -->
+        <attr name="Paint_Width" format="integer" /> <!-- 画笔宽度，填充模式下无效，会被重置为0 -->
+        <attr name="Paint_Color" format="integer" /> <!-- 画笔颜色 -->
+        <attr name="Show_Bottom" format="boolean" /> <!-- 是否显示底色 -->
+        <attr name="Inside_Interval" format="integer" /> <!-- 圆形区域向里缩进的距离 -->
+        <attr name="start_position" format="integer" /> <!-- 起始度数0~360，0为三点钟方向 -->
+    </declare-styleable>
+    <declare-styleable name="PullToRefresh">
+        <attr name="adapterViewBackground" format="reference|color" />
+        <attr name="headerBackground" format="reference|color" />
+        <attr name="headerTextColor" format="color" />
+        <attr name="mode">
+            <flag name="pullDownFromTop" value="0x1" />
+            <flag name="pullUpFromBottom" value="0x2" />
+            <flag name="both" value="0x3" />
+        </attr>
+    </declare-styleable>
+    <declare-styleable name="MuInputEditText">
+        <attr name="normal_bg" format="reference|integer" />
+        <attr name="max_length" format="reference|integer" />
+    </declare-styleable>
+    <declare-styleable name="ProgressBarButton">
+        <attr name="progressbar_background" format="reference|integer" />
+        <attr name="progressbar_text" format="string" />
+        <attr name="progressbar_textColor" format="integer" />
+        <attr name="progressbar_textSize" format="integer" />
+    </declare-styleable>
+    <declare-styleable name="NumberImageView">
+        <attr name="number_imageview_background" format="reference|integer" />
+        <attr name="number_imageview_title" format="string" />
+        <attr name="number_imageview_number" format="integer" />
+        <attr name="number_imageview_scaletype" />
+    </declare-styleable>
+
+    <attr name="number_imageview_scaletype">
+        <enum name="fillXY" value="0" />
+        <enum name="center" value="1" />
+    </attr>
+
+</resources>

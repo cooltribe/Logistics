@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/repeat_background"
+    android:scrollbars="none" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:paddingBottom="10.0dip"
+            android:paddingTop="20.0dip"
+            android:src="@drawable/ic_launcher" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/app_name"
+            android:textColor="@color/black"
+            android:textSize="16.0sp" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:padding="10.0dip" >
+
+            <TextView
+                android:id="@+id/version"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="16.0sp" />
+
+            <TextView
+                android:id="@+id/tv_publishTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="5.0dip"
+                android:textColor="@color/black"
+                android:textSize="16.0sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical" >
+
+            <include layout="@layout/line" />
+
+            <Button
+                android:id="@+id/Access_But"
+                style="@style/PersonalCenter_Button_Style"
+                android:background="@drawable/up_angle_bg_select"
+                android:drawablePadding="10.0dip"
+                android:drawableRight="@drawable/uitableview_chevron_default"
+                android:height="45.0dip"
+                android:onClick="onClickListener"
+                android:paddingLeft="5.0dip"
+                android:text="去评价" />
+
+            <include layout="@layout/line" />
+
+            <Button
+                android:id="@+id/bt_product_help"
+                style="@style/PersonalCenter_Button_Style"
+                android:background="@drawable/centre_angle_bg_select"
+                android:drawablePadding="5.0dip"
+                android:drawableRight="@drawable/uitableview_chevron_default"
+                android:height="45.0dip"
+                android:onClick="onClickListener"
+                android:paddingLeft="5.0dip"
+                android:text="产品帮助" />
+
+            <include layout="@layout/line" />
+
+            <Button
+                android:id="@+id/function_update"
+                style="@style/PersonalCenter_Button_Style"
+                android:background="@drawable/centre_angle_bg_select"
+                android:drawablePadding="5.0dip"
+                android:drawableRight="@drawable/uitableview_chevron_default"
+                android:height="45.0dip"
+                android:onClick="onClickListener"
+                android:paddingLeft="5.0dip"
+                android:text="功能介绍" />
+
+            <include layout="@layout/line" />
+
+            <Button
+                android:id="@+id/comment_feedback"
+                style="@style/PersonalCenter_Button_Style"
+                android:background="@drawable/centre_angle_bg_select"
+                android:drawablePadding="5.0dip"
+                android:drawableRight="@drawable/uitableview_chevron_default"
+                android:height="45.0dip"
+                android:onClick="onClickListener"
+                android:paddingLeft="5.0dip"
+                android:text="意见反馈" />
+
+            <include layout="@layout/line" />
+
+            <Button
+                android:id="@+id/system_notif"
+                style="@style/PersonalCenter_Button_Style"
+                android:background="@drawable/centre_angle_bg_select"
+                android:drawablePadding="5.0dip"
+                android:drawableRight="@drawable/uitableview_chevron_default"
+                android:height="45.0dip"
+                android:onClick="onClickListener"
+                android:paddingLeft="5.0dip"
+                android:text="协议与声明" />
+
+            <include layout="@layout/line" />
+
+            <Button
+                android:id="@+id/test_update"
+                style="@style/PersonalCenter_Button_Style"
+                android:background="@drawable/search_down_but_select"
+                android:drawablePadding="5.0dip"
+                android:drawableRight="@drawable/uitableview_chevron_default"
+                android:height="45.0dip"
+                android:onClick="onClickListener"
+                android:paddingLeft="5.0dip"
+                android:text="检查更新" />
+
+            <include layout="@layout/line" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:paddingTop="5.0dip"
+            android:text="顺源物流会员协议"
+            android:textColor="@color/main_blue"
+            android:textSize="16.0sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="顺源物流有限公司   版权所有"
+            android:textColor="@color/grey"
+            android:textSize="15.0sp" />
+
+        <TextView
+            android:id="@+id/tv_copyright"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/copyright"
+            android:textSize="12.0sp" />
+
+        <TextView
+            android:id="@+id/tv_right"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_copyright"
+            android:layout_marginBottom="10.0dip"
+            android:gravity="center"
+            android:text="@string/all_rights"
+            android:textSize="12.0sp" />
+    </LinearLayout>
+
+</ScrollView>

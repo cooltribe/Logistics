@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/Background"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10.0dip"
+        android:background="@drawable/angle_bg"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+
+            <Button
+                android:id="@+id/Insurance_GoodsType"
+                style="@style/PublishInfo_Button_Style"
+                android:background="@drawable/up_angle_bg_select"
+                android:hint="请选择货物类型"
+                android:onClick="onClickListener"
+                android:paddingLeft="80.0dip"
+                android:singleLine="true"
+                android:textColor="@android:color/black"
+                android:textSize="16.0sp" />
+
+            <TextView
+                style="@style/PublishInfo_Title_Style"
+                android:layout_centerVertical="true"
+                android:text="货物类型" />
+        </RelativeLayout>
+
+        <include layout="@layout/line" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="horizontal" >
+
+            <TextView
+                style="@style/PublishInfo_Title_Style"
+                android:text="货物名称" />
+
+            <EditText
+                android:id="@+id/Insurance_GoodsName"
+                style="@style/PublishInfo_Edit_Style"
+                android:hint="请勿填写珍贵货物，敏感词汇"
+                android:maxLength="12"
+                android:textSize="16.0sp" />
+        </LinearLayout>
+
+        <include layout="@layout/line" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+
+            <Button
+                android:id="@+id/Insurance_PackingType"
+                style="@style/PublishInfo_Button_Style"
+                android:background="@drawable/centre_angle_bg_select"
+                android:hint="请选择包装类型"
+                android:onClick="onClickListener"
+                android:textColor="@android:color/black"
+                android:textSize="16.0sp" />
+
+            <TextView
+                style="@style/PublishInfo_Title_Style"
+                android:layout_centerVertical="true"
+                android:text="包装类型" />
+        </RelativeLayout>
+
+        <include layout="@layout/line" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/Insurance_GoodsWeight_Title"
+                style="@style/PublishInfo_Title_Style"
+                android:layout_centerVertical="true"
+                android:text="货物重量" />
+
+            <TextView
+                android:id="@+id/Insurance_GoodsWeight_Unit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10.0dip"
+                android:text="吨"
+                android:textColor="@android:color/black"
+                android:textSize="16.0sp" />
+
+            <EditText
+                android:id="@+id/Insurance_GoodsWeight"
+                android:layout_width="fill_parent"
+                android:layout_height="45.0dip"
+                android:layout_marginLeft="10.0dip"
+                android:layout_toLeftOf="@+id/Insurance_GoodsWeight_Unit"
+                android:layout_toRightOf="@+id/Insurance_GoodsWeight_Title"
+                android:background="@null"
+                android:gravity="right|center"
+                android:hint="请输入货物重量"
+                android:inputType="numberDecimal"
+                android:maxLength="4"
+                android:textColorHint="#ffc5c5cd"
+                android:textCursorDrawable="@drawable/cursor_red"
+                android:textSize="16.0sp" />
+        </RelativeLayout>
+
+        <include layout="@layout/line" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                style="@style/PublishInfo_Title_Style"
+                android:text="发票/运单号" />
+
+            <EditText
+                android:id="@+id/Insurance_OddNumbers"
+                style="@style/PublishInfo_Edit_Style"
+                android:hint="请输入发票/运单号"
+                android:maxLength="16"
+                android:textSize="16.0sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/BuyInsurance_GoodsInfoNext_But"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10.0dip"
+        android:background="@drawable/confirm_back_button_select"
+        android:onClick="onClickListener"
+        android:text="@string/Next_Title"
+        android:textColor="@android:color/white"
+        android:textSize="16.0sp"
+        android:textStyle="bold" />
+
+</LinearLayout>

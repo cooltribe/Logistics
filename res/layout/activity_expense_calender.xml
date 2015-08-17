@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/repeat_background"
+    android:orientation="vertical" >
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/Background"
+        android:fadingEdge="none"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10.0dip"
+                android:background="@drawable/angle_bg"
+                android:orientation="vertical" >
+
+                <Button
+                    android:id="@+id/RentExpenseCalendar_But"
+                    style="@style/PersonalCenter_Button_Style"
+                    android:layout_height="45.0dip"
+                    android:background="@drawable/up_angle_bg_select"
+                    android:drawableLeft="@drawable/rent_icon"
+                    android:drawablePadding="5.0dip"
+                    android:drawableRight="@drawable/uitableview_chevron_default"
+                    android:onClick="onClickListener"
+                    android:paddingLeft="5.0dip"
+                    android:text="@string/RentExpenseCalendar_Title" />
+
+                <include layout="@layout/line" />
+
+                <Button
+                    android:id="@+id/LocationExpenseCalendar_But"
+                    style="@style/PersonalCenter_Button_Style"
+                    android:layout_height="45.0dip"
+                    android:background="@drawable/centre_angle_bg_select"
+                    android:drawableLeft="@drawable/consumption_location_icon"
+                    android:drawablePadding="5.0dip"
+                    android:drawableRight="@drawable/uitableview_chevron_default"
+                    android:onClick="onClickListener"
+                    android:paddingLeft="5.0dip"
+                    android:text="@string/LocationExpenseCalendar_Title" />
+
+                <include layout="@layout/line" />
+
+                <Button
+                    android:id="@+id/IDCardExpenseCalendar_But"
+                    style="@style/PersonalCenter_Button_Style"
+                    android:layout_height="45.0dip"
+                    android:background="@drawable/down_angle_bg_select"
+                    android:drawableLeft="@drawable/idcard_icon"
+                    android:drawablePadding="5.0dip"
+                    android:drawableRight="@drawable/uitableview_chevron_default"
+                    android:onClick="onClickListener"
+                    android:paddingLeft="5.0dip"
+                    android:text="@string/IDCardExpenseCalendar_Title" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

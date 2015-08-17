@@ -1,0 +1,751 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.seeyuan.logistics"
+    android:versionCode="1"
+    android:versionName="1.2.0" >
+
+    <uses-sdk android:minSdkVersion="9" />
+
+    <application
+        android:name=".application.ApplicationPool"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/PluginTheme" >
+        <activity
+            android:name=".activity.MainActivity"
+            android:label="@string/app_name"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity android:name=".activity.BaseActivity" />
+        <activity
+            android:name=".activity.AroundActivity"
+            android:screenOrientation="portrait" />
+        
+        <!-- alipay sdk begin -->
+        <activity
+            android:name="com.alipay.sdk.app.H5PayActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind"
+            android:windowSoftInputMode="adjustResize|stateHidden" >
+        </activity>
+         <activity
+            android:name="com.alipay.sdk.auth.AuthActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind"
+            android:windowSoftInputMode="adjustResize|stateHidden" >
+        </activity>
+        <!-- alipay sdk end -->
+        
+        <activity
+            android:name=".activity.DepositAlipay"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        
+        <activity
+            android:name=".activity.HaveCarActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.HaveGoodsActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.HomePageActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name=".activity.InformationPublishActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.InsuranceActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.TabPublishCarActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.TabPublishGoodsActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.TabPublishLineActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.TabInsuranceAccoundActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.TabInsuranceAssurerActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.TabInsuranceGoodsInfoActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.TabInsuranceInsuranceInfoActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.TabInsuranceTransportInfoActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.TabAroundCarActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.TabAroundGoodsActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".activity.TabAroundFriendsActivity" />
+        <activity
+            android:name=".map.SearchGoodsMapActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name=".activity.SearchCityActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.PersonalInformationActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name=".activity.PersonalInformation2Activity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name=".activity.PersonalOwnerInformationActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.PayCenterActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        
+        <activity
+            android:name=".activity.ExpenseCalendarActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.PersonalSettingActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.SearchGoodsInfoActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.SearchCarInfoActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.GoodsSourceDetailActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.EvaluteActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name=".map.SearchFriendsMapActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.WelcomeActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.LoginActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.RegisterActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.RegisterAuthcodeActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.RegisterPasswordActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.RetrievePasswordAuthcodeActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.RetrievePasswordSettingActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.CarSourceDetailActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.IDCardRentActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.LocationRentActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.MonthlyRentActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.MyCollectActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.MyCollectCarSourceActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.MyCollectGoodsSourceActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.ChangePasswordActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.MyCarSourceActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.MyGoodsSourceActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.MyLineSourceActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.AboutActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.PasswordCommandActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.ProductHelpActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.FunctionIntroductionActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.AgreementAndStatementActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.CommentsAndFeedbackActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.UtilityActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.WeatherLiveActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name=".activity.ParkingLotActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activity.GasStationActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name=".activity.CarManagerActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name=".activity.SelectCarActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+         <activity
+            android:name=".activity.SelectCarOwnActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name=".activity.GoodsManagerActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name=".activity.DriverManagerActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name=".activity.NewCarManagerActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name=".activity.NewLineManagerActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name=".activity.AddNewDriverActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name=".activity.DriverManagerDetailActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name=".activity.CertificationActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name=".activity.PhoneAuthenticationActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name=".activity.EmailAuthenticationActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name=".activity.SelectDriverManagerActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name=".activity.MyOrderManagerActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name=".activity.AllOrderActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name=".activity.BargainOrderActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name=".activity.ExecuteOrderActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name=".activity.EvaluateOrderActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name=".customview.SingleSelectAlertDlialog2"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyDialogStyleBottom" >
+        </activity>
+        <activity
+            android:name=".activity.CertificationManagerActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name=".activity.CertificationManager2Activity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name=".activity.GoodsManagerDetailActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name=".activity.AddNewGoodsManagerActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name=".activity.CompleteOrderActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name=".activity.PlaceAnGoodsOrderActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name=".activity.PlaceAnCarOrderActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name=".activity.SelectCarManagerActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name=".activity.SelectGoodsManagerActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name=".activity.CheckOrderDetailActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name=".activity.CompanyAuthenticationActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name=".activity.ChatAllHistoryActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name=".activity.OrderTrackingActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name=".activity.PayManagerActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name=".activity.AccountSettingActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name=".activity.SettlementActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name=".activity.DealManagerActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name=".activity.PayDetailActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name=".activity.AddNewAccountActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name=".activity.SettlementDetailActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name=".activity.PaymentDetailActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name=".activity.PaymentCalculateActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <!-- 聊天页面 -->
+        <activity
+            android:name="com.easemob.chatuidemo.activity.ChatActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/horizontal_slide"
+            android:windowSoftInputMode="adjustResize" >
+        </activity>
+        <!-- 历史聊天界面 -->
+        <activity
+            android:name="com.easemob.chatuidemo.activity.ChatAllHistoryFragment"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/horizontal_slide"
+            android:windowSoftInputMode="adjustResize" >
+        </activity>
+        <!-- 添加好友 -->
+        <activity
+            android:name="com.easemob.chatuidemo.activity.AddContactActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/horizontal_slide" >
+        </activity>
+        <!-- 群组详情 -->
+        <activity
+            android:name="com.easemob.chatuidemo.activity.GroupDetailsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/horizontal_slide" >
+        </activity>
+        <!-- 群组列表 -->
+        <activity
+            android:name="com.easemob.chatuidemo.activity.GroupsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/horizontal_slide"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <!-- 新建群组 -->
+        <activity
+            android:name="com.easemob.chatuidemo.activity.NewGroupActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/horizontal_slide"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <!-- 退出群组提示框 -->
+        <activity
+            android:name="com.easemob.chatuidemo.activity.ExitGroupDialog"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyDialogStyleBottom" >
+        </activity>
+        <!-- 群组选人 -->
+        <activity
+            android:name="com.easemob.chatuidemo.activity.GroupPickContactsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/horizontal_slide"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <!-- 地图 -->
+        <activity
+            android:name="com.easemob.chatuidemo.activity.BaiduMapActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/horizontal_slide" >
+        </activity>
+
+        <!-- 新的朋友邀请消息页面 -->
+        <activity
+            android:name="com.easemob.chatuidemo.activity.NewFriendsMsgActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/horizontal_slide" >
+        </activity>
+        <!-- 转发消息用户列表页面 -->
+        <activity
+            android:name="com.easemob.chatuidemo.activity.ForwardMessageActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/horizontal_slide"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <!-- 自定义的contextmenu -->
+        <activity
+            android:name="com.easemob.chatuidemo.activity.ContextMenu"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyDialogStyle" >
+        </activity>
+        <!-- 自定义的alertdialog -->
+        <activity
+            android:name="com.easemob.chatuidemo.activity.AlertDialog"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyDialogStyle" >
+        </activity>
+        <!-- 显示下载大图页面 -->
+        <activity
+            android:name="com.easemob.chatuidemo.activity.ShowBigImage"
+            android:screenOrientation="portrait"
+            android:theme="@style/horizontal_slide" >
+        </activity>
+        <!-- 下载文件 -->
+        <activity
+            android:name="com.easemob.chatuidemo.activity.ShowNormalFileActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/horizontal_slide" >
+        </activity>
+        <!-- 黑名单 -->
+        <activity
+            android:name="com.easemob.chatuidemo.activity.BlacklistActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/horizontal_slide" >
+        </activity>
+
+        <!-- 公开的群聊列表 -->
+        <activity
+            android:name="com.easemob.chatuidemo.activity.PublicGroupsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/horizontal_slide"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <!-- 语音通话页面 -->
+        <activity
+            android:name="com.easemob.chatuidemo.activity.VoiceCallActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/nornal_style" >
+        </activity>
+        <!-- 群聊简单信息 -->
+        <activity
+            android:name="com.easemob.chatuidemo.activity.GroupSimpleDetailActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/horizontal_slide" >
+        </activity>
+        <activity
+            android:name="com.easemob.chatuidemo.activity.ShowVideoActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/horizontal_slide"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+        </activity>
+        <!-- choose video -->
+        <activity
+            android:name="com.easemob.chatuidemo.activity.ImageGridActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/horizontal_slide"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+        </activity>
+        <activity
+            android:name="com.easemob.chatuidemo.activity.RecorderVideoActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/horizontal_slide"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+        </activity>
+        <!-- upload error log -->
+        <activity
+            android:name="com.easemob.chatuidemo.activity.DiagnoseActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/horizontal_slide"
+            android:windowSoftInputMode="stateAlwaysHidden" >
+        </activity>
+
+        <!-- 开机自启动服务 -->
+        <receiver android:name="com.easemob.chat.StartServiceReceiver" >
+            <intent-filter android:priority="1000" >
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </receiver>
+
+        <!-- 百度地图appkey -->
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="9oFVqDweKogue7gXG4goOdjg" />
+
+        <!-- 设置环信应用的appkey -->
+        <meta-data
+            android:name="EASEMOB_APPKEY"
+            android:value="searun#seerun" />
+        <!-- 云巴推送 -->
+        <meta-data
+            android:name="YUNBA_APPKEY"
+            android:value="54b6000152be1f7e1dd84585" />
+        <!-- 声明环信sdk所需的service -->
+        <service android:name="com.easemob.chat.EMChatService" />
+        <!-- 云巴推送所需service -->
+        <service
+            android:name="io.yunba.android.core.YunBaService"
+            android:exported="true" />
+
+        <!-- 云巴推送索要receiver -->
+        <receiver android:name="io.yunba.android.core.YunBaReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.USER_PRESENT" />
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+        <!--
+        <receiver android:name="com.seeyuan.logistics.receiver.YunbaReceiver" >
+            <intent-filter>
+                <action android:name="io.yunba.android.MESSAGE_RECEIVED_ACTION" />
+
+                <category android:name="com.seeyuan.logistics" />
+            </intent-filter>
+        </receiver>
+        -->
+
+
+        <provider
+            android:name=".provider.LogisticsProvider"
+            android:authorities="com.seeyuan.logistics.logisticsprovider" />
+
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote" >
+        </service>
+        <service android:name=".service.BDLocationService" />
+        <service android:name=".service.CarBDLocationService" />
+        <service android:name=".service.CheckUpdateService" />
+        <service android:name=".service.LoginIMServerService" />
+        <service android:name=".service.ShowIMNotification" />
+    </application>
+
+    <!-- 在SDCard中创建与删除文件权限 -->
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <!-- 往SDCard写入数据权限 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
+
+    <permission android:name="android.permission.BAIDU_LOCATION_SERVICE" />
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_GPS" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <!-- SDK1.5需要android.permission.GET_TASKS权限判断本程序是否为当前运行的应用? -->
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.BROADCAST_STICKY" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <!-- 来电消音 -->
+    <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
+    <!-- 环信 -->
+
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <!-- 云巴 -->
+    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
+
+</manifest>

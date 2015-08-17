@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/Background"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10.0dip"
+        android:background="@drawable/angle_bg"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+
+            <Button
+                android:id="@+id/Insurance_TransportMode"
+                style="@style/PublishInfo_Button_Style"
+                android:background="@drawable/up_angle_bg_select"
+                android:hint="请选择运输方式"
+                android:onClick="onClickListener"
+                android:textColor="@android:color/black"
+                android:textSize="16.0sp" />
+
+            <TextView
+                style="@style/PublishInfo_Title_Style"
+                android:layout_centerVertical="true"
+                android:text="运输方式" />
+        </RelativeLayout>
+
+        <include layout="@layout/line" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+
+            <Button
+                android:id="@+id/Insurance_CarTypeBtn"
+                style="@style/PublishInfo_Button_Style"
+                android:background="@drawable/centre_angle_bg_select"
+                android:hint="请选择车辆类型"
+                android:onClick="onClickListener"
+                android:textColor="@android:color/black"
+                android:textSize="16.0sp" />
+
+            <TextView
+                style="@style/PublishInfo_Title_Style"
+                android:layout_centerVertical="true"
+                android:text="车辆类型" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_Carno"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone" >
+
+            <include layout="@layout/line" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:orientation="horizontal" >
+
+                <TextView
+                    style="@style/PublishInfo_Title_Style"
+                    android:text="车牌号码" />
+
+                <EditText
+                    android:id="@+id/Insurance_TransportTool"
+                    style="@style/PublishInfo_Edit_Style"
+                    android:hint="请输入车牌号码"
+                    android:maxLength="7"
+                    android:textSize="16.0sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_CarHanging"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone" >
+
+            <include layout="@layout/line" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:orientation="horizontal" >
+
+                <TextView
+                    style="@style/PublishInfo_Title_Style"
+                    android:text="车头号码" />
+
+                <EditText
+                    android:id="@+id/Insurance_HeadstockNumber"
+                    style="@style/PublishInfo_Edit_Style"
+                    android:hint="请输入车头号码"
+                    android:maxLength="7"
+                    android:textSize="16.0sp" />
+            </LinearLayout>
+
+            <include layout="@layout/line" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:orientation="horizontal" >
+
+                <TextView
+                    style="@style/PublishInfo_Title_Style"
+                    android:text="车挂号码" />
+
+                <EditText
+                    android:id="@+id/Insurance_CarHangingNumber"
+                    style="@style/PublishInfo_Edit_Style"
+                    android:hint="请输入车挂号码"
+                    android:maxLength="7"
+                    android:textSize="16.0sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <include layout="@layout/line" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+
+            <Button
+                android:id="@+id/Insurance_TransportOrigin"
+                style="@style/PublishInfo_Button_Style"
+                android:background="@drawable/centre_angle_bg_select"
+                android:hint="请选择起始地"
+                android:onClick="onClickListener"
+                android:textColor="@android:color/black"
+                android:textSize="16.0sp" />
+
+            <TextView
+                style="@style/PublishInfo_Title_Style"
+                android:layout_centerVertical="true"
+                android:text="起始地" />
+        </RelativeLayout>
+
+        <include layout="@layout/line" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+
+            <Button
+                android:id="@+id/Insurance_TransportDestination"
+                style="@style/PublishInfo_Button_Style"
+                android:background="@drawable/centre_angle_bg_select"
+                android:hint="请选择目的地"
+                android:onClick="onClickListener"
+                android:textColor="@android:color/black"
+                android:textSize="16.0sp" />
+
+            <TextView
+                style="@style/PublishInfo_Title_Style"
+                android:layout_centerVertical="true"
+                android:text="目的地" />
+        </RelativeLayout>
+
+        <include layout="@layout/line" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+
+            <Button
+                android:id="@+id/Insurance_DepartureTime"
+                style="@style/PublishInfo_Button_Style"
+                android:background="@drawable/down_angle_bg_select"
+                android:hint="请选择起运时间"
+                android:onClick="onClickListener"
+                android:textColor="@android:color/black"
+                android:textSize="16.0sp" />
+
+            <TextView
+                style="@style/PublishInfo_Title_Style"
+                android:layout_centerVertical="true"
+                android:text="起运时间" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/BuyInsurance_TransportationNext_But"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10.0dip"
+        android:background="@drawable/confirm_back_button_select"
+        android:onClick="onClickListener"
+        android:text="@string/Next_Title"
+        android:textColor="@android:color/white"
+        android:textSize="16.0sp"
+        android:textStyle="bold" />
+
+</LinearLayout>

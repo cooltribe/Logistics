@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/com.seeyuan.logistics"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/Background"
+    android:orientation="vertical" >
+
+    <ImageView
+        style="@style/StepImgViewStyle"
+        android:src="@drawable/register_step1" />
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <com.seeyuan.logistics.customview.MuInputEditText
+                android:id="@+id/registerPNum"
+                style="@style/EdtSingle"
+                android:layout_margin="10.0dip"
+                android:background="@drawable/mu_intputview_single_focuse_shape"
+                android:hint="@string/register_phone_input_hint"
+                android:maxLength="11"
+                android:inputType="phone"
+                app:normal_bg="@drawable/angle_bg" />
+
+            <com.seeyuan.logistics.customview.MuInputEditText
+                android:id="@+id/userName"
+                style="@style/EdtSingle"
+                android:layout_marginBottom="10.0dip"
+                android:layout_marginLeft="10.0dip"
+                android:layout_marginRight="10.0dip"
+                android:background="@drawable/mu_intputview_single_focuse_shape"
+                android:hint="@string/register_user_name_hint"
+                android:inputType="text"
+                android:maxLength="20"
+                app:normal_bg="@drawable/angle_bg" />
+
+            <EditText
+                android:id="@+id/userType"
+                style="@style/EdtSingle"
+                android:layout_marginBottom="5.0dip"
+                android:layout_marginLeft="10.0dip"
+                android:layout_marginRight="10.0dip"
+                android:background="@drawable/angle_bg_select"
+                android:drawableRight="@drawable/uitableview_chevron_default"
+                android:focusable="false"
+                android:hint="@string/register_user_type_hint"
+                android:onClick="onClickListener" />
+
+            <Button
+                android:id="@+id/rNextBtn"
+                android:layout_width="fill_parent"
+                android:layout_height="48.0dip"
+                android:layout_margin="10.0dip"
+                android:layout_marginTop="20.0dip"
+                android:gravity="center"
+                android:background="@drawable/confirm_back_button_select"
+                android:onClick="onClickListener"
+                android:text="@string/register_next_btn_text"
+                android:textColor="@color/submint_btn_color_n"
+                android:textSize="16.0sp" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

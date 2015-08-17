@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/repeat_background"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical" >
+
+        <Button
+            android:id="@+id/weather_live_But"
+            style="@style/PersonalCenter_Button_Style"
+            android:background="@drawable/up_angle_bg_select"
+            android:drawablePadding="10.0dip"
+            android:drawableRight="@drawable/uitableview_chevron_default"
+            android:height="45.0dip"
+            android:onClick="onClickListener"
+            android:paddingLeft="20dip"
+            android:text="实时天气" />
+
+        <include layout="@layout/line" />
+
+        <Button
+            android:id="@+id/parking_lot_btn"
+            style="@style/PersonalCenter_Button_Style"
+            android:background="@drawable/centre_angle_bg_select"
+            android:drawablePadding="5.0dip"
+            android:drawableRight="@drawable/uitableview_chevron_default"
+            android:height="45.0dip"
+            android:onClick="onClickListener"
+            android:paddingLeft="20dip"
+            android:text="停车场" />
+
+        <include layout="@layout/line" />
+
+        <Button
+            android:id="@+id/gas_station_btn"
+            style="@style/PersonalCenter_Button_Style"
+            android:background="@drawable/centre_angle_bg_select"
+            android:drawablePadding="5.0dip"
+            android:drawableRight="@drawable/uitableview_chevron_default"
+            android:height="45.0dip"
+            android:onClick="onClickListener"
+            android:paddingLeft="20dip"
+            android:text="加油站" />
+
+        <include layout="@layout/line" />
+    </LinearLayout>
+
+</LinearLayout>

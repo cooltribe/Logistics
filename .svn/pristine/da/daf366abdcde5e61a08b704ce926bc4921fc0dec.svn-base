@@ -1,0 +1,497 @@
+package com.seeyuan.logistics.application;
+
+import io.yunba.android.manager.YunBaManager;
+
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.WeakHashMap;
+
+import org.eclipse.paho.client.mqttv3.IMqttActionListener;
+import org.eclipse.paho.client.mqttv3.IMqttToken;
+
+import android.app.ActivityManager;
+import android.app.Application;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.content.pm.PackageManager;
+import android.util.DisplayMetrics;
+import android.util.Log;
+import android.widget.ProgressBar;
+import android.widget.Toast;
+
+import com.baidu.mapapi.BMapManager;
+import com.baidu.mapapi.MKGeneralListener;
+import com.baidu.mapapi.map.MKEvent;
+import com.easemob.chat.ConnectionListener;
+import com.easemob.chat.EMChat;
+import com.easemob.chat.EMChatManager;
+import com.easemob.chat.EMChatOptions;
+import com.easemob.chat.EMMessage;
+import com.easemob.chat.EMMessage.ChatType;
+import com.easemob.chat.OnMessageNotifyListener;
+import com.easemob.chat.OnNotificationClickListener;
+import com.easemob.chatuidemo.activity.ChatActivity;
+import com.easemob.chatuidemo.db.DbOpenHelper;
+import com.easemob.chatuidemo.db.UserDao;
+import com.easemob.chatuidemo.domain.User;
+import com.easemob.chatuidemo.receiver.VoiceCallReceiver;
+import com.easemob.chatuidemo.utils.PreferenceUtils;
+import com.seeyuan.logistics.R;
+import com.seeyuan.logistics.util.CommonUtils;
+import com.seeyuan.logistics.util.LogTag;
+import com.seeyuan.logistics.util.MyCrashHandler;
+import com.seeyuan.logistics.util.YunbaUtil;
+
+public class ApplicationPool extends Application {
+
+	private WeakHashMap<String, Object> cache;
+	// 存放各个下载器
+	// public static Map<String, DownloaderTask> downloaderMaps = new
+	// HashMap<String, DownloaderTask>();
+	// 存放与下载器对应的进度条
+	public static Map<String, ProgressBar> ProgressBars = new HashMap<String, ProgressBar>();
+
+	public BMapManager mBMapManager = null;
+
+	private static ApplicationPool mInstance = null;
+
+	public boolean m_bKeyRight = true;
+
+	private SharedPreferences sPreferences;
+
+	public static String userID;
+
+	public static String weatherKey;
+
+	public static String gasStationKey;
+
+	public static int screenWidth;
+
+	public static int screenHeight;
+
+	public static String UUID;
+
+	public static String memberType;
+
+	public static String password;
+
+	public static String userName;
+
+	private Context context;
+
+	private Map<String, User> contactList;
+
+	@Override
+	public void onCreate() {
+		super.onCreate();
+		mInstance = this;
+		context = getApplicationContext();
+		MyCrashHandler crashHandler = MyCrashHandler.getInstance();
+		// 注册crashHandler
+		crashHandler.init(getApplicationContext());
+
+		Thread.setDefaultUncaughtExceptionHandler(crashHandler);
+
+		int pid = android.os.Process.myPid();
+		String processAppName = getAppName(pid);
+		// 如果使用到百度地图或者类似启动remote service的第三方库，这个if判断不能少
+		if (processAppName == null || processAppName.equals("")) {
+			// workaround for baidu location sdk
+			// 百度定位sdk，定位服务运行在一个单独的进程，每次定位服务启动的时候，都会调用application::onCreate
+			// 创建新的进程。
+			// 但环信的sdk只需要在主进程中初始化一次。 这个特殊处理是，如果从pid 找不到对应的processInfo
+			// processName，
+			// 则此application::onCreate 是被service 调用的，直接返回
+			return;
+		}
+
+		initEngineManager(this);
+		initIMManager();
+		initYunba();
+		sPreferences = getSharedPreferences(ConstantPool.LOGISTICS_PREFERENCES,
+				Context.MODE_PRIVATE);
+		// 保存手机号码
+		Editor editor = sPreferences.edit();
+		// editor.putString("localPhoneNo", "18914782880");// 手机号
+		editor.putString("localIMEINo",
+				CommonUtils.getLocalIMEINo(getApplicationContext()));// IMEI码
+		editor.commit();
+		userID = CommonUtils.getLocalIMEINo(getApplicationContext());
+		weatherKey = "62a83fb096fab04c883d0a01598cfc9c";
+		gasStationKey = "3bee66805692fa6f3fff1e3f4ecc908d";
+
+		DisplayMetrics display = getResources().getDisplayMetrics();
+		screenWidth = display.widthPixels;
+		screenHeight = display.heightPixels;
+	}
+
+	/**
+	 * 初始化云巴推送
+	 */
+	private void initYunba() {
+		YunBaManager.start(context);
+
+		YunBaManager.subscribe(context, new String[] {"t1", "t2", "t3"},
+				new IMqttActionListener() {
+			
+			@Override
+			public void onSuccess(IMqttToken asyncActionToken) {
+				String topic = YunbaUtil.join(asyncActionToken.getTopics(), ",");
+				Log.d("TAG", "Subscribe succeed : " + topic);
+//				DemoUtil.showToast( "Subscribe succeed : " + topic, getApplicationContext());
+				StringBuilder showMsg = new StringBuilder();
+				showMsg.append("subscribe succ：").append(YunBaManager.MQTT_TOPIC)
+						.append(" = ").append(topic);
+			}
+			
+			@Override
+			public void onFailure(IMqttToken asyncActionToken, Throwable exception) {
+				String msg =  "Subscribe failed : " + exception.getMessage();
+				Log.d("TAG", msg);
+//				DemoUtil.showToast(msg, getApplicationContext());
+//				
+				
+			}
+		});
+	}
+
+	public static String getUserName() {
+		return userName;
+	}
+
+	public static void setUserName(String userName) {
+		ApplicationPool.userName = userName;
+	}
+
+	public static String getUUID() {
+		return UUID;
+	}
+
+	public static void setUUID(String uUID) {
+		UUID = uUID;
+	}
+
+	public static String getMemberType() {
+		return memberType;
+	}
+
+	public static void setMemberType(String memberType) {
+		ApplicationPool.memberType = memberType;
+	}
+
+	public static String getPassword() {
+		return password;
+	}
+
+	public static void setPassword(String password) {
+		ApplicationPool.password = password;
+	}
+
+	public ApplicationPool() {
+		cache = new WeakHashMap<String, Object>();
+	}
+
+	public static ApplicationPool getInstance() {
+		return mInstance;
+	}
+
+	private String getAppName(int pID) {
+		String processName = null;
+		ActivityManager am = (ActivityManager) this
+				.getSystemService(ACTIVITY_SERVICE);
+		List l = am.getRunningAppProcesses();
+		Iterator i = l.iterator();
+		PackageManager pm = this.getPackageManager();
+		while (i.hasNext()) {
+			ActivityManager.RunningAppProcessInfo info = (ActivityManager.RunningAppProcessInfo) (i
+					.next());
+			try {
+				if (info.pid == pID) {
+					CharSequence c = pm.getApplicationLabel(pm
+							.getApplicationInfo(info.processName,
+									PackageManager.GET_META_DATA));
+					// Log.d("Process", "Id: "+ info.pid +" ProcessName: "+
+					// info.processName +"  Label: "+c.toString());
+					// processName = c.toString();
+					processName = info.processName;
+					return processName;
+				}
+			} catch (Exception e) {
+				// Log.d("Process", "Error>> :"+ e.toString());
+			}
+		}
+		return processName;
+	}
+
+	public static void setServerIp(Context context) {
+//		 String SERVER_URL = "http://192.168.2.36:6666/Searun_platform/";
+		String SERVER_URL = "http://www.56wtb.com/";
+		NetWork.setServerIp(SERVER_URL);
+	}
+
+	public void initEngineManager(Context context) {
+		if (mBMapManager == null) {
+			mBMapManager = new BMapManager(context);
+		}
+
+		if (!mBMapManager.init(new MyGeneralListener())) {
+			Toast.makeText(
+					ApplicationPool.getInstance().getApplicationContext(),
+					"BMapManager  初始化错误!", Toast.LENGTH_LONG).show();
+		}
+	}
+
+	public void initIMManager() {
+		// 初始化环信SDK,一定要先调用init()
+		EMChat.getInstance().init(context);
+		EMChat.getInstance().setDebugMode(true);
+		Log.d("TAG", "initialize EMChat SDK");
+		// debugmode设为true后，就能看到sdk打印的log了
+
+		// 获取到EMChatOptions对象
+		EMChatOptions options = EMChatManager.getInstance().getChatOptions();
+		// 默认环信是不维护好友关系列表的，如果app依赖环信的好友关系，把这个属性设置为true
+		options.setUseRoster(true);
+		// 默认添加好友时，是不需要验证的，改成需要验证
+		options.setAcceptInvitationAlways(false);
+		// 设置收到消息是否有新消息通知，默认为true
+		options.setNotifyBySoundAndVibrate(PreferenceUtils.getInstance(context)
+				.getSettingMsgNotification());
+		// 设置收到消息是否有声音提示，默认为true
+		options.setNoticeBySound(PreferenceUtils.getInstance(context)
+				.getSettingMsgSound());
+		// 设置收到消息是否震动 默认为true
+		options.setNoticedByVibrate(PreferenceUtils.getInstance(context)
+				.getSettingMsgVibrate());
+		// 设置语音消息播放是否设置为扬声器播放 默认为true
+		options.setUseSpeaker(PreferenceUtils.getInstance(context)
+				.getSettingMsgSpeaker());
+		options.setNotificationEnable(true);
+		options.setShowNotificationInBackgroud(true);
+		// 设置notification消息点击时，跳转的intent为自定义的intent
+		options.setOnNotificationClickListener(new OnNotificationClickListener() {
+
+			@Override
+			public Intent onNotificationClick(EMMessage message) {
+				Intent intent = new Intent(context, ChatActivity.class);
+				ChatType chatType = message.getChatType();
+				if (chatType == ChatType.Chat) { // 单聊信息
+					intent.putExtra("userId", message.getFrom());
+					intent.putExtra("chatType", ChatActivity.CHATTYPE_SINGLE);
+				} else { // 群聊信息
+					// message.getTo()为群聊id
+					intent.putExtra("groupId", message.getTo());
+					intent.putExtra("chatType", ChatActivity.CHATTYPE_GROUP);
+				}
+				return intent;
+			}
+		});
+		// 设置一个connectionlistener监听账户重复登陆
+		EMChatManager.getInstance().addConnectionListener(
+				new MyConnectionListener());
+		// // 取消注释，app在后台，有新消息来时，状态栏的消息提示换成自己写的
+		options.setNotifyText(new OnMessageNotifyListener() {
+
+			@Override
+			public String onNewMessageNotify(EMMessage message) {
+				// 可以根据message的类型提示不同文字(可参考微信或qq)，demo简单的覆盖了原来的提示
+				return "你的好友" + message.getFrom() + "发来了一条消息哦";
+			}
+
+			@Override
+			public String onLatestMessageNotify(EMMessage message,
+					int fromUsersNum, int messageNum) {
+				return fromUsersNum + "个好友，发来了" + messageNum + "条消息";
+			}
+
+			@Override
+			public String onSetNotificationTitle(EMMessage message) {
+				// 修改标题
+				return getResources().getString(R.string.app_name);
+			}
+
+		});
+
+		// 注册一个语言电话的广播接收者
+		IntentFilter callFilter = new IntentFilter(EMChatManager.getInstance()
+				.getIncomingVoiceCallBroadcastAction());
+		registerReceiver(new VoiceCallReceiver(), callFilter);
+	}
+
+	class MyConnectionListener implements ConnectionListener {
+		@Override
+		public void onReConnecting() {
+		}
+
+		@Override
+		public void onReConnected() {
+		}
+
+		@Override
+		public void onDisConnected(String errorString) {
+			// if (errorString != null && errorString.contains("conflict")) {
+			// Intent intent = new Intent(context, MainActivity.class);
+			// intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			// intent.putExtra("conflict", true);
+			// startActivity(intent);
+			// }
+
+		}
+
+		@Override
+		public void onConnecting(String progress) {
+
+		}
+
+		@Override
+		public void onConnected() {
+		}
+	}
+
+	public void addSwicthData(String key, Object value) {
+		synchronized (this) {
+			if (cache == null) {
+				cache = new WeakHashMap<String, Object>();
+			}
+			cache.put(key, value);
+		}
+	}
+
+	public Object getSwitchDataByKey(String key) {
+		synchronized (this) {
+			return cache.get(key);
+		}
+	}
+
+	public void getSize() {
+		// LogTag.e("addSwicthData", "getsize=" + cache.size() + "========");
+	}
+
+	public synchronized void removeSwitchDataByKey(String key) {
+		if (cache != null) {
+			cache.remove(key);
+		}
+
+	}
+
+	public boolean isCacheEmputy() {
+		if (cache == null) {
+			cache = new WeakHashMap<String, Object>();
+		}
+		return cache.isEmpty();
+	}
+
+	public int getCacheAmount() {
+		return cache.size();
+	}
+
+	public synchronized void clearCache() {
+		if (cache != null) {
+			cache.clear();
+			cache = null;
+		}
+	}
+
+	public boolean isCacheContainsKey(String key) {
+		if (cache != null) {
+			return cache.containsKey(key);
+		}
+		cache = new WeakHashMap<String, Object>();
+		return false;
+	}
+
+	/**
+	 * 根据key取数据，已经做了为空判断
+	 * 
+	 * @param Key
+	 * @return
+	 */
+	public Object getDataByKey(String Key) {
+		if (isCacheContainsKey(Key)) {
+			return cache.get(Key);
+		}
+		return null;
+	}
+
+	// 常用事件监听，用来处理通常的网络错误，授权验证错误等
+	public static class MyGeneralListener implements MKGeneralListener {
+
+		@Override
+		public void onGetNetworkState(int iError) {
+			if (iError == MKEvent.ERROR_NETWORK_CONNECT) {
+				Toast.makeText(
+						ApplicationPool.getInstance().getApplicationContext(),
+						"您的网络出错啦！", Toast.LENGTH_LONG).show();
+			} else if (iError == MKEvent.ERROR_NETWORK_DATA) {
+				Toast.makeText(
+						ApplicationPool.getInstance().getApplicationContext(),
+						"输入正确的检索条件！", Toast.LENGTH_LONG).show();
+			}
+			// ...
+		}
+
+		@Override
+		public void onGetPermissionState(int iError) {
+			// 非零值表示key验证未通过
+			if (iError != 0) {
+				// 授权Key错误：
+				Toast.makeText(
+						ApplicationPool.getInstance().getApplicationContext(),
+						"请在 ApplicationPool.java文件输入正确的授权Key,并检查您的网络连接是否正常！error: "
+								+ iError, Toast.LENGTH_LONG).show();
+				ApplicationPool.getInstance().m_bKeyRight = false;
+			} else {
+				ApplicationPool.getInstance().m_bKeyRight = true;
+				Toast.makeText(
+						ApplicationPool.getInstance().getApplicationContext(),
+						"key认证成功", Toast.LENGTH_LONG).show();
+			}
+		}
+	}
+
+	/**
+	 * 获取内存中好友user list
+	 * 
+	 * @return
+	 */
+	public Map<String, User> getContactList() {
+		if (CommonUtils.getUserName(getApplicationContext()) != null
+				&& contactList == null) {
+			UserDao dao = new UserDao(context);
+			// 获取本地好友user list到内存,方便以后获取好友list
+			contactList = dao.getContactList();
+		}
+		return contactList;
+	}
+
+	/**
+	 * 设置好友user list到内存中
+	 * 
+	 * @param contactList
+	 */
+	public void setContactList(Map<String, User> contactList) {
+		this.contactList = contactList;
+	}
+
+	public void setStrangerList(Map<String, User> List) {
+
+	}
+
+	/**
+	 * 退出登录,清空数据
+	 */
+	public void logout() {
+		// 先调用sdk logout，在清理app中自己的数据
+		EMChatManager.getInstance().logout();
+		DbOpenHelper.getInstance(context).closeDB();
+		// reset password to null
+		setPassword(null);
+		setContactList(null);
+
+	}
+}

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/repeat_background"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10.0dip"
+            android:gravity="center|left"
+            android:text="我要付款"
+            android:textColor="@android:color/black"
+            android:textSize="18.0sp"
+            android:textStyle="bold" />
+
+        <include layout="@layout/line" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/payment_detail_balance_hint"
+                style="@style/PublishInfo_Title_Style"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:text="余额:" />
+
+            <TextView
+                android:id="@+id/pay_detail_balance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/payment_detail_balance_hint"
+                android:enabled="false"
+                android:paddingRight="5.0dip"
+                android:text="123"
+                android:textColor="@color/orange"
+                android:textSize="18.0sp" />
+
+            <TextView
+                android:id="@+id/money_hint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_toRightOf="@+id/pay_detail_balance"
+                android:text="元"
+                android:textColor="@android:color/black"
+                android:textSize="16.0sp" />
+
+            <CheckBox
+                android:id="@+id/payment_detail_balance_ck"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/checkbox_selector"
+                android:button="@null"
+                android:checked="false" />
+
+            <TextView
+                style="@style/PublishInfo_Title_Style"
+                android:layout_alignParentTop="true"
+                android:layout_toLeftOf="@+id/payment_detail_balance_ck"
+                android:text="使用余额" />
+        </RelativeLayout>
+
+        <include layout="@layout/line" />
+
+        <include layout="@layout/pay_detail_content" />
+
+        <Button
+            android:id="@+id/bt_save"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:layout_marginBottom="10.0dip"
+            android:layout_marginLeft="10.0dip"
+            android:layout_marginRight="10.0dip"
+            android:layout_marginTop="20.0dip"
+            android:background="@drawable/confirm_back_button_select"
+            android:onClick="onClickListener"
+            android:text="@string/ensure"
+            android:textColor="@android:color/white"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+</LinearLayout>

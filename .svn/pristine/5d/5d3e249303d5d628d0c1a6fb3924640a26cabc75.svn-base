@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/Background"
+    android:orientation="vertical"
+    android:visibility="visible" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/review_up_btn"
+            style="@style/Black_TextviewRightDetail_Style"
+            android:layout_width="120.0dip"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30.0dip"
+            android:layout_marginTop="10.0dip"
+            android:background="@drawable/review_bg_select"
+            android:drawableLeft="@drawable/review_up"
+            android:onClick="onClickListener"
+            android:paddingLeft="20.0dip"
+            android:text="@string/evalute_good_hint"
+            android:textSize="16.0sp" />
+
+        <Button
+            android:id="@+id/review_down_btn"
+            style="@style/Black_TextviewRightDetail_Style"
+            android:layout_width="120.0dip"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20.0dip"
+            android:layout_marginTop="10.0dip"
+            android:background="@drawable/review_bg_select"
+            android:drawableLeft="@drawable/review_down"
+            android:onClick="onClickListener"
+            android:paddingLeft="20.0dip"
+            android:text="@string/evalute_bad_hint"
+            android:textSize="16.0sp" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/RelativeLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5.0dip"
+        android:layout_marginRight="5.0dip"
+        android:layout_marginTop="5.0dip"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:paddingBottom="10.0dip" >
+
+        <EditText
+            android:id="@+id/content_ed"
+            android:layout_width="fill_parent"
+            android:layout_height="120.0dip"
+            android:layout_marginTop="5.0dip"
+            android:layout_toRightOf="@+id/submit_content_tv"
+            android:background="@drawable/angle_bg"
+            android:gravity="left"
+            android:hint="@string/Driver_Credit_Details_Content"
+            android:inputType="textMultiLine"
+            android:maxLength="80"
+            android:padding="5.0dip"
+            android:textSize="13.0sp" />
+
+        <TextView
+            android:id="@+id/appraiseScore_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@+id/submit_content_tv"
+            android:layout_below="@+id/content_ed"
+            android:layout_marginTop="10.0dip"
+            android:gravity="right"
+            android:hint="评分："
+            android:textSize="16.0sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/PublishDriverCreditDetail_But"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ratingBar_evaluate"
+            android:layout_marginBottom="10.0dip"
+            android:layout_marginTop="10.0dip"
+            android:background="@drawable/confirm_back_button_select"
+            android:onClick="onClickListener"
+            android:text="@string/Submit_Title"
+            android:textColor="@android:color/white"
+            android:textStyle="bold" />
+
+        <RatingBar
+            android:id="@id/ratingBar_evaluate"
+            style="@style/Credit_Rating_Style"
+            android:layout_width="wrap_content"
+            android:layout_height="20.0dip"
+            android:layout_alignTop="@+id/appraiseScore_tv"
+            android:layout_toRightOf="@+id/appraiseScore_tv"
+            android:focusable="false"
+            android:numStars="5"
+            android:rating="3.0"
+            android:stepSize="1.0" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/LineDetails_SendGoodsNote_Layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10.0dip"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="评价详情"
+            android:textSize="16.0sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <include layout="@layout/evaluation_line" />
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_margin="10.0dip"
+        android:orientation="vertical" >
+
+        <ListView
+            android:id="@+id/DriverCredit_Evaluate_List"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:cacheColorHint="@android:color/transparent"
+            android:divider="@android:color/transparent"
+            android:fadingEdge="none"
+            android:listSelector="@android:color/transparent"
+            android:scrollbars="none" />
+    </ScrollView>
+
+</LinearLayout>

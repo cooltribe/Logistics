@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <FrameLayout
+        android:layout_width="130dp"
+        android:layout_height="160dp"
+        android:layout_gravity="center" >
+
+        <RelativeLayout
+            android:id="@+id/car_manager_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/manager_button_selector2"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:id="@+id/linearLayout1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:orientation="horizontal"
+                android:paddingTop="30dp" >
+
+                <TextView
+                    android:id="@+id/select_car_type_hint_tv"
+                    style="@style/driver_text_style"
+                    android:text="@string/type_hint" />
+
+                <TextView
+                    android:id="@+id/select_car_type_tv"
+                    style="@style/driver_text_style"
+                    android:text="@string/check_pending_hint" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/select_car_plate_tv"
+                style="@style/driver_text_style"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:paddingBottom="30dp"
+                android:text="车牌:123" />
+        </RelativeLayout>
+    </FrameLayout>
+
+</LinearLayout>

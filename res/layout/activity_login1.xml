@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/repeat_background"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/TitleStyle_Title"
+        android:layout_width="fill_parent"
+        android:layout_height="50.0dip"
+        android:background="@drawable/title_bg"
+        android:gravity="center"
+        android:text="登录"
+        android:textColor="@android:color/white"
+        android:textSize="18.0sp"
+        android:textStyle="bold"
+        android:visibility="gone" />
+
+    <include layout="@layout/login_content" />
+
+</LinearLayout>

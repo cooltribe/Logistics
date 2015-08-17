@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/com.seeyuan.logistics"
+    android:id="@+id/main"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/repeat_background"
+    android:orientation="vertical" >
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:fadingEdge="none"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/tv_audit"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/audit"
+                android:gravity="center"
+                android:text="@string/user_audit"
+                android:textColor="#ffe47f12"
+                android:textSize="14.0dip"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <include layout="@layout/line" />
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/user_type_hint"
+                        style="@style/PublishInfo_Title_Style"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerInParent="true"
+                        android:text="账户类型" />
+
+                    <TextView
+                        android:id="@+id/account_type"
+                        style="@style/PublishInfo_Edit_Style"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerInParent="true"
+                        android:layout_toRightOf="@+id/user_type_hint"
+                        android:hint="@string/please_check_hint"
+                        android:paddingRight="5.0dip"
+                        android:textSize="15.0sp" />
+                </RelativeLayout>
+
+                <include layout="@layout/line" />
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/user_telphone_hint"
+                        style="@style/PublishInfo_Title_Style"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerInParent="true"
+                        android:text="账号姓名" />
+
+                    <com.seeyuan.logistics.customview.MuInputEditText
+                        android:id="@+id/account_name"
+                        style="@style/PublishInfo_Edit_Style"
+                        android:layout_width="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/user_telphone_hint"
+                        android:hint="@string/please_input_hint"
+                        android:paddingRight="5.0dip"
+                        android:textSize="15.0sp" />
+                </RelativeLayout>
+
+                <include layout="@layout/line" />
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/ed_true_name_hint"
+                        style="@style/PublishInfo_Title_Style"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerInParent="true"
+                        android:text="账户号码" />
+
+                    <com.seeyuan.logistics.customview.MuInputEditText
+                        android:id="@+id/account_number"
+                        style="@style/PublishInfo_Edit_Style"
+                        android:layout_alignParentRight="true"
+                        android:layout_toRightOf="@+id/ed_true_name_hint"
+                        android:hint="@string/please_input_hint"
+                        android:paddingRight="5.0dip"
+                        android:textSize="15.0sp" />
+                </RelativeLayout>
+
+                <include layout="@layout/line" />
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/account_default_hint"
+                        style="@style/PublishInfo_Title_Style"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerInParent="true"
+                        android:text="默认账号" />
+
+                    <CheckBox
+                        android:id="@+id/account_default"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_alignBaseline="@+id/account_default_hint"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="20dp"
+                        android:background="@drawable/checkbox_selector"
+                        android:button="@null"
+                        android:checked="false" />
+                </RelativeLayout>
+
+                <include layout="@layout/line" />
+
+                <Button
+                    android:id="@+id/bt_save"
+                    android:layout_width="fill_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginBottom="10.0dip"
+                    android:layout_marginLeft="10.0dip"
+                    android:layout_marginRight="10.0dip"
+                    android:layout_marginTop="20.0dip"
+                    android:background="@drawable/confirm_back_button_select"
+                    android:onClick="onClickListener"
+                    android:text="@string/ensure"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

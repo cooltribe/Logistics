@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/repeat_background"
+    android:fadingEdge="none"
+    android:fillViewport="true"
+    android:scrollbars="none" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:layout_marginBottom="5.0dip"
+                android:layout_marginLeft="10.0dip"
+                android:layout_marginTop="10.0dip"
+                android:text="车辆信息"
+                android:textColor="@android:color/black"
+                android:textSize="18.0sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:layout_marginBottom="5.0dip"
+                android:layout_marginRight="15.0dip"
+                android:layout_marginTop="10.0dip"
+                android:drawableLeft="@drawable/mi_icon"
+                android:gravity="right"
+                android:text="为必填项"
+                android:textColor="@android:color/black"
+                android:textSize="16.0sp"
+                android:textStyle="bold"
+                android:visibility="gone" />
+        </RelativeLayout>
+
+        <include layout="@layout/line" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/order_detail_carplate_hint"
+                style="@style/PublishInfo_Title_Style"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:text="车牌号" />
+
+            <TextView
+                android:id="@+id/order_detail_carplate"
+                style="@style/PublishInfo_Edit_Style"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:layout_toRightOf="@+id/order_detail_carplate_hint"
+                android:maxLength="12"
+                android:textSize="@dimen/publish_text_size" />
+        </RelativeLayout>
+
+        <include layout="@layout/line" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/order_detail_cartype_hint"
+                style="@style/PublishInfo_Title_Style"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:text="车型" />
+
+            <TextView
+                android:id="@+id/order_detail_cartype"
+                style="@style/PublishInfo_Edit_Style"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:layout_toRightOf="@+id/order_detail_cartype_hint"
+                android:maxLength="12"
+                android:textSize="@dimen/publish_text_size" />
+        </RelativeLayout>
+
+        <include layout="@layout/line" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/order_detail_carlength_hint"
+                style="@style/PublishInfo_Title_Style"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:text="车长" />
+
+            <TextView
+                android:id="@+id/order_detail_carlength"
+                style="@style/PublishInfo_Edit_Style"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:layout_toRightOf="@+id/order_detail_carlength_hint"
+                android:maxLength="12"
+                android:textSize="@dimen/publish_text_size" />
+        </RelativeLayout>
+
+        <include layout="@layout/line" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/order_detail_carweight_hint"
+                style="@style/PublishInfo_Title_Style"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:text="载重" />
+
+            <TextView
+                android:id="@+id/order_detail_carweight"
+                style="@style/PublishInfo_Edit_Style"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:layout_toRightOf="@+id/order_detail_carweight_hint"
+                android:maxLength="12"
+                android:textSize="@dimen/publish_text_size" />
+        </RelativeLayout>
+
+        <include layout="@layout/line" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:layout_marginBottom="5.0dip"
+                android:layout_marginLeft="10.0dip"
+                android:layout_marginTop="10.0dip"
+                android:text="货物信息"
+                android:textColor="@android:color/black"
+                android:textSize="18.0sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:layout_marginBottom="5.0dip"
+                android:layout_marginRight="15.0dip"
+                android:layout_marginTop="10.0dip"
+                android:drawableLeft="@drawable/mi_icon"
+                android:gravity="right"
+                android:text="为必填项"
+                android:textColor="@android:color/black"
+                android:textSize="16.0sp"
+                android:textStyle="bold"
+                android:visibility="gone" />
+        </RelativeLayout>
+
+        <include layout="@layout/line" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/order_detail_goodsname_hint"
+                style="@style/PublishInfo_Title_Style"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:text="货物名称" />
+
+            <TextView
+                android:id="@+id/order_detail_goodsname"
+                style="@style/PublishInfo_Edit_Style"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:layout_toRightOf="@+id/order_detail_goodsname_hint"
+                android:maxLength="12"
+                android:textSize="@dimen/publish_text_size" />
+        </RelativeLayout>
+
+        <include layout="@layout/line" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/order_detail_goodsweight_hint"
+                style="@style/PublishInfo_Title_Style"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:text="重量" />
+
+            <TextView
+                android:id="@+id/order_detail_goodsweight"
+                style="@style/PublishInfo_Edit_Style"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:layout_toRightOf="@+id/order_detail_goodsweight_hint"
+                android:maxLength="12"
+                android:textSize="@dimen/publish_text_size" />
+        </RelativeLayout>
+
+        <include layout="@layout/line" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/order_detail_from_hint"
+                style="@style/PublishInfo_Title_Style"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:text="始发地" />
+
+            <TextView
+                android:id="@+id/order_detail_from"
+                style="@style/PublishInfo_Edit_Style"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:layout_toRightOf="@+id/order_detail_from_hint"
+                android:maxLength="12"
+                android:textSize="@dimen/publish_text_size" />
+        </RelativeLayout>
+
+        <include layout="@layout/line" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/order_detail_to_hint"
+                style="@style/PublishInfo_Title_Style"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:text="目的地" />
+
+            <TextView
+                android:id="@+id/order_detail_to"
+                style="@style/PublishInfo_Edit_Style"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:layout_toRightOf="@+id/order_detail_to_hint"
+                android:maxLength="12"
+                android:textSize="@dimen/publish_text_size" />
+        </RelativeLayout>
+
+        <include layout="@layout/line" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/order_detail_packagetimes_hint"
+                style="@style/PublishInfo_Title_Style"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:text="装货时间" />
+
+            <TextView
+                android:id="@+id/order_detail_packagetimes"
+                style="@style/PublishInfo_Edit_Style"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:layout_toRightOf="@+id/order_detail_packagetimes_hint"
+                android:textSize="@dimen/publish_text_size" />
+        </RelativeLayout>
+
+        <include layout="@layout/line" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/order_detail_packagetimee_hint"
+                style="@style/PublishInfo_Title_Style"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:text="卸货时间" />
+
+            <TextView
+                android:id="@+id/order_detail_packagetimee"
+                style="@style/PublishInfo_Edit_Style"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:layout_toRightOf="@+id/order_detail_packagetimee_hint"
+                android:textSize="@dimen/publish_text_size" />
+        </RelativeLayout>
+
+        <include layout="@layout/line" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:layout_marginBottom="5.0dip"
+                android:layout_marginLeft="10.0dip"
+                android:layout_marginTop="10.0dip"
+                android:text="操作日志"
+                android:textColor="@android:color/black"
+                android:textSize="18.0sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/order_detail_more_data"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:layout_marginBottom="5.0dip"
+                android:layout_marginRight="15.0dip"
+                android:layout_marginTop="10.0dip"
+                android:background="@drawable/angle_bg_select_blue"
+                android:gravity="right"
+                android:onClick="onClickListener"
+                android:paddingBottom="5dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="5dp"
+                android:text="更多日志"
+                android:textColor="@android:color/black"
+                android:textSize="16.0sp"
+                android:textStyle="bold"
+                android:visibility="visible" />
+        </RelativeLayout>
+
+        <include layout="@layout/line" />
+
+        <LinearLayout
+            android:id="@+id/order_detail_operation_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical" >
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

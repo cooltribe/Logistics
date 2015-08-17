@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/repeat_background"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:background="@color/white" >
+
+        <TextView
+            android:id="@+id/email_authentication_email_hint"
+            style="@style/certification_content_style"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
+            android:drawableLeft="@drawable/mi_icon"
+            android:text="@string/email_address_hint" />
+
+        <com.seeyuan.logistics.customview.MuInputEditText
+            android:id="@+id/email_authentication_email"
+            style="@style/certification_edit_style"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20dp"
+            android:layout_toRightOf="@+id/email_authentication_email_hint"
+            android:gravity="right|center"
+            android:hint="@string/input_email_address_hint" />
+    </RelativeLayout>
+
+    <include layout="@layout/line" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:background="@color/white" >
+
+        <TextView
+            android:id="@+id/email_authentification_authcode_hint"
+            style="@style/certification_content_style"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
+            android:drawableLeft="@drawable/mi_icon"
+            android:text="@string/register_input_code_title" />
+
+        <com.seeyuan.logistics.customview.MuInputEditText
+            android:id="@+id/email_authentification_authcode"
+            style="@style/certification_edit_style"
+            android:layout_toLeftOf="@+id/email_authentification_get_authcode"
+            android:layout_toRightOf="@+id/email_authentification_authcode_hint"
+            android:hint="@string/register_input_code_hint" />
+
+        <Button
+            android:id="@+id/email_authentification_get_authcode"
+            android:layout_width="100dp"
+            android:layout_height="fill_parent"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/confirm_back_button3_select"
+            android:gravity="center"
+            android:text="@string/register_get_authcode_btntext"
+            android:textColor="@color/main_blue" />
+
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="fill_parent"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/email_authentification_authcode"
+            android:background="@android:color/darker_gray" />
+    </RelativeLayout>
+
+    <include layout="@layout/line" />
+
+    <Button
+        android:id="@+id/submit_eamil_authentification_btn"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/confirm_back_button_select"
+        android:gravity="center"
+        android:onClick="onClickListener"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        android:text="@string/submit_certification_hint"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
+
+</LinearLayout>

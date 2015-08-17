@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/Background"
+        android:fadingEdge="none"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10.0dip"
+                android:background="@drawable/angle_bg"
+                android:orientation="vertical" >
+
+                <RelativeLayout
+                    android:id="@+id/personalCenterSwitchLayout"
+                    android:layout_width="fill_parent"
+                    android:layout_height="45.0dip" >
+
+                    <TextView
+                        android:id="@+id/PersonalCenter_Switch_text"
+                        style="@style/PersonalCenter_Title_Style"
+                        android:layout_height="45.0dip"
+                        android:layout_centerVertical="true"
+                        android:drawableLeft="@drawable/monthly_rent_icon"
+                        android:drawablePadding="5.0dip"
+                        android:paddingLeft="5.0dip"
+                        android:text="@string/Hire_Title"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/PersonalCenter_Switch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="5.0dip"
+                        android:src="@drawable/off" />
+
+                    <TextView
+                        android:id="@+id/average_rental_services"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBaseline="@+id/PersonalCenter_Switch_text"
+                        android:layout_alignBottom="@+id/PersonalCenter_Switch_text"
+                        android:layout_marginRight="10.0dip"
+                        android:layout_toLeftOf="@+id/price"
+                        android:textColor="@color/orange"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBaseline="@+id/PersonalCenter_Switch_text"
+                        android:layout_alignBottom="@+id/PersonalCenter_Switch_text"
+                        android:layout_marginRight="10.0dip"
+                        android:layout_toLeftOf="@+id/PersonalCenter_Switch"
+                        android:text="元/月"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+                <include layout="@layout/line" />
+
+                <Button
+                    android:id="@+id/update_password"
+                    style="@style/PersonalCenter_Button_Style"
+                    android:layout_height="45.0dip"
+                    android:background="@drawable/down_angle_bg_select"
+                    android:drawableLeft="@drawable/update_psw"
+                    android:drawablePadding="5.0dip"
+                    android:drawableRight="@drawable/uitableview_chevron_default"
+                    android:paddingLeft="5.0dip"
+                    android:onClick="onClickListener"
+                    android:text="@string/update_password" />
+
+                <include layout="@layout/line" />
+
+                <Button
+                    android:id="@+id/setting_command"
+                    style="@style/PersonalCenter_Button_Style"
+                    android:layout_height="45.0dip"
+                    android:background="@drawable/down_angle_bg_select"
+                    android:drawableLeft="@drawable/setting_command"
+                    android:drawablePadding="5.0dip"
+                    android:drawableRight="@drawable/uitableview_chevron_default"
+                    android:paddingLeft="5.0dip"
+                    android:onClick="onClickListener"
+                    android:text="@string/setting_command" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

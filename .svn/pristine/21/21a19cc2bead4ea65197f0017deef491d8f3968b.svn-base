@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal" >
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <LinearLayout
+            android:id="@+id/item_car_manager_main_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:id="@+id/item_car_manager_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/maintitle_background" >
+
+                <TextView
+                    android:id="@+id/item_car_manager_carname"
+                    style="@style/item_car_manager_carname_style"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:text="" />
+
+                <Button
+                    android:id="@+id/item_car_manager_add_line"
+                    style="@style/item_car_manager_button_style"
+                    android:layout_centerInParent="true"
+                    android:layout_marginRight="10dp"
+                    android:layout_toLeftOf="@+id/item_car_manager_search_goods"
+                    android:text="@string/add_new_line_hint" />
+
+                <Button
+                    android:id="@+id/item_car_manager_search_goods"
+                    style="@style/item_car_manager_button_style"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerInParent="true"
+                    android:layout_marginRight="10dp"
+                    android:text="@string/search_goods_hint" />
+
+                <TextView
+                    android:id="@+id/item_car_manager_cartype"
+                    style="@style/item_car_manager_cartype_style"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toLeftOf="@+id/item_car_manager_add_line"
+                    android:layout_toRightOf="@+id/item_car_manager_carname"
+                    android:text="" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/item_car_manager_line_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="visible" >
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/item_car_manager_line_empty"
+                style="@style/item_car_manager_list_content_style"
+                android:layout_width="fill_parent"
+                android:layout_height="120dp"
+                android:gravity="center"
+                android:text="@string/empty_line_hint"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/item_car_manager_check_layout"
+            android:layout_width="50dp"
+            android:layout_height="fill_parent"
+            android:orientation="horizontal"
+            android:visibility="gone" >
+
+            <CheckBox
+                android:id="@+id/item_car_manager_checkbox"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/checkbox_normal"
+                android:button="@null" />
+        </LinearLayout>
+    </FrameLayout>
+
+</LinearLayout>

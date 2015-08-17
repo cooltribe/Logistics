@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/repeat_background"
+    android:orientation="vertical" >
+
+    <include
+        android:id="@+id/havegoods_title"
+        layout="@layout/item_defaulttitle"
+        android:visibility="gone" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/white" >
+
+        <include layout="@layout/line" />
+
+        <ImageButton
+            android:id="@+id/SearchVehicle_Price_But"
+            android:layout_width="wrap_content"
+            android:layout_height="90.0dip"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/search_right_but_select"
+            android:contentDescription="@null"
+            android:paddingLeft="10.0dip"
+            android:paddingRight="10.0dip"
+            android:src="@drawable/exchange_icon" />
+
+        <ImageView
+            android:id="@+id/SearchVehicle_PriceLine"
+            android:layout_width="0.5dip"
+            android:layout_height="100.0dip"
+            android:layout_toLeftOf="@id/SearchVehicle_Price_But"
+            android:background="@android:color/darker_gray"
+            android:contentDescription="@null" />
+
+        <RelativeLayout
+            android:id="@+id/SearchGoods_Start_Layout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/SearchVehicle_PriceLine"
+            android:drawableLeft="@drawable/start_icon" >
+
+            <Button
+                android:id="@+id/SearchGoods_Start"
+                style="@style/PublishInfo_Button_Style"
+                android:background="@drawable/search_up_but_select"
+                android:onClick="onClickListener"
+                android:textColor="#333333"
+                android:textSize="16.0sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10.0dip"
+                android:drawableLeft="@drawable/start_icon"
+                android:drawablePadding="5.0dip"
+                android:hint="@string/SearchGoods_Start_Hint"
+                android:textColor="#333333"
+                android:textColorHint="#333333"
+                android:textSize="16.0sp" />
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/SearchVehicle_Price_Line"
+            android:layout_width="fill_parent"
+            android:layout_height="0.5dip"
+            android:layout_below="@+id/SearchGoods_Start_Layout"
+            android:layout_toLeftOf="@id/SearchVehicle_PriceLine"
+            android:background="@android:color/darker_gray"
+            android:contentDescription="@null" />
+
+        <RelativeLayout
+            android:id="@+id/SearchGoods_End_Layout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/SearchVehicle_Price_Line"
+            android:layout_toLeftOf="@+id/SearchVehicle_PriceLine" >
+
+            <Button
+                android:id="@+id/SearchVehicle_Price_End"
+                style="@style/PublishInfo_Button_Style"
+                android:background="@drawable/search_but_select"
+                android:drawableLeft="@drawable/end_icon"
+                android:onClick="onClickListener"
+                android:textColor="#333333"
+                android:textSize="16.0sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10.0dip"
+                android:drawableLeft="@drawable/end_icon"
+                android:drawablePadding="5.0dip"
+                android:hint="@string/SearchGoods_End_Hint"
+                android:textColor="#333333"
+                android:textColorHint="#333333"
+                android:textSize="16.0sp" />
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/SearchVehicle_Price_Line2"
+            android:layout_width="fill_parent"
+            android:layout_height="0.5dip"
+            android:layout_below="@+id/SearchGoods_End_Layout"
+            android:background="@android:color/darker_gray"
+            android:contentDescription="@null" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:layout_below="@+id/SearchGoods_End_Layout"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/SearchVehicle_Price_CarType"
+                style="@style/PublishInfo_Button_Style"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1.0"
+                android:background="@drawable/search_down_but_select"
+                android:drawableLeft="@drawable/car_type_icon"
+                android:drawablePadding="5.0dip"
+                android:gravity="left|center"
+                android:hint="@string/SearchCar_CarType_Hint"
+                android:onClick="onClickListener"
+                android:textColor="#333333"
+                android:textColorHint="#333333"
+                android:textSize="16.0sp" />
+
+            <ImageView
+                android:id="@+id/SearchVehicle_Price_Line3"
+                android:layout_width="0.5dp"
+                android:layout_height="fill_parent"
+                android:background="@android:color/darker_gray"
+                android:contentDescription="@null" />
+
+            <Button
+                android:id="@+id/SearchVehicle_Price_CarLength"
+                style="@style/PublishInfo_Button_Style"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:background="@drawable/search_right_bottom_but_select"
+                android:drawableLeft="@drawable/car_len_icon"
+                android:gravity="left|center"
+                android:hint="@string/SearchCar_CarLength_Hint"
+                android:onClick="onClickListener"
+                android:padding="10.0dip"
+                android:textColor="#333333"
+                android:textColorHint="#333333"
+                android:textSize="16.0sp" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <include layout="@layout/line" />
+
+    <Button
+        android:id="@+id/VehiceSearch_Select_But"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:layout_margin="10.0dip"
+        android:background="@drawable/confirm_back_button_select"
+        android:onClick="onClickListener"
+        android:text="@string/Contact_Search_Hint"
+        android:textColor="@android:color/white"
+        android:textSize="16.0sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="10.0dip"
+        android:drawableLeft="@drawable/protect"
+        android:drawablePadding="10.0dip"
+        android:text="@string/Search_Hint_1"
+        android:textColor="#ff666666"
+        android:textSize="16.0sp" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="10.0dip"
+        android:layout_marginRight="10.0dip"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:autoLink="phone"
+            android:text="@string/Search_Hint_2"
+            android:textColor="#ff666666"
+            android:textSize="@dimen/home_text_size" />
+
+        <Button
+            android:id="@+id/Search_Call_But"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10.0dip"
+            android:background="@drawable/confirm_back_button_select"
+            android:drawableLeft="@drawable/call_icon"
+            android:onClick="onClickListener"
+            android:text="@string/Credit_CallPhone_Title"
+            android:padding="1dp"
+            android:textColor="@android:color/white" />
+    </LinearLayout>
+
+</LinearLayout>

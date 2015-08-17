@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@drawable/repeat_background"
+        android:orientation="vertical" >
+
+        <include
+            android:id="@+id/maintitle"
+            android:layout_width="match_parent"
+            layout="@layout/item_maintitle"
+            android:visibility="visible" />
+
+        <RelativeLayout
+            android:id="@+id/fragment_container"
+            android:layout_width="fill_parent"
+            android:layout_height="0.0dip"
+            android:layout_weight="1.0" />
+
+        <FrameLayout
+            android:id="@+id/main_tab"
+            android:layout_width="fill_parent"
+            android:layout_height="45dp"
+            android:layout_gravity="bottom"
+            android:background="@color/maintitle_background"
+            android:orientation="horizontal" >
+
+            <RadioGroup
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:checkedButton="@+id/radio_homepage"
+                android:orientation="horizontal" >
+
+                <RadioButton
+                    android:id="@+id/radio_homepage"
+                    style="@style/Home_Tab_Style"
+                    android:layout_weight="1"
+                    android:drawableLeft="@drawable/homepage_home_icon_pressed"
+                    android:onClick="onTabClicked"
+                    android:text="@string/main_home" />
+
+                <TextView
+                    android:layout_width="1dp"
+                    android:layout_height="fill_parent"
+                    android:background="#ababab" />
+
+                <RadioButton
+                    android:id="@+id/radio_around"
+                    style="@style/Home_Tab_Style"
+                    android:layout_weight="1"
+                    android:drawableLeft="@drawable/homepage_around_icon_pressed"
+                    android:onClick="onTabClicked"
+                    android:text="@string/main_around" />
+
+                <TextView
+                    android:layout_width="1dp"
+                    android:layout_height="fill_parent"
+                    android:background="#ababab" />
+
+                <RadioButton
+                    android:id="@+id/radio_chat"
+                    style="@style/Home_Tab_Style"
+                    android:layout_weight="1"
+                    android:drawableLeft="@drawable/homepage_chat_icon_pressed"
+                    android:onClick="onTabClicked"
+                    android:text="@string/main_chat" />
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/unread_msg_number"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_gravity="right|top"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/round_hint"
+                android:gravity="center"
+                android:text="7"
+                android:textColor="@android:color/white"
+                android:textSize="12sp"
+                android:visibility="invisible" />
+        </FrameLayout>
+    </LinearLayout>
+
+</LinearLayout>

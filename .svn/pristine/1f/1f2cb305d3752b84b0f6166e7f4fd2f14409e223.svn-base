@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/com.seeyuan.logistics"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp" >
+
+                <TextView
+                    style="@style/new_car_manager_title_style"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:text="@string/line_hint" />
+
+                <TextView
+                    style="@style/new_car_manager_content_style"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerInParent="true"
+                    android:layout_marginRight="30dp"
+                    android:drawableLeft="@drawable/mi_icon"
+                    android:text="@string/important_hint" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="0.5dp"
+                android:background="#ffcdcdcd" />
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp" >
+
+                <TextView
+                    android:id="@+id/new_line_manager_car_plate_hint"
+                    style="@style/new_car_manager_content_style"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:drawableLeft="@drawable/mi_icon"
+                    android:text="@string/car_plate_hint" />
+
+                <TextView
+                    android:id="@+id/new_line_manager_car_plate"
+                    style="@style/new_car_manager_edit_style"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="15dp"
+                    android:layout_toRightOf="@+id/new_line_manager_car_plate_hint"
+                    android:drawablePadding="10dp"
+                    android:hint="@string/please_check_hint"
+                    android:paddingRight="10dp" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="0.5dp"
+                android:background="#ffcdcdcd" />
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp" >
+
+                <TextView
+                    android:id="@+id/new_line_manager_driver_hint"
+                    style="@style/new_car_manager_content_style"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:drawableLeft="@drawable/mi_icon"
+                    android:text="@string/driver_hint" />
+
+                <TextView
+                    android:id="@+id/new_line_manager_driver"
+                    style="@style/new_car_manager_edit_style"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/new_line_manager_driver_hint"
+                    android:drawablePadding="10dp"
+                    android:drawableRight="@drawable/uitableview_chevron_default"
+                    android:hint="@string/please_check_hint"
+                    android:paddingRight="10dp" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="0.5dp"
+                android:background="#ffcdcdcd" />
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp" >
+
+                <TextView
+                    android:id="@+id/new_line_manager_from_hint"
+                    style="@style/new_car_manager_content_style"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:drawableLeft="@drawable/mi_icon"
+                    android:text="@string/PublishInfo_Origin" />
+
+                <TextView
+                    android:id="@+id/new_line_manager_from"
+                    style="@style/new_car_manager_edit_style"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/new_line_manager_from_hint"
+                    android:drawablePadding="10dp"
+                    android:drawableRight="@drawable/uitableview_chevron_default"
+                    android:hint="@string/please_check_hint"
+                    android:paddingRight="10dp" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="0.5dp"
+                android:background="#ffcdcdcd" />
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp" >
+
+                <TextView
+                    android:id="@+id/new_line_manager_to_hint"
+                    style="@style/new_car_manager_content_style"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:drawableLeft="@drawable/mi_icon"
+                    android:text="@string/PublishInfo_Destination" />
+
+                <TextView
+                    android:id="@+id/new_line_manager_to"
+                    style="@style/new_car_manager_edit_style"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/new_line_manager_to_hint"
+                    android:drawablePadding="10dp"
+                    android:drawableRight="@drawable/uitableview_chevron_default"
+                    android:hint="@string/please_check_hint"
+                    android:paddingRight="10dp" />
+            </RelativeLayout>
+
+            <include layout="@layout/line" />
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <com.seeyuan.logistics.customview.MuInputEditText
+                    android:id="@+id/publish_car_pricet"
+                    style="@style/PublishInfo_Edit_Style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="20dp"
+                    android:layout_toRightOf="@+id/publish_car_pricet_hint"
+                    android:hint="@string/please_input_hint"
+                    android:inputType="number"
+                    android:onClick="onClickListener"
+                    android:textSize="@dimen/publish_text_size" />
+
+                <TextView
+                    android:id="@+id/publish_car_pricet_hint"
+                    style="@style/PublishInfo_Title_Style"
+                    android:layout_centerVertical="true"
+                    android:text="单价:元/吨" />
+            </RelativeLayout>
+
+            <include layout="@layout/line" />
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <com.seeyuan.logistics.customview.MuInputEditText
+                    android:id="@+id/publish_car_pricem"
+                    style="@style/PublishInfo_Edit_Style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="20dp"
+                    android:layout_toRightOf="@+id/publish_car_pricem_hint"
+                    android:hint="@string/please_input_hint"
+                    android:inputType="number"
+                    android:onClick="onClickListener"
+                    android:textSize="@dimen/publish_text_size" />
+
+                <TextView
+                    android:id="@+id/publish_car_pricem_hint"
+                    style="@style/PublishInfo_Title_Style"
+                    android:layout_centerVertical="true"
+                    android:text="单价:元/方" />
+            </RelativeLayout>
+
+            <include layout="@layout/line" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="0.5dp"
+                android:background="#ffcdcdcd" />
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp" >
+
+                <TextView
+                    android:id="@+id/new_line_manager_type_hint"
+                    style="@style/new_car_manager_content_style"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:drawableLeft="@drawable/mi_icon"
+                    android:text="@string/line_type_hint" />
+
+                <TextView
+                    android:id="@+id/new_line_manager_type"
+                    style="@style/new_car_manager_edit_style"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/new_line_manager_type_hint"
+                    android:drawablePadding="10dp"
+                    android:drawableRight="@drawable/uitableview_chevron_default"
+                    android:hint="@string/please_check_hint"
+                    android:paddingRight="10dp" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="0.5dp"
+                android:background="#ffcdcdcd" />
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp" >
+
+                <TextView
+                    android:id="@+id/new_line_manager_valid_time_hint"
+                    style="@style/new_car_manager_content_style"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:drawableLeft="@drawable/mi_icon"
+                    android:text="@string/valid_time_hint" />
+
+                <TextView
+                    android:id="@+id/new_line_manager_valid_time"
+                    style="@style/new_car_manager_edit_style"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/new_line_manager_valid_time_hint"
+                    android:drawablePadding="10dp"
+                    android:drawableRight="@drawable/uitableview_chevron_default"
+                    android:hint="@string/please_check_hint"
+                    android:paddingRight="10dp" />
+            </RelativeLayout>
+
+            <include layout="@layout/line" />
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <Button
+                    android:id="@+id/PublishCar_through_to"
+                    style="@style/PublishInfo_Button_Style"
+                    android:background="@drawable/centre_angle_bg_select"
+                    android:hint="@string/please_check_hint"
+                    android:onClick="onClickListener"
+                    android:singleLine="true"
+                    android:textSize="@dimen/publish_text_size" />
+
+                <TextView
+                    style="@style/PublishInfo_Title_Style"
+                    android:layout_centerVertical="true"
+                    android:text="@string/through_to_hint" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="0.5dp"
+                android:background="#ffcdcdcd" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/new_line_manager_delete"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/confirm_back_button_select"
+                    android:gravity="center"
+                    android:onClick="onClickListener"
+                    android:paddingBottom="5dp"
+                    android:paddingTop="5dp"
+                    android:text="@string/ensure"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+
+                <Button
+                    android:id="@+id/new_line_manager_cancel"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/confirm_back_button2_select"
+                    android:gravity="center"
+                    android:onClick="onClickListener"
+                    android:paddingBottom="5dp"
+                    android:paddingTop="5dp"
+                    android:text="@string/cancel"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

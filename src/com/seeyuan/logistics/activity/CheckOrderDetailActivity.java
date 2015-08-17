@@ -1,0 +1,430 @@
+package com.seeyuan.logistics.activity;
+
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.List;
+
+import android.content.Context;
+import android.os.Bundle;
+import android.os.Handler;
+import android.text.TextUtils;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.Window;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import com.seeyuan.logistics.R;
+import com.seeyuan.logistics.adapter.NormalTextAdapter;
+import com.seeyuan.logistics.application.NetWork;
+import com.seeyuan.logistics.customview.ProgressAlertDialog;
+import com.seeyuan.logistics.datacenter.DataHandler;
+import com.seeyuan.logistics.datacenter.OnDataReceiveListener;
+import com.seeyuan.logistics.datahandler.GetOrderDetailInfoHandler;
+import com.seeyuan.logistics.datahandler.GetOrderOperationDataHandler;
+import com.seeyuan.logistics.entity.CarsDto;
+import com.seeyuan.logistics.entity.GoodsDto;
+import com.seeyuan.logistics.entity.OrderDto;
+import com.seeyuan.logistics.entity.OrderTraceDto;
+import com.seeyuan.logistics.entity.PdaPagination;
+import com.seeyuan.logistics.entity.PdaRequest;
+import com.seeyuan.logistics.entity.PdaResponse;
+import com.seeyuan.logistics.jsonparser.OrderDetialInfoJsonParser;
+import com.seeyuan.logistics.jsonparser.OrderOperationJsonParser;
+import com.seeyuan.logistics.util.CommonUtils;
+import com.seeyuan.logistics.util.ToastUtil;
+
+public class CheckOrderDetailActivity extends BaseActivity implements
+		OnClickListener, OnDataReceiveListener {
+	/**
+	 * 返回按钮
+	 */
+	private ImageView maintitle_back_iv;
+
+	/**
+	 * 标题title
+	 */
+	private TextView defaulttitle_title_tv;
+
+	private Context context;
+
+	private OrderDto orderDto;
+
+	/**
+	 * 车牌号
+	 */
+	private TextView order_detail_carplate;
+	/**
+	 * 车型
+	 */
+	private TextView order_detail_cartype;
+
+	/**
+	 * 车长
+	 */
+	private TextView order_detail_carlength;
+
+	/**
+	 * 车重
+	 */
+	private TextView order_detail_carweight;
+	/**
+	 * 货物名称
+	 */
+	private TextView order_detail_goodsname;
+	/**
+	 * 货物重量
+	 */
+	private TextView order_detail_goodsweight;
+	/**
+	 * 始发地
+	 */
+	private TextView order_detail_from;
+	/**
+	 * 目的地
+	 */
+	private TextView order_detail_to;
+	/**
+	 * 装货时间
+	 */
+	private TextView order_detail_packagetimes;
+	/**
+	 * 卸货时间
+	 */
+	private TextView order_detail_packagetimee;
+
+	/**
+	 * 显示进度条
+	 */
+	private final int SHOW_PROGRESS = 2000;
+	/**
+	 * 关闭进度条
+	 */
+	private final int CLOSE_PROGRESS = 2001;
+
+	private ProgressAlertDialog progressDialog;
+
+	private final int SHOW_TOAST = 3001;
+
+	/**
+	 * 需求每页元素个数
+	 */
+	private final int pageSize = 5;
+	/**
+	 * 页数
+	 */
+	private int pageNum = 0;
+
+	/**
+	 * 一共多少页
+	 */
+	private int totalPage = 0;
+
+	/**
+	 * 是否获取更多数据
+	 */
+	private boolean isGetMoreData = false;
+
+	/**
+	 * 操作日志
+	 */
+	private ListView order_detail_operation_data;
+
+	private NormalTextAdapter adapter;
+
+	private List<String> mDataList;
+
+	private LinearLayout order_detail_operation_layout;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
+		setContentView(R.layout.activity_order_detail);
+		getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE,
+				R.layout.deflaut_titlebar); // titlebar为自己标题栏的布局
+		context = getApplicationContext();
+		orderDto = (OrderDto) getIntent().getSerializableExtra("orderInfo");
+		initView();
+		initAdapter();
+		doCheckOrderDetail();
+		doCheckOperationData(pageNum);
+	}
+
+	/**
+	 * 获取订单详情
+	 */
+	private void doCheckOrderDetail() {
+		myHanlder.sendEmptyMessage(SHOW_PROGRESS);
+		PdaRequest<OrderDto> request = new PdaRequest<OrderDto>();
+		request.setData(orderDto);
+		GetOrderDetailInfoHandler dataHandler = new GetOrderDetailInfoHandler(
+				context, request);
+		dataHandler.setOnDataReceiveListener(this);
+		dataHandler.startNetWork();
+	}
+
+	/**
+	 * 获取操作日志
+	 */
+	private void doCheckOperationData(int pageNum) {
+		PdaRequest<OrderDto> request = new PdaRequest<OrderDto>();
+		request.setData(orderDto);
+		PdaPagination pagination = new PdaPagination();
+		pagination.setStartPos(pageNum);
+		pagination.setAmount(pageSize);
+		request.setPagination(pagination);
+		GetOrderOperationDataHandler dataHandler = new GetOrderOperationDataHandler(
+				context, request);
+		dataHandler.setOnDataReceiveListener(this);
+		dataHandler.startNetWork();
+	}
+
+	@Override
+	public void initView() {
+		maintitle_back_iv = (ImageView) findViewById(R.id.maintitle_back_iv);
+		maintitle_back_iv.setOnClickListener(this);
+
+		defaulttitle_title_tv = (TextView) findViewById(R.id.defaulttitle_title_tv);
+		defaulttitle_title_tv.setText(R.string.order_info_hint);
+
+		order_detail_carplate = (TextView) findViewById(R.id.order_detail_carplate);
+		order_detail_cartype = (TextView) findViewById(R.id.order_detail_cartype);
+		order_detail_carlength = (TextView) findViewById(R.id.order_detail_carlength);
+		order_detail_carweight = (TextView) findViewById(R.id.order_detail_carweight);
+		order_detail_goodsname = (TextView) findViewById(R.id.order_detail_goodsname);
+		order_detail_goodsweight = (TextView) findViewById(R.id.order_detail_goodsweight);
+		order_detail_from = (TextView) findViewById(R.id.order_detail_from);
+		order_detail_to = (TextView) findViewById(R.id.order_detail_to);
+		order_detail_packagetimes = (TextView) findViewById(R.id.order_detail_packagetimes);
+		order_detail_packagetimee = (TextView) findViewById(R.id.order_detail_packagetimee);
+		// order_detail_operation_data = (ListView)
+		// findViewById(R.id.order_detail_operation_data);
+
+		order_detail_operation_layout = (LinearLayout) findViewById(R.id.order_detail_operation_layout);
+	}
+
+	private void initAdapter() {
+		mDataList = new ArrayList<String>();
+	}
+
+	private void showView(OrderDto order) {
+		if (null == order)
+			return;
+		CarsDto car = order.getCars();
+		GoodsDto goods = order.getGoods();
+		order_detail_carplate
+				.setText(TextUtils.isEmpty(car.getVehicleNum()) ? "" : car
+						.getVehicleNum());
+		order_detail_cartype.setText(TextUtils.isEmpty(car.getType()) ? ""
+				: car.getType());
+		order_detail_carlength.setText(TextUtils.isEmpty(car.getLength()) ? ""
+				: car.getLength());
+		order_detail_carweight.setText(null == car.getCapacity() ? "" : car
+				.getCapacity().toString());
+		order_detail_goodsname
+				.setText(TextUtils.isEmpty(goods.getGoodsName()) ? "" : goods
+						.getGoodsName());
+		order_detail_goodsweight.setText(null == goods.getGoodsWeight() ? ""
+				: goods.getGoodsWeight().toString());
+		order_detail_from.setText(TextUtils.isEmpty(goods.getSetout()) ? ""
+				: goods.getSetout());
+		order_detail_to.setText(TextUtils.isEmpty(goods.getDestination()) ? ""
+				: goods.getDestination());
+		order_detail_packagetimes
+				.setText((null == goods.getDeliveryDateF() ? "" : CommonUtils
+						.parserData(goods.getDeliveryDateF()))
+						+ "~"
+						+ (null == goods.getDeliveryDateT() ? "" : CommonUtils
+								.parserData(goods.getDeliveryDateT())));
+		order_detail_packagetimee.setText((null == goods.getReceiveDateF() ? ""
+				: CommonUtils.parserData(goods.getReceiveDateF()))
+				+ "~"
+				+ (null == goods.getReceiveDateT() ? "" : CommonUtils
+						.parserData(goods.getReceiveDateT())));
+	}
+
+	private Handler myHanlder = new Handler() {
+		public void handleMessage(android.os.Message msg) {
+			switch (msg.what) {
+			case SHOW_PROGRESS:
+				showProgress();
+				break;
+			case CLOSE_PROGRESS:
+				dismissProgress();
+				break;
+			case SHOW_TOAST:
+				ToastUtil.show(context, msg.obj.toString());
+				break;
+
+			default:
+				break;
+			}
+		};
+	};
+
+	private void showProgress() {
+		if (progressDialog == null) {
+			progressDialog = new ProgressAlertDialog(this);
+		} else {
+			progressDialog.show();
+		}
+	}
+
+	private void dismissProgress() {
+		if (progressDialog != null) {
+			progressDialog.dismiss();
+		}
+	}
+
+	@Override
+	public void onClickListener(View view) {
+		switch (view.getId()) {
+		case R.id.order_detail_more_data:
+			doGetOperationData();
+			break;
+
+		default:
+			break;
+		}
+	}
+
+	/**
+	 * 获取操作日志
+	 */
+	private void doGetOperationData() {
+
+		pageNum = pageNum + pageSize;
+		if (pageNum < totalPage) {
+			doCheckOperationData(pageNum);
+		} else {
+			ToastUtil.show(context, "没有更多数据");
+		}
+
+	}
+
+	@Override
+	public void onDataReceive(DataHandler dataHandler, int resultCode,
+			Object data, int type) {
+		myHanlder.sendEmptyMessage(CLOSE_PROGRESS);
+		 String dataString = null;
+		try {
+			dataString = new String((byte[]) data, "UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Log.i("结果", dataString);
+		switch (resultCode) {
+		case NetWork.GET_ORDER_DETAIL_OK:
+			doGetOrderDetailSuccess(data);
+			break;
+		case NetWork.GET_ORDER_DETAIL_ERROR:
+		case NetWork.GET_ORDER_OPERATION_DATA_ERROR:
+			ToastUtil.show(context,
+					getResources().getString(R.string.network_error_hint));
+			break;
+		case NetWork.GET_ORDER_OPERATION_DATA_OK:
+			doGetOrderOperationSuccess(data);
+			break;
+
+		default:
+			break;
+		}
+	}
+
+	/**
+	 * 获取订单操作日志成功
+	 * 
+	 * @param data
+	 */
+	private void doGetOrderOperationSuccess(Object data) {
+		String dataString = null;
+		try {
+			dataString = new String((byte[]) data, "UTF-8");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		try {
+			PdaResponse<List<OrderTraceDto>> response = OrderOperationJsonParser
+					.parserOrderOperationDataJson(dataString);
+			if (response.isSuccess() && response.getData() != null) {
+				totalPage = (int) response.getTotal();
+				for (OrderTraceDto traceDto : response.getData()) {
+					mDataList.add(traceDto.getEventInfo()
+							+ "   "
+							+ traceDto.getOrderOper()
+							+ "   "
+							+ CommonUtils.parserTimestamp(traceDto
+									.getCreatingTime()));
+					View layout = LayoutInflater.from(context).inflate(
+							R.layout.item_normal_text_style, null);
+					((TextView) layout.findViewById(R.id.item_normal_text))
+							.setText(traceDto.getEventInfo()
+									+ "   "
+									+ traceDto.getOrderOper()
+									+ "   "
+									+ CommonUtils.parserTimestamp(traceDto
+											.getCreatingTime()));
+					order_detail_operation_layout.addView(layout);
+				}
+				// adapter = new NormalTextAdapter(mDataList, context);
+				// order_detail_operation_data.setAdapter(adapter);
+
+			} else {
+				ToastUtil.show(context,
+						getResources().getString(R.string.network_error_hint));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			ToastUtil.show(context,
+					getResources().getString(R.string.network_error_hint));
+		}
+	}
+
+	/**
+	 * 获取订单详情成功
+	 * 
+	 * @param data
+	 */
+	private void doGetOrderDetailSuccess(Object data) {
+		String dataString = null;
+		try {
+			dataString = new String((byte[]) data, "UTF-8");
+//			Log.i("结果1", dataString);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		try {
+			PdaResponse<OrderDto> response = OrderDetialInfoJsonParser
+					.parserOrderDetailInfoJson(dataString);
+			if (response.isSuccess()) {
+				showView(response.getData());
+			} else {
+				ToastUtil.show(context,
+						getResources().getString(R.string.network_error_hint));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			ToastUtil.show(context,
+					getResources().getString(R.string.network_error_hint));
+		}
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.maintitle_back_iv:
+			CommonUtils.finishActivity(this);
+			break;
+
+		default:
+			break;
+		}
+	}
+
+}

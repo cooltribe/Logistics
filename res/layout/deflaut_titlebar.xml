@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="45dp"
+    android:background="@color/maintitle_background" >
+
+    <ImageView
+        android:id="@+id/maintitle_back_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="15dp"
+        android:background="@drawable/back_button" />
+
+    <TextView
+        android:id="@+id/defaulttitle_title_tv"
+        style="@style/maintitle_str_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_centerVertical="true"
+        android:text="物托帮" />
+
+    <ImageView
+        android:id="@+id/maintitle_comfirm_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerInParent="true"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/checkmark1"
+        android:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/maintitle_comfirm_tv"
+        style="@style/comfirm_str_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerInParent="true"
+        android:layout_marginRight="15dp"
+        android:visibility="invisible" />
+
+</RelativeLayout>

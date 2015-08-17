@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/com.seeyuan.logistics"
+    android:id="@+id/main"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/repeat_background"
+    android:orientation="vertical" >
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:fadingEdge="none"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/tv_audit"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/audit"
+                android:gravity="center"
+                android:text="@string/user_audit"
+                android:textColor="#ffe47f12"
+                android:textSize="14.0dip"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical" >
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10.0dip" >
+
+                    <com.mesada.nj.pubcontrols.controls.RemoteImageView
+                        android:id="@+id/iv_photo"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="5.0dip"
+                        android:background="@drawable/default_header_img"
+                        android:contentDescription="@null"
+                        android:scaleType="fitXY" />
+
+                    <LinearLayout
+                        android:id="@+id/Name_layout"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/iv_photo"
+                        android:orientation="vertical"
+                        android:paddingRight="5.0dip" >
+
+                        <TextView
+                            android:id="@+id/tv_information"
+                            style="@style/Black_TextviewRight_Style"
+                            android:layout_marginTop="10.0dip"
+                            android:text="个人车主" />
+
+                        <RatingBar
+                            android:id="@+id/ratingBar"
+                            style="@style/Credit_Rating_Style"
+                            android:layout_width="wrap_content"
+                            android:layout_height="25.0dip"
+                            android:layout_gravity="right"
+                            android:isIndicator="true"
+                            android:numStars="5"
+                            android:rating="0.0" />
+
+                        <TextView
+                            android:id="@+id/tv_user_audit"
+                            style="@style/Black_TextviewRight_Style"
+                            android:text="未审核"
+                            android:textColor="#ffff0000"
+                            android:visibility="gone" />
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <include layout="@layout/line" />
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/user_type_hint"
+                        style="@style/PublishInfo_Title_Style"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerInParent="true"
+                        android:text="@string/user_type" />
+
+                    <TextView
+                        android:id="@+id/user_type"
+                        style="@style/PublishInfo_Edit_Style"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerInParent="true"
+                        android:layout_toRightOf="@+id/user_type_hint"
+                        android:enabled="false"
+                        android:paddingRight="5.0dip"
+                        android:text="123"
+                        android:textSize="15.0sp" />
+                </RelativeLayout>
+
+                <include layout="@layout/line" />
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/user_telphone_hint"
+                        style="@style/PublishInfo_Title_Style"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerInParent="true"
+                        android:text="@string/user_telphone" />
+
+                    <TextView
+                        android:id="@+id/user_telphone"
+                        style="@style/PublishInfo_Edit_Style"
+                        android:layout_width="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/user_telphone_hint"
+                        android:enabled="false"
+                        android:hint="@string/please_input_hint"
+                        android:paddingRight="5.0dip"
+                        android:textSize="15.0sp" />
+                </RelativeLayout>
+
+                <include layout="@layout/line" />
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:orientation="horizontal"
+                    android:visibility="gone" >
+
+                    <TextView
+                        android:id="@+id/ed_true_name_hint"
+                        style="@style/PublishInfo_Title_Style"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerInParent="true"
+                        android:text="@string/sure_name" />
+
+                    <com.seeyuan.logistics.customview.MuInputEditText
+                        android:id="@+id/ed_true_name"
+                        style="@style/PublishInfo_Edit_Style"
+                        android:layout_alignParentRight="true"
+                        android:layout_toRightOf="@+id/ed_true_name_hint"
+                        android:hint="@string/please_input_hint"
+                        android:maxLength="6"
+                        android:paddingRight="5.0dip"
+                        android:textSize="15.0sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/ed_true_name_hint"
+                        style="@style/PublishInfo_Title_Style"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerInParent="true"
+                        android:text="性别" />
+
+                    <RadioGroup
+                        android:id="@+id/invoice_tab"
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerInParent="true"
+                        android:checkedButton="@+id/radio_man"
+                        android:gravity="center"
+                        android:orientation="horizontal" >
+
+                        <RadioButton
+                            android:id="@+id/radio_man"
+                            style="@style/public_radiobutton_style"
+                            android:layout_marginRight="10dp"
+                            android:drawableLeft="@drawable/checkbox_pressed_style"
+                            android:text="男" />
+
+                        <RadioButton
+                            android:id="@+id/radio_female"
+                            style="@style/public_radiobutton_style"
+                            android:layout_marginLeft="10dp"
+                            android:drawableLeft="@drawable/checkbox_pressed_style"
+                            android:text="女" />
+                    </RadioGroup>
+                </RelativeLayout>
+
+                <include layout="@layout/line" />
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/Id_card_number_hint"
+                        style="@style/PublishInfo_Title_Style"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerInParent="true"
+                        android:text="@string/email_address_hint" />
+
+                    <com.seeyuan.logistics.customview.MuInputEditText
+                        android:id="@+id/email_number"
+                        style="@style/PublishInfo_Edit_Style"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerInParent="true"
+                        android:layout_toRightOf="@+id/Id_card_number_hint"
+                        android:hint="@string/please_input_hint"
+                        android:paddingRight="5.0dip"
+                        android:textSize="15.0sp" />
+                </RelativeLayout>
+
+                <include layout="@layout/line" />
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/ed_id_card_address_hint"
+                        style="@style/PublishInfo_Title_Style"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerInParent="true"
+                        android:text="QQ" />
+
+                    <com.seeyuan.logistics.customview.MuInputEditText
+                        android:id="@+id/ed_qq_address"
+                        style="@style/PublishInfo_Edit_Style"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerInParent="true"
+                        android:layout_toRightOf="@+id/ed_id_card_address_hint"
+                        android:hint="@string/please_input_hint"
+                        android:inputType="number"
+                        android:paddingRight="5.0dip"
+                        android:textSize="15.0sp" />
+                </RelativeLayout>
+
+                <include layout="@layout/line" />
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/ed_id_card_address_hint"
+                        style="@style/PublishInfo_Title_Style"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerInParent="true"
+                        android:text="@string/MyInsure_details_insureManAddr" />
+
+                    <com.seeyuan.logistics.customview.MuInputEditText
+                        android:id="@+id/ed_insure_addr"
+                        style="@style/PublishInfo_Edit_Style"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerInParent="true"
+                        android:layout_toRightOf="@+id/ed_id_card_address_hint"
+                        android:hint="@string/please_input_hint"
+                        android:paddingRight="5.0dip"
+                        android:textSize="15.0sp" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <include layout="@layout/line" />
+
+            <Button
+                android:id="@+id/bt_save"
+                android:layout_width="fill_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10.0dip"
+                android:layout_marginLeft="10.0dip"
+                android:layout_marginRight="10.0dip"
+                android:layout_marginTop="20.0dip"
+                android:background="@drawable/confirm_back_button_select"
+                android:onClick="onClickListener"
+                android:text="@string/save"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

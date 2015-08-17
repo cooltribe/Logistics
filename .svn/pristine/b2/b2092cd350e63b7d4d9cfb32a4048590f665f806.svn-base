@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp" >
+
+                <TextView
+                    style="@style/new_car_manager_title_style"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:text="@string/driver_info_hint" />
+
+                <TextView
+                    style="@style/new_car_manager_content_style"
+                    android:layout_width="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerInParent="true"
+                    android:layout_marginRight="30dp"
+                    android:drawableLeft="@drawable/mi_icon"
+                    android:text="@string/important_hint" />
+            </RelativeLayout>
+
+            <include layout="@layout/line" />
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp" >
+
+                <TextView
+                    android:id="@+id/add_new_driver_name_hint"
+                    style="@style/add_new_driver_content_style"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:drawableLeft="@drawable/mi_icon"
+                    android:text="@string/name" />
+
+                <com.seeyuan.logistics.customview.MuInputEditText
+                    android:id="@+id/add_new_driver_name"
+                    style="@style/new_car_manager_edit_style"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="20dp"
+                    android:layout_toRightOf="@+id/add_new_driver_name_hint"
+                    android:gravity="right|center"
+                    android:hint="@string/please_input_hint" />
+            </RelativeLayout>
+
+            <include layout="@layout/line" />
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp" >
+
+                <TextView
+                    android:id="@+id/add_new_driver_phone_hint"
+                    style="@style/add_new_driver_content_style"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:drawableLeft="@drawable/mi_icon"
+                    android:text="@string/PhoneNumber_Title" />
+
+                <com.seeyuan.logistics.customview.MuInputEditText
+                    android:id="@+id/add_new_driver_phone"
+                    style="@style/new_car_manager_edit_style"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="20dp"
+                    android:layout_toRightOf="@+id/add_new_driver_phone_hint"
+                    android:gravity="right|center"
+                    android:hint="@string/please_input_hint"
+                    android:inputType="phone"
+                    android:maxLength="11" />
+            </RelativeLayout>
+
+            <include layout="@layout/line" />
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp" >
+
+                <TextView
+                    android:id="@+id/add_new_driver_idcard_hint"
+                    style="@style/add_new_driver_content_style"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:drawableLeft="@drawable/mi_icon"
+                    android:text="@string/id_card_no" />
+
+                <com.seeyuan.logistics.customview.MuInputEditText
+                    android:id="@+id/add_new_driver_idcard_name"
+                    style="@style/new_car_manager_edit_style"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="20dp"
+                    android:layout_toRightOf="@+id/add_new_driver_idcard_hint"
+                    android:gravity="right|center"
+                    android:hint="@string/please_input_hint"
+                    android:maxLength="18" />
+            </RelativeLayout>
+
+            <include layout="@layout/line" />
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp" >
+
+                <TextView
+                    android:id="@+id/add_new_driver_emplLicense_hint"
+                    style="@style/add_new_driver_content_style"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:drawableLeft="@drawable/mi_icon"
+                    android:text="从业资格证" />
+
+                <com.seeyuan.logistics.customview.MuInputEditText
+                    android:id="@+id/add_new_driver_emplLicense"
+                    style="@style/new_car_manager_edit_style"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="20dp"
+                    android:layout_toRightOf="@+id/add_new_driver_emplLicense_hint"
+                    android:gravity="right|center"
+                    android:hint="@string/please_input_hint"
+                    android:maxLength="18" />
+            </RelativeLayout>
+
+            <include layout="@layout/line" />
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="90dp" >
+
+                <TextView
+                    style="@style/add_new_driver_content_style"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:drawableLeft="@drawable/mi_icon"
+                    android:text="@string/Id_card_phone" />
+
+                <com.mesada.nj.pubcontrols.controls.RemoteImageView
+                    android:id="@+id/add_new_driver_idcard_photo"
+                    android:layout_width="80.0dip"
+                    android:layout_height="80.0dip"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/imageView1"
+                    android:background="@drawable/status_bg"
+                    android:scaleType="fitXY" />
+
+                <ImageView
+                    android:id="@+id/imageView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:paddingRight="5.0dip"
+                    android:src="@drawable/uitableview_chevron_default" />
+            </RelativeLayout>
+
+            <include layout="@layout/line" />
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="90dp" >
+
+                <TextView
+                    style="@style/add_new_driver_content_style"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:drawableLeft="@drawable/mi_icon"
+                    android:text="@string/driver_license_photo" />
+
+                <com.mesada.nj.pubcontrols.controls.RemoteImageView
+                    android:id="@+id/add_new_driver_driver_license"
+                    android:layout_width="80.0dip"
+                    android:layout_height="80.0dip"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/imageView1"
+                    android:background="@drawable/status_bg"
+                    android:scaleType="fitXY" />
+
+                <ImageView
+                    android:id="@+id/imageView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:paddingRight="5.0dip"
+                    android:src="@drawable/uitableview_chevron_default" />
+            </RelativeLayout>
+
+            <include layout="@layout/line" />
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="90dp" >
+
+                <TextView
+                    style="@style/add_new_driver_content_style"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:drawableLeft="@drawable/mi_icon"
+                    android:text="从业资格证" />
+
+                <com.mesada.nj.pubcontrols.controls.RemoteImageView
+                    android:id="@+id/add_new_driver_emplLicenseImage"
+                    android:layout_width="80.0dip"
+                    android:layout_height="80.0dip"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/imageView1"
+                    android:background="@drawable/status_bg"
+                    android:scaleType="fitXY" />
+
+                <ImageView
+                    android:id="@+id/imageView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:paddingRight="5.0dip"
+                    android:src="@drawable/uitableview_chevron_default" />
+            </RelativeLayout>
+
+            <include layout="@layout/line" />
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="90dp" >
+
+                <TextView
+                    style="@style/add_new_driver_content_style"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:text="@string/update_header_img_hint" />
+
+                <com.mesada.nj.pubcontrols.controls.RemoteImageView
+                    android:id="@+id/add_new_driver_header"
+                    android:layout_width="80.0dip"
+                    android:layout_height="80.0dip"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/imageView1"
+                    android:background="@drawable/default_header_img"
+                    android:scaleType="fitXY" />
+
+                <ImageView
+                    android:id="@+id/imageView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:paddingRight="5.0dip"
+                    android:src="@drawable/uitableview_chevron_default" />
+            </RelativeLayout>
+
+            <include layout="@layout/line" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/add_new_driver_comfirm"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/confirm_back_button_select"
+                    android:gravity="center"
+                    android:onClick="onClickListener"
+                    android:paddingBottom="5dp"
+                    android:paddingTop="5dp"
+                    android:text="@string/ensure"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+
+                <Button
+                    android:id="@+id/add_new_driver_cancel"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/confirm_back_button2_select"
+                    android:gravity="center"
+                    android:onClick="onClickListener"
+                    android:paddingBottom="5dp"
+                    android:paddingTop="5dp"
+                    android:text="@string/cancel"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

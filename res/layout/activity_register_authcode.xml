@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/com.seeyuan.logistics"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <ImageView
+        android:id="@+id/navigationImg"
+        style="@style/StepImgViewStyle"
+        android:src="@drawable/register_step2" />
+
+    <ScrollView
+        android:id="@+id/dd"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/Background" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:padding="10.0dip" >
+
+                <com.seeyuan.logistics.customview.MuInputEditText
+                    android:id="@+id/resetPwUserPhoneEdt"
+                    style="@style/EdtSingle"
+                    android:layout_marginBottom="10.0dip"
+                    android:layout_marginLeft="0.0dip"
+                    android:layout_marginRight="0.0dip"
+                    android:background="@drawable/mu_intputview_single_focuse_shape"
+                    android:gravity="center_vertical"
+                    android:hint="输入用户名/手机号码"
+                    android:inputType="text"
+                    android:visibility="gone"
+                    app:normal_bg="@drawable/angle_bg" />
+
+                <com.seeyuan.logistics.customview.MuInputEditText
+                    android:id="@+id/getAuthCodeEdt"
+                    style="@style/EdtSingle"
+                    android:layout_below="@+id/resetPwUserPhoneEdt"
+                    android:layout_marginLeft="0.0dip"
+                    android:layout_marginRight="5.0dip"
+                    android:layout_toLeftOf="@+id/rReGetAuthCodeBtn"
+                    android:background="@drawable/mu_intputview_single_focuse_shape"
+                    android:drawablePadding="90.0dip"
+                    android:hint="@string/register_input_code_hint"
+                    android:inputType="number"
+                    android:maxLength="6"
+                    app:normal_bg="@drawable/angle_bg" />
+
+                <Button
+                    android:id="@+id/rReGetAuthCodeBtn"
+                    android:layout_width="80.0dip"
+                    android:layout_height="45.0dip"
+                    android:layout_alignBottom="@+id/getAuthCodeEdt"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignTop="@+id/getAuthCodeEdt"
+                    android:background="@drawable/mu_intputview_single_focuse_shape"
+                    android:onClick="onClickListener"
+                    android:padding="5.0dip"
+                    android:text="@string/register_reget_authcode_btntext"
+                    android:textAppearance="@style/AppBaseTheme"
+                    android:textColor="@color/grey51"
+                    android:textSize="12.0sp" />
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/rAuthCodeNextBtn"
+                android:layout_width="fill_parent"
+                android:layout_height="48.0dip"
+                android:layout_marginLeft="10.0dip"
+                android:layout_marginRight="10.0dip"
+                android:layout_marginTop="15.0dip"
+                android:background="@drawable/confirm_back_button_select"
+                android:onClick="onClickListener"
+                android:text="@string/register_next_btn_text"
+                android:textColor="@android:color/white"
+                android:textSize="16.0sp" />
+
+            <TextView
+                android:id="@+id/resetHintTv"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15.0dip"
+                android:gravity="center"
+                android:text="找回密码如遇到问题，请拨打客户电话"
+                android:textColor="@color/grey51"
+                android:textSize="@dimen/home_text_size"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:id="@+id/hintCallRL"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5.0dip"
+                android:gravity="center"
+                android:visibility="visible" >
+
+                <TextView
+                    android:id="@+id/textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="客服热线:"
+                    android:textColor="@color/orange"
+                    android:textSize="@dimen/home_text_size" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:autoLink="phone"
+                    android:text="4008887771"
+                    android:textColor="@color/orange"
+                    android:textSize="@dimen/home_text_size" />
+
+                <Button
+                    android:id="@+id/callBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10.0dip"
+                    android:background="@drawable/confirm_back_button_select"
+                    android:drawableLeft="@drawable/call_icon"
+                    android:onClick="onClickListener"
+                    android:padding="1dp"
+                    android:text="@string/Credit_CallPhone_Title"
+                    android:textColor="@android:color/white" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

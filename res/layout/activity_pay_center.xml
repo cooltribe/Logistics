@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/com.seeyuan.logistics"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/repeat_background"
+    android:fadingEdge="none"
+    android:scrollbars="none" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
+		
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10.0dip"
+                    android:layout_marginRight="10.0dip" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="45.0dip"
+                        android:gravity="center_vertical"
+                        android:hint="平台账号"
+                        android:textSize="16.0sp" />
+
+                    <TextView
+                        android:id="@+id/Alipay_Account"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:textColor="@android:color/black"
+                        android:textSize="16.0sp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+                <include layout="@layout/line" />
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10.0dip"
+                    android:layout_marginRight="10.0dip" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="45.0dip"
+                        android:gravity="center_vertical"
+                        android:hint="账户余额"
+                        android:textSize="16.0sp" />
+
+                    <TextView
+                        android:id="@+id/Alipay_Balance_Unit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:text="元"
+                        android:textColor="@android:color/black"
+                        android:textSize="16.0sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/Alipay_Balance"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toLeftOf="@+id/Alipay_Balance_Unit"
+                        android:text="0"
+                        android:textColor="#fffa9457"
+                        android:textSize="20.0sp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+                <include layout="@layout/line" />
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10.0dip"
+                    android:layout_marginRight="10.0dip"
+                    android:visibility="gone" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="45.0dip"
+                        android:gravity="center_vertical"
+                        android:hint="赠送余额"
+                        android:textSize="16.0sp" />
+
+                    <TextView
+                        android:id="@+id/Alipay_GiveBalance_Unit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:text="元"
+                        android:textColor="@android:color/black"
+                        android:textSize="16.0sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/Alipay_GiveBalance"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toLeftOf="@+id/Alipay_GiveBalance_Unit"
+                        android:textColor="#fffa9457"
+                        android:textSize="20.0sp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+            </LinearLayout>
+			<TextView 
+			    android:id="@+id/pay_type"
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			     android:textColor="@android:color/black"
+			     android:layout_margin="10dp"
+                android:textSize="16.0sp"
+                android:textStyle="bold"
+			    android:text="点击选择充值类型"/>
+			<View 
+			    android:layout_width="match_parent"
+			    android:layout_height="0.5dp"
+			    android:background="#aaa"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10.0dip"
+                android:text="请选择充值金额"
+                android:textColor="@android:color/black"
+                android:textSize="16.0sp"
+                android:textStyle="bold" />
+
+            <include layout="@layout/line" />
+
+            <RadioGroup
+                android:id="@+id/Alipay_PriceGroup"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:checkedButton="@+id/Alipay_Price_100"
+                android:orientation="vertical" >
+
+                <RadioButton
+                    android:id="@+id/Alipay_Price_100"
+                    style="@style/Alipay_Style"
+                    android:text="100" />
+
+                <include
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.5dip"
+                    layout="@layout/line" />
+
+                <RadioButton
+                    android:id="@+id/Alipay_Price_200"
+                    style="@style/Alipay_Style"
+                    android:text="200" />
+
+                <include
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.5dip"
+                    layout="@layout/line" />
+
+                <RadioButton
+                    android:id="@+id/Alipay_Price_300"
+                    style="@style/Alipay_Style"
+                    android:text="300" />
+
+                <include
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.5dip"
+                    layout="@layout/line" />
+
+                <RadioButton
+                    android:id="@+id/Alipay_Price_400"
+                    style="@style/Alipay_Style"
+                    android:text="400" />
+
+                <include
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.5dip"
+                    layout="@layout/line" />
+
+                <RadioButton
+                    android:id="@+id/Alipay_Price_500"
+                    style="@style/Alipay_Style"
+                    android:text="500" />
+
+                <include
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.5dip"
+                    layout="@layout/line" />
+
+                <RadioButton
+                    android:id="@+id/Alipay_Price_other"
+                    style="@style/Alipay_Style"
+                    android:text="其他" />
+            </RadioGroup>
+
+            <include layout="@layout/line" />
+
+            <com.seeyuan.logistics.customview.MuInputEditText
+                android:id="@+id/pay_center_money"
+                style="@style/PublishInfo_Edit_Style"
+                android:layout_width="fill_parent"
+                android:hint="请输入金额"
+                android:paddingRight="5.0dip"
+                android:textSize="15.0sp"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <include layout="@layout/line" />
+
+        <Button
+            android:id="@+id/Alipay_But"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:layout_margin="10.0dip"
+            android:background="@drawable/confirm_back_button_select"
+            android:onClick="onClickListener"
+            android:text="确认充值"
+            android:textColor="@android:color/white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10.0dip"
+            android:text="@string/PICC_Hint"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="16.0sp"
+            android:textStyle="bold" />
+		
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20.0dip"
+            android:layout_marginLeft="10.0dip"
+            android:layout_marginRight="10.0dip" >
+			
+            
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@+id/Alipay_Call_But"
+                android:autoLink="phone"
+                android:text="@string/LA_Hotline"
+                android:textColor="@android:color/darker_gray" />
+
+            <Button
+                android:id="@+id/Alipay_Call_But"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10.0dip"
+                android:background="@drawable/confirm_back_button_select"
+                android:drawableLeft="@drawable/call_icon"
+                android:onClick="onClickListener"
+                android:padding="1dp"
+                android:text="@string/Credit_CallPhone_Title"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+        
+    </LinearLayout>
+
+</ScrollView>

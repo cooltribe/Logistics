@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 常用颜色和效果 -->
+    <color name="black">#ff000000</color>
+    <color name="blue">#ffccddff</color>
+    <color name="grey">#ff808080</color>
+    <color name="transparent">#00000000</color>
+    <color name="white">#ffffff</color>
+    <color name="yellow">#F3F5C4</color>
+    <color name="green">#0066FF</color>
+    <color name="red">#FF0000</color>
+    
+    
+    <!-- 蓝色主色调 -->
+    <color name="main_blue">#0063d2</color>
+    <color name="main_yellow">#ff6700</color>
+
+    <!-- 主菜单点击效果 -->
+    <color name="mainmenu_up">#2DA962</color>
+    <color name="mainmenu_down">#FFA844</color>
+
+    <!-- 主菜单文字颜色 -->
+    <color name="maintitle_background">#EEEEEE</color>
+    <color name="maintitle_str">#ffffff</color>
+    <color name="main_tab_str">#0063d2</color>
+    <color name="Angle_Pressed_Color">#eeeeee</color>
+    <color name="Angle_Pressed_Color2">#999999</color>
+    <color name="Background">#fff5f5f5</color>
+    <color name="Call_Text_Color">#ffff7639</color>
+    <color name="SpringGreen4">#0063d2</color>
+    <color name="information_tab_item_up">#FFCC33</color>
+    <color name="orange">#ff6600</color>
+    <color name="havegoods_pressed_down">#31A4AB</color>
+    <color name="havecar_pressed_down">#FF8A45</color>
+    <color name="publish_information_pressed_down">#0076BA</color>
+    <color name="personal_center_pressed_down">#A86FCE</color>
+    <color name="CarSourceList_Text_Color">#ff323232</color>
+    <color name="search_city_button_down">#dbecff</color>
+    <color name="grey51">#ff828282</color>
+    <color name="gray81">#ffcfcfcf</color>
+    <color name="gray91">#ffe8e8e8</color>
+    <color name="submint_btn_color_n">#fff8d6b6</color>
+    <!-- 蓝色底 -->
+    <color name="confirm_button_pressed">#004899</color>
+    <color name="confirm_button_normal">#0062d2</color>
+    <!-- 灰色底 -->
+    <color name="confirm_button2_pressed">#aaaaaa</color>
+    <color name="confirm_button2_normal">#929292</color>
+    <color name="grey_transparent">#50000000</color>
+
+    
+    <!-- 聊天 -->
+    <color name="common_top_bar_blue">#4ebcd3</color>
+      <color name="btn_login_normal">#007086</color>
+    <color name="btn_login_pressed">#303744</color>
+    <color name="btn_logout_normal">#d33f3f</color>
+    <color name="btn_logout_pressed">#DA5A4D</color>
+    <color name="btn_register_normal">#2dafa3</color>
+    <color name="btn_register_pressed">#4ebcd3</color>
+    <color name="common_bottom_bar_normal_bg">#2d2f31</color>
+    <color name="common_bottom_bar_selected_bg">#161718</color>
+    <color name="common_botton_bar_blue">#2ea7e0</color>
+    <color name="common_bg">#fcfcfc</color>
+    <color name="btn_pressed_green_solid">#B6DA53</color>
+    <color name="divider_list">#cccccc</color>
+    <color name="error_item_color">#F6EBE6</color>
+    <color name="bottom_bar_normal_bg">#2D2F31</color>
+    <color name="bottom_text_color_normal">#ffffff</color>
+     <color name="btn_white_normal">#f7f8f8</color>
+    <color name="btn_white_pressed">#b5b5b6</color>
+    <color name="btn_green_noraml">#68C270</color>
+    <color name="btn_green_pressed">#6FCD78</color>
+    <color name="btn_gray_normal">#c0c0c0</color>
+     <color name="btn_gray_pressed_status">#b5b5b6</color>
+    <color name="btn_gray_pressed">#666667</color>
+    <color name="btn_blue_normal">#1e90ff</color>
+    <color name="btn_blue_pressed">#0066FF</color>
+     <color name="gray_pressed">#b5b5b6</color>
+     <color name="gray_normal">#666667</color>
+     <color name="grid_state_pressed">#1Affffff</color>
+    <color name="grid_state_focused">#80000000</color>
+    
+      <color name="voip_interface_text_color">#bababa</color>
+    <color name="black_deep">#FF000000</color>
+</resources>

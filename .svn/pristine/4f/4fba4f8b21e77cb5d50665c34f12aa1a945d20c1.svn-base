@@ -1,0 +1,595 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/com.seeyuan.logistics"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/repeat_background"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/certification_hint"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:background="#fff7e0"
+            android:gravity="center|left"
+            android:paddingLeft="10dp"
+            android:text="@string/company_certification_warning_hint"
+            android:textColor="#ff6600"
+            android:textSize="13sp" />
+
+        <include layout="@layout/line" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:layout_marginBottom="5.0dip"
+                android:layout_marginLeft="10.0dip"
+                android:layout_marginTop="10.0dip"
+                android:text="公司信息"
+                android:textColor="@android:color/black"
+                android:textSize="18.0sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:layout_marginBottom="5.0dip"
+                android:layout_marginRight="15.0dip"
+                android:layout_marginTop="10.0dip"
+                android:drawableLeft="@drawable/mi_icon"
+                android:gravity="right"
+                android:text="为必填项"
+                android:textColor="@android:color/black"
+                android:textSize="16.0sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <include layout="@layout/line" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/authentication_company_hint"
+                style="@style/PublishInfo_Title_Style"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:drawableLeft="@drawable/mi_icon"
+                android:text="公司名称" />
+
+            <com.seeyuan.logistics.customview.MuInputEditText
+                android:id="@+id/authentication_company"
+                style="@style/PublishInfo_Edit_Style"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:layout_toRightOf="@+id/authentication_company_hint"
+                android:hint="@string/please_input_hint"
+                android:textSize="@dimen/publish_text_size" />
+        </RelativeLayout>
+
+        <include layout="@layout/line" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/authentication_business_license_hint"
+                style="@style/PublishInfo_Title_Style"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:text="营业执照注册号" />
+
+            <com.seeyuan.logistics.customview.MuInputEditText
+                android:id="@+id/authentication_business_license"
+                style="@style/PublishInfo_Edit_Style"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:layout_toRightOf="@+id/authentication_business_license_hint"
+                android:hint="@string/please_input_hint"
+                android:textSize="@dimen/publish_text_size" />
+        </RelativeLayout>
+
+        <include layout="@layout/line" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="90dp"
+            android:background="@color/white" >
+
+            <TextView
+                style="@style/add_new_driver_content_style"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:text="公司商标" />
+
+            <com.mesada.nj.pubcontrols.controls.RemoteImageView
+                android:id="@+id/authentication_company_icon"
+                android:layout_width="80.0dip"
+                android:layout_height="80.0dip"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/imageView1"
+                android:background="@drawable/status_bg"
+                android:scaleType="fitXY" />
+
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:paddingRight="5.0dip"
+                android:src="@drawable/uitableview_chevron_default" />
+        </RelativeLayout>
+
+        <include layout="@layout/line" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/authentication_translate_license_hint"
+                style="@style/PublishInfo_Title_Style"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:text="运输许可证号" />
+
+            <com.seeyuan.logistics.customview.MuInputEditText
+                android:id="@+id/authentication_translate_license"
+                style="@style/PublishInfo_Edit_Style"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:layout_toRightOf="@+id/authentication_translate_license_hint"
+                android:hint="@string/please_input_hint"
+                android:textSize="@dimen/publish_text_size" />
+        </RelativeLayout>
+
+        <include layout="@layout/line" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="90dp"
+            android:background="@color/white" >
+
+            <TextView
+                style="@style/add_new_driver_content_style"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:text="运输许可证图片" />
+
+            <com.mesada.nj.pubcontrols.controls.RemoteImageView
+                android:id="@+id/authentication_translate_license_icon"
+                android:layout_width="80.0dip"
+                android:layout_height="80.0dip"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/imageView1"
+                android:background="@drawable/status_bg"
+                android:scaleType="fitXY" />
+
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:paddingRight="5.0dip"
+                android:src="@drawable/uitableview_chevron_default" />
+        </RelativeLayout>
+
+        <include layout="@layout/line" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/authentication_company_address_hint"
+                style="@style/PublishInfo_Title_Style"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:drawableLeft="@drawable/mi_icon"
+                android:text="公司地址" />
+
+            <TextView
+                android:id="@+id/authentication_company_address"
+                style="@style/PublishInfo_Edit_Style"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:layout_toRightOf="@+id/authentication_company_address_hint"
+                android:hint="@string/please_check_hint"
+                android:textSize="@dimen/publish_text_size" />
+        </RelativeLayout>
+
+        <include layout="@layout/line" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/authentication_company_address2_hint"
+                style="@style/PublishInfo_Title_Style"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:drawableLeft="@drawable/mi_icon"
+                android:text="详细地址" />
+
+            <com.seeyuan.logistics.customview.MuInputEditText
+                android:id="@+id/authentication_company_address2"
+                style="@style/PublishInfo_Edit_Style"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:layout_toRightOf="@+id/authentication_company_address2_hint"
+                android:hint="@string/please_input_hint"
+                android:textSize="@dimen/publish_text_size" />
+        </RelativeLayout>
+
+        <include layout="@layout/line" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/authentication_company_money_hint"
+                style="@style/PublishInfo_Title_Style"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:text="注册资金" />
+
+            <com.seeyuan.logistics.customview.MuInputEditText
+                android:id="@+id/authentication_company_money"
+                style="@style/PublishInfo_Edit_Style"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/authentication_company_money_hint2"
+                android:layout_toRightOf="@+id/authentication_company_money_hint"
+                android:hint="@string/please_input_hint"
+                android:textSize="@dimen/publish_text_size" />
+
+            <TextView
+                android:id="@+id/authentication_company_money_hint2"
+                style="@style/PublishInfo_Title_Style"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:text="万元" />
+        </RelativeLayout>
+
+        <include layout="@layout/line" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:layout_marginBottom="5.0dip"
+                android:layout_marginLeft="10.0dip"
+                android:layout_marginTop="10.0dip"
+                android:text="企业法人信息"
+                android:textColor="@android:color/black"
+                android:textSize="18.0sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:layout_marginBottom="5.0dip"
+                android:layout_marginRight="15.0dip"
+                android:layout_marginTop="10.0dip"
+                android:drawableLeft="@drawable/mi_icon"
+                android:gravity="right"
+                android:text="为必填项"
+                android:textColor="@android:color/black"
+                android:textSize="16.0sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <include layout="@layout/line" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/authentication_company_legal_hint"
+                style="@style/PublishInfo_Title_Style"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:drawableLeft="@drawable/mi_icon"
+                android:text="姓名" />
+
+            <com.seeyuan.logistics.customview.MuInputEditText
+                android:id="@+id/authentication_company_legal"
+                style="@style/PublishInfo_Edit_Style"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:layout_toRightOf="@+id/authentication_company_legal_hint"
+                android:hint="@string/please_input_hint"
+                android:textSize="@dimen/publish_text_size" />
+        </RelativeLayout>
+
+        <include layout="@layout/line" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/authentication_legal_idcard_hint"
+                style="@style/PublishInfo_Title_Style"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:drawableLeft="@drawable/mi_icon"
+                android:text="身份证号" />
+
+            <com.seeyuan.logistics.customview.MuInputEditText
+                android:id="@+id/authentication_legal_idcard"
+                style="@style/PublishInfo_Edit_Style"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:layout_toRightOf="@+id/authentication_legal_idcard_hint"
+                android:hint="@string/please_input_hint"
+                android:textSize="@dimen/publish_text_size" />
+        </RelativeLayout>
+
+        <include layout="@layout/line" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/authentication_legal_phone_hint"
+                style="@style/PublishInfo_Title_Style"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:drawableLeft="@drawable/mi_icon"
+                android:text="手机号码" />
+
+            <com.seeyuan.logistics.customview.MuInputEditText
+                android:id="@+id/authentication_legal_phone"
+                style="@style/PublishInfo_Edit_Style"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:layout_toRightOf="@+id/authentication_legal_phone_hint"
+                android:hint="@string/please_input_hint"
+                android:textSize="@dimen/publish_text_size" />
+        </RelativeLayout>
+
+        <include layout="@layout/line" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/authentication_legal_tel_hint"
+                style="@style/PublishInfo_Title_Style"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:text="固定电话" />
+
+            <com.seeyuan.logistics.customview.MuInputEditText
+                android:id="@+id/authentication_legal_tel"
+                style="@style/PublishInfo_Edit_Style"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:layout_toRightOf="@+id/authentication_legal_tel_hint"
+                android:hint="如:025-"
+                android:textSize="@dimen/publish_text_size" />
+        </RelativeLayout>
+
+        <include layout="@layout/line" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:layout_marginBottom="5.0dip"
+                android:layout_marginLeft="10.0dip"
+                android:layout_marginTop="10.0dip"
+                android:text="账户信息"
+                android:textColor="@android:color/black"
+                android:textSize="18.0sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:layout_marginBottom="5.0dip"
+                android:layout_marginRight="15.0dip"
+                android:layout_marginTop="10.0dip"
+                android:drawableLeft="@drawable/mi_icon"
+                android:gravity="right"
+                android:text="为必填项"
+                android:textColor="@android:color/black"
+                android:textSize="16.0sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/authentication_bank_hint"
+                style="@style/PublishInfo_Title_Style"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:drawableLeft="@drawable/mi_icon"
+                android:text="开户银行" />
+
+            <com.seeyuan.logistics.customview.MuInputEditText
+                android:id="@+id/authentication_bank"
+                style="@style/PublishInfo_Edit_Style"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:layout_toRightOf="@+id/authentication_bank_hint"
+                android:hint="@string/please_input_hint"
+                android:textSize="@dimen/publish_text_size" />
+        </RelativeLayout>
+
+        <include layout="@layout/line" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/authentication_bank_address_hint"
+                style="@style/PublishInfo_Title_Style"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:drawableLeft="@drawable/mi_icon"
+                android:text="开户银行所在地" />
+
+            <TextView
+                android:id="@+id/authentication_bank_address"
+                style="@style/PublishInfo_Edit_Style"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:layout_toRightOf="@+id/authentication_bank_address_hint"
+                android:hint="@string/please_check_hint"
+                android:textSize="@dimen/publish_text_size" />
+        </RelativeLayout>
+
+        <include layout="@layout/line" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/authentication_bank_id_hint"
+                style="@style/PublishInfo_Title_Style"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:drawableLeft="@drawable/mi_icon"
+                android:text="企业银行账号" />
+
+            <com.seeyuan.logistics.customview.MuInputEditText
+                android:id="@+id/authentication_bank_id"
+                style="@style/PublishInfo_Edit_Style"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:layout_toRightOf="@+id/authentication_bank_id_hint"
+                android:hint="@string/please_input_hint"
+                android:textSize="@dimen/publish_text_size" />
+        </RelativeLayout>
+
+        <include layout="@layout/line" />
+
+        <Button
+            android:id="@+id/submit_company_authentification_btn"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/confirm_back_button_select"
+            android:gravity="center"
+            android:onClick="onClickListener"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:text="@string/submit_certification_hint"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+</ScrollView>

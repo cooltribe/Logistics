@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <Button
+        android:id="@+id/goods_manager_new"
+        style="@style/car_manager_add_text_style"
+        android:background="@null"
+        android:drawableLeft="@drawable/add_icon2"
+        android:drawablePadding="10dp"
+        android:onClick="onClickListener"
+        android:paddingLeft="20dp"
+        android:text="@string/add_new_goods_hint" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0.5dp"
+        android:background="#ffcdcdcd" />
+
+    <com.seeyuan.logistics.pullrefreshview.PullToRefreshListView
+        android:id="@+id/goods_manager_refresh_view"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:divider="@null" />
+
+</LinearLayout>

@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/repeat_background"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tv_audit"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/audit"
+            android:gravity="center"
+            android:text="@string/user_audit"
+            android:textColor="#ffe47f12"
+            android:textSize="14.0dip"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/user_type_hint"
+                    style="@style/PublishInfo_Title_Style"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:drawableLeft="@drawable/mi_icon"
+                    android:text="充值金额" />
+
+                <com.seeyuan.logistics.customview.MuInputEditText
+                    android:id="@+id/pay_detail_money"
+                    style="@style/PublishInfo_Edit_Style"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/money_hint"
+                    android:layout_toRightOf="@+id/user_type_hint"
+                    android:paddingRight="5.0dip"
+                    android:textSize="15.0sp" />
+
+                <TextView
+                    android:id="@+id/money_hint"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10.0dip"
+                    android:text="元"
+                    android:textColor="@android:color/black"
+                    android:textSize="16.0sp" />
+            </RelativeLayout>
+
+            <include layout="@layout/line" />
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/user_telphone_hint"
+                    style="@style/PublishInfo_Title_Style"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:text="快速选择" />
+
+                <TextView
+                    android:id="@+id/pay_detail_account"
+                    style="@style/PublishInfo_Edit_Style"
+                    android:layout_width="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/user_telphone_hint"
+                    android:hint="请选择账户"
+                    android:inputType="phone"
+                    android:maxLength="11"
+                    android:paddingRight="5.0dip"
+                    android:textSize="15.0sp" />
+            </RelativeLayout>
+
+            <include layout="@layout/line" />
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/ed_true_name_hint"
+                    style="@style/PublishInfo_Title_Style"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:drawableLeft="@drawable/mi_icon"
+                    android:text="账户类型" />
+
+                <TextView
+                    android:id="@+id/pay_detail_type"
+                    style="@style/PublishInfo_Edit_Style"
+                    android:layout_alignParentRight="true"
+                    android:layout_toRightOf="@+id/ed_true_name_hint"
+                    android:hint="请选择账户类型"
+                    android:maxLength="6"
+                    android:paddingRight="5.0dip"
+                    android:textSize="15.0sp" />
+            </RelativeLayout>
+
+            <include layout="@layout/line" />
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/Id_card_number_hint"
+                    style="@style/PublishInfo_Title_Style"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:drawableLeft="@drawable/mi_icon"
+                    android:text="账户姓名" />
+
+                <com.seeyuan.logistics.customview.MuInputEditText
+                    android:id="@+id/pay_detail_name"
+                    style="@style/PublishInfo_Edit_Style"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerInParent="true"
+                    android:layout_toRightOf="@+id/Id_card_number_hint"
+                    android:hint="请输入账号姓名"
+                    android:maxLength="18"
+                    android:paddingRight="5.0dip"
+                    android:textSize="15.0sp" />
+            </RelativeLayout>
+
+            <include layout="@layout/line" />
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/ed_id_card_address_hint"
+                    style="@style/PublishInfo_Title_Style"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:drawableLeft="@drawable/mi_icon"
+                    android:text="账户号码" />
+
+                <com.seeyuan.logistics.customview.MuInputEditText
+                    android:id="@+id/pay_detail_number"
+                    style="@style/PublishInfo_Edit_Style"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerInParent="true"
+                    android:layout_toRightOf="@+id/ed_id_card_address_hint"
+                    android:hint="请输入账户号码"
+                    android:inputType="number"
+                    android:paddingRight="5.0dip"
+                    android:textSize="15.0sp" />
+            </RelativeLayout>
+
+            <include layout="@layout/line" />
+
+            <RelativeLayout
+                android:id="@+id/btn_id_card_photo"
+                android:layout_width="fill_parent"
+                android:layout_height="90.0dip"
+                android:background="@color/white" >
+
+                <TextView
+                    style="@style/PublishInfo_Title_Style"
+                    android:layout_width="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:drawableLeft="@drawable/mi_icon"
+                    android:text="上传凭证" />
+
+                <ImageView
+                    android:id="@+id/imageView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:paddingRight="5.0dip"
+                    android:src="@drawable/uitableview_chevron_default" />
+
+                <com.mesada.nj.pubcontrols.controls.RemoteImageView
+                    android:id="@+id/voucher_photo"
+                    android:layout_width="80.0dip"
+                    android:layout_height="80.0dip"
+                    android:layout_centerVertical="true"
+                    android:layout_toLeftOf="@+id/imageView1"
+                    android:background="@drawable/status_bg"
+                    android:scaleType="fitXY" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <include layout="@layout/line" />
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TabHost xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@android:id/tabhost"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
+
+        <TabWidget
+            android:id="@android:id/tabs"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.0"
+            android:visibility="gone" />
+
+        <RadioGroup
+            android:id="@+id/main_tab"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="bottom"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <RadioButton
+                android:id="@+id/radio_tab_all_order"
+                style="@style/information_tab_bottom"
+                android:checked="true"
+                android:text="@string/all_hint" />
+
+            <RadioButton
+                android:id="@+id/radio_tab_bargain"
+                style="@style/information_tab_bottom"
+                android:checked="false"
+                android:text="@string/bargain_hint" />
+
+            <RadioButton
+                android:id="@+id/radio_tab_execute"
+                style="@style/information_tab_bottom"
+                android:checked="false"
+                android:text="@string/execute_hint" />
+
+            <RadioButton
+                android:id="@+id/radio_tab_evaluate"
+                style="@style/information_tab_bottom"
+                android:checked="false"
+                android:visibility="gone"
+                android:text="@string/contingent_evaluate_hint" />
+
+            <RadioButton
+                android:id="@+id/radio_tab_complete"
+                style="@style/information_tab_bottom"
+                android:checked="false"
+                android:text="已完成" />
+        </RadioGroup>
+
+        <include layout="@layout/line" />
+
+        <FrameLayout
+            android:id="@android:id/tabcontent"
+            android:layout_width="fill_parent"
+            android:layout_height="0.0dip"
+            android:layout_weight="1.0"
+            android:background="@drawable/repeat_background" />
+    </LinearLayout>
+
+</TabHost>
